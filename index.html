@@ -1,4 +1,4 @@
-html
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="utf-8"/>
@@ -7,638 +7,577 @@ html
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet"/>
 <style>
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #1a1a1a;
-            color: #d1d1d1;
-        }
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #1a1a1a;
+    color: #d1d1d1;
+  }
 
-        .header-bg {
-            background-color: #1a1a1a;
-        }
+  .header-bg { background-color: #1a1a1a; }
 
-        .btn-primary {
-            background-color: #e55a5a;
-            color: white;
-            border-radius: 9999px;
-            padding: 0.75rem 2.5rem;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
+  .btn-primary {
+    background-color: #e55a5a;
+    color: white;
+    border-radius: 9999px;
+    padding: 0.75rem 2.5rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+  .btn-primary:hover { background-color: #c04c4c; }
 
-        .btn-primary:hover {
-            background-color: #c04c4c;
-        }
+  .nav-link { color: #d1d1d1; transition: color 0.3s ease; }
+  .nav-link:hover { color: #e55a5a; }
 
-        .nav-link {
-            color: #d1d1d1;
-            transition: color 0.3s ease;
-        }
+  .hero-section {
+    background-color: #1c1c1c;
+    /* TODO: reemplaza por tu imagen real */
+    background-image: url('https://placehold.co/1920x1080/2b2b2b/d1d1d1?text=Imagen+de+entrenadora');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    height: 100vh;
+  }
+  .hero-overlay {
+    background: rgba(0, 0, 0, 0.4);
+    position: absolute; inset: 0; width: 100%; height: 100%;
+  }
+  .hero-content { position: relative; z-index: 10; }
+  .hero-text { text-shadow: 2px 2px 4px rgba(0,0,0,.7); }
 
-        .nav-link:hover {
-            color: #e55a5a;
-        }
+  .section-2-bg { background-color: #FFB6C1; position: relative; }
+  .section-2-content { z-index: 10; }
 
-        .hero-section {
-            background-color: #1c1c1c;
-            /* Placeholder for image */
-            background-image: url('https://placehold.co/1920x1080/2b2b2b/d1d1d1?text=Imagen+de+entrenadora');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            position: relative;
-            height: 100vh;
-        }
-
-        .hero-overlay {
-            background: rgba(0, 0, 0, 0.4);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 10;
-        }
-
-        .hero-text {
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-        }
-
-        .section-2-bg {
-            background-color: #FFB6C1;
-            position: relative;
-        }
-
-        .section-2-content {
-            z-index: 10;
-        }
-
-        .fade-right {
-            -webkit-mask-image: linear-gradient(to right, black 50%, transparent 100%);
+  .fade-right {
+    -webkit-mask-image: linear-gradient(to right, black 50%, transparent 100%);
             mask-image: linear-gradient(to right, black 50%, transparent 100%);
-        }
-
-        .section-3-bg {
-            background-color: #f8f8f8;
-            color: #333;
-        }
-
-        /* The final section color */
-        .final-section-bg {
-            background-color: #2b2b2b;
-        }
-
-        .fade-left {
-            -webkit-mask-image: linear-gradient(to left, black 50%, transparent 100%);
+  }
+  .fade-left {
+    -webkit-mask-image: linear-gradient(to left, black 50%, transparent 100%);
             mask-image: linear-gradient(to left, black 50%, transparent 100%);
-        }
+  }
 
-        .mobile-menu-open {
-            display: none;
-        }
+  .section-3-bg { background-color: #f8f8f8; color: #333; }
 
-        .carousel-container {
-            position: relative;
-            overflow: hidden;
-        }
+  /* Final section */
+  .final-section-bg { background-color: #2b2b2b; }
 
-        .carousel-track {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-        }
+  .mobile-menu-open { display: none; }
 
-        .carousel-slide {
-            flex-shrink: 0;
-            width: 100%;
-        }
+  .carousel-container { position: relative; overflow: hidden; }
+  .carousel-track { display: flex; transition: transform 0.5s ease-in-out; }
+  .carousel-slide { flex-shrink: 0; width: 100%; }
 
-        /* Mockup and Video styles */
-        .mockup-container {
-            position: relative;
-            max-width: 320px;
-            width: 100%;
-            height: 580px;
-        }
+  /* Mockup & video */
+  .mockup-container { position: relative; max-width: 320px; width: 100%; height: 580px; }
+  .mockup-video {
+    position: absolute; top: 10%; left: 8.5%; width: 83%; height: 75%;
+    border-radius: 1.5rem; overflow: hidden;
+  }
 
-        .mockup-video {
-            position: absolute;
-            top: 10%;
-            /* Adjust as needed */
-            left: 8.5%;
-            /* Adjust as needed */
-            width: 83%;
-            /* Adjust as needed */
-            height: 75%;
-            /* Adjust as needed */
-            border-radius: 1.5rem;
-            /* Match the phone screen */
-            overflow: hidden;
-        }
+  /* Ready to start */
+  .ready-to-start {
+    position: relative;
+    /* TODO: reemplaza por tu imagen real */
+    background-image: url('https://placehold.co/1920x1080/2b2b2b/d1d1d1?text=Entrenadora');
+    background-size: cover; background-position: center; background-repeat: no-repeat;
+    color: white; padding: 80px 0;
+  }
+  .ready-to-start-overlay { background: rgba(0,0,0,.6); position: absolute; inset: 0; z-index: 1; }
+  .ready-to-start-content { position: relative; z-index: 2; }
 
-        /* Specific styles for the "GET STARTED" section */
-        .ready-to-start {
-            position: relative;
-            background-image: url('https://placehold.co/1920x1080/2b2b2b/d1d1d1?text=Entrenadora');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            color: white;
-            padding: 80px 0;
-        }
+  @media (max-width: 768px) {
+    .mobile-menu-open { display: block; }
+    .main-nav { display: none; }
+    .main-nav.show {
+      display: flex; flex-direction: column; position: absolute; top: 5rem; left: 0; width: 100%;
+      background-color: #1a1a1a; box-shadow: 0 4px 6px rgba(0,0,0,.1); z-index: 50;
+    }
+    .main-nav a { padding: 1rem 2rem; border-bottom: 1px solid #333; }
+  }
 
-        .ready-to-start-overlay {
-            background: rgba(0, 0, 0, 0.6);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-
-        .ready-to-start-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        @media (max-width: 768px) {
-            .mobile-menu-open {
-                display: block;
-            }
-
-            .main-nav {
-                display: none;
-            }
-
-            .main-nav.show {
-                display: flex;
-                flex-direction: column;
-                position: absolute;
-                top: 5rem;
-                left: 0;
-                width: 100%;
-                background-color: #1a1a1a;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-                z-index: 50;
-            }
-
-            .main-nav a {
-                padding: 1rem 2rem;
-                border-bottom: 1px solid #333;
-            }
-        }
-    
-        .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
-        .reveal.visible { opacity: 1; transform: translateY(0); }
-    </style>
+  /* Reveal on scroll */
+  .reveal{ opacity:0; transform:translateY(24px); transition:opacity .8s ease, transform .8s ease; }
+  .reveal.visible{ opacity:1; transform:translateY(0); }
+</style>
 </head>
 <body class="bg-[#1a1a1a]">
- Header &amp; Navigation 
+
+<!-- Header & Navigation -->
 <header class="header-bg shadow-md fixed w-full top-0 z-50">
-<nav class="container mx-auto px-6 py-4 flex items-center justify-between flex-wrap">
-<div class="flex items-center flex-shrink-0 text-white mr-6">
-<span class="font-bold text-2xl tracking-tight text-[#d1d1d1]">AlephMotion</span>
-</div>
-<div class="mobile-menu-open md:hidden">
-<button class="flex items-center px-3 py-2 border rounded text-[#d1d1d1] border-[#d1d1d1]" id="menu-btn">
-<svg class="fill-current h-3 w-3" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-<title>Menu</title>
-<path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v15z"></path>
-</svg>
-</button>
-</div>
-<div class="main-nav w-full md:flex md:items-center md:w-auto" id="main-nav">
-<div class="text-sm md:flex-grow flex flex-col md:flex-row md:items-center">
-<a class="nav-link block mt-4 md:inline-block md:mt-0 mr-4" href="#new-booty">
-                        PROGRAMAS
-                    </a>
-<a class="nav-link block mt-4 md:inline-block md:mt-0 mr-4" href="#">
-                        NUTRICIÓN
-                    </a>
-<a class="nav-link block mt-4 md:inline-block md:mt-0 mr-4" href="#">
-                        TIENDA
-                    </a>
-<a class="nav-link block mt-4 md:inline-block md:mt-0 mr-4" href="#">
-                        FAQ'S
-                    </a>
-<a class="nav-link block mt-4 md:inline-block md:mt-0 mr-4" href="#">
-                        BLOG
-                    </a>
-<a class="nav-link block mt-4 md:inline-block md:mt-0 mr-4" href="#">
-                        INICIAR SESIÓN
-                    </a>
-<a class="nav-link block mt-4 md:inline-block md:mt-0 mr-4" href="#">
-                        INICIO
-                    </a>
-</div>
-<div>
-<a class="btn-primary inline-block text-sm px-4 py-2 leading-none border rounded mt-4 md:mt-0" href="register.html">
-                        ÚNETE AHORA
-                    </a>
-</div>
-</div>
-</nav>
+  <nav class="container mx-auto px-6 py-4 flex items-center justify-between flex-wrap">
+    <div class="flex items-center flex-shrink-0 text-white mr-6">
+      <span class="font-bold text-2xl tracking-tight text-[#d1d1d1]">AlephMotion</span>
+    </div>
+
+    <div class="mobile-menu-open md:hidden">
+      <button class="flex items-center px-3 py-2 border rounded text-[#d1d1d1] border-[#d1d1d1]" id="menu-btn" aria-label="Menú">
+        <svg class="fill-current h-5 w-5" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0zM0 9h20v2H0zM0 15h20v2H0z"/></svg>
+      </button>
+    </div>
+
+    <div class="main-nav w-full md:flex md:items-center md:w-auto" id="main-nav">
+      <div class="text-sm md:flex-grow flex flex-col md:flex-row md:items-center">
+        <a class="nav-link block mt-4 md:inline-block md:mt-0 mr-4" href="#new-booty">PROGRAMAS</a>
+        <a class="nav-link block mt-4 md:inline-block md:mt-0 mr-4" href="#nutricion">NUTRICIÓN</a>
+        <a class="nav-link block mt-4 md:inline-block md:mt-0 mr-4" href="#">TIENDA</a>
+        <a class="nav-link block mt-4 md:inline-block md:mt-0 mr-4" href="#faqs">FAQ'S</a>
+        <a class="nav-link block mt-4 md:inline-block md:mt-0 mr-4" href="#blog">BLOG</a>
+        <a class="nav-link block mt-4 md:inline-block md:mt-0 mr-4" href="#login">INICIAR SESIÓN</a>
+        <a class="nav-link block mt-4 md:inline-block md:mt-0 mr-4" href="#">INICIO</a>
+      </div>
+      <div>
+        <a class="btn-primary inline-block text-sm px-4 py-2 leading-none border rounded mt-4 md:mt-0" href="register.html">ÚNETE AHORA</a>
+      </div>
+    </div>
+  </nav>
 </header>
- Hero Section: NEW BOOTY 
-<section class="hero-section text-white flex items-center justify-center text-center reveal" id="new-booty">
-<div class="hero-overlay"></div>
-<div class="hero-content relative">
-<p class="text-lg md:text-xl mb-2 text-[#d1d1d1] hero-text">Únete hoy a mi programa integral</p>
-<h1 class="text-3xl md:text-6xl font-black leading-tight tracking-wide text-[#FFB6C1] hero-text">RESET 90:</h1>
-<h1 class="text-3xl md:text-6xl font-black leading-tight tracking-wide text-[#FFB6C1] hero-text">TRANSFORMA TU CUERPO</h1>
-<p class="text-lg md:text-xl mt-4 text-[#d1d1d1] hero-text">
-                Cada día en Septiembre
-            </p>
-<a class="btn-primary mt-8 inline-block text-sm px-6 py-3" href="register.html">
-                ÚNETE AHORA
-            </a>
-</div>
+
+<!-- Hero -->
+<section id="new-booty" class="hero-section text-white flex items-center justify-center text-center reveal">
+  <div class="hero-overlay"></div>
+  <div class="hero-content relative">
+    <p class="text-lg md:text-xl mb-2 text-[#d1d1d1] hero-text">Únete hoy a mi programa integral</p>
+    <h1 class="text-3xl md:text-6xl font-black leading-tight tracking-wide text-[#FFB6C1] hero-text">RESET 90:</h1>
+    <h1 class="text-3xl md:text-6xl font-black leading-tight tracking-wide text-[#FFB6C1] hero-text">TRANSFORMA TU CUERPO</h1>
+    <p class="text-lg md:text-xl mt-4 text-[#d1d1d1] hero-text">Programa de 90 días</p>
+    <a href="register.html" class="btn-primary mt-8 inline-block text-sm px-6 py-3">ÚNETE AHORA</a>
+  </div>
 </section>
- Second Section: NEW &amp; FUN 
+
+<!-- Intro / Rosa -->
 <section class="section-2-bg text-black py-20 flex flex-col md:flex-row items-center justify-center relative overflow-hidden reveal">
-<div class="section-2-content relative p-6 md:p-12 z-10">
- Diagonal line effect 
-<div class="absolute top-0 left-0 w-full h-full transform -skew-y-3 bg-[#e55a5a] opacity-30 z-0"></div>
-<div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between">
- Image container with fade effect class 
-<div class="w-full md:w-1/2 flex justify-center md:justify-start">
-<img alt="Fitness Coach" class="w-2/3 md:w-full h-auto rounded-lg shadow-xl fade-right" src="https://placehold.co/500x700/FFB6C1/d1d1d1?text=Entrenadora"/>
-</div>
- Text and buttons container 
-<div class="w-full md:w-1/2 flex flex-col items-center md:items-end text-center md:text-right p-6 md:p-0">
-<h2 class="text-3xl md:text-6xl font-black leading-tight tracking-wide text-gray-800">NUEVO PROGRAMA</h2>
-<h2 class="text-3xl md:text-6xl font-black leading-tight tracking-wide text-gray-800">RESET 90</h2>
-<h2 class="text-3xl md:text-6xl font-black leading-tight tracking-wide text-gray-800 opacity-50">ENTRENAMIENTOS</h2>
-<h2 class="text-3xl md:text-6xl font-black leading-tight tracking-wide text-gray-800 opacity-50">DIARIOS</h2>
-<div class="mt-8">
-<div class="flex items-center space-x-4 mb-2">
-<span class="text-gray-600 font-bold text-lg">Desde $3,000 MXN/mes (según paquete)</span>
-<a class="bg-gray-800 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition-all" href="register.html">EMPIEZA HOY</a>
-</div>
-<p class="text-sm max-w-sm mt-4 text-gray-700">Entrena conmigo, aprende nutrición práctica y desarrolla hábitos sostenibles. Acceso a rutinas guiadas, plan semanal de comidas y acompañamiento de la comunidad AlephMotion.</p>
-</div>
-</div>
-</div>
-</div>
+  <div class="section-2-content relative p-6 md:p-12 z-10">
+    <!-- Diagonal line effect -->
+    <div class="absolute top-0 left-0 w-full h-full transform -skew-y-3 bg-[#e55a5a] opacity-30 z-0"></div>
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between">
+      <!-- Imagen -->
+      <div class="w-full md:w-1/2 flex justify-center md:justify-start">
+        <img src="https://placehold.co/500x700/FFB6C1/d1d1d1?text=Entrenadora" alt="Fitness Coach" class="w-2/3 md:w-full h-auto rounded-lg shadow-xl fade-right"/>
+      </div>
+      <!-- Texto y CTA -->
+      <div class="w-full md:w-1/2 flex flex-col items-center md:items-end text-center md:text-right p-6 md:p-0">
+        <h2 class="text-3xl md:text-6xl font-black leading-tight tracking-wide text-gray-800">NUEVO PROGRAMA</h2>
+        <h2 class="text-3xl md:text-6xl font-black leading-tight tracking-wide text-gray-800">RESET 90</h2>
+        <h2 class="text-3xl md:text-6xl font-black leading-tight tracking-wide text-gray-800 opacity-50">ENTRENAMIENTOS</h2>
+        <h2 class="text-3xl md:text-6xl font-black leading-tight tracking-wide text-gray-800 opacity-50">DIARIOS</h2>
+        <div class="mt-8">
+          <div class="flex items-center space-x-4 mb-2">
+            <span class="text-gray-600 font-bold text-lg">Desde $3,000 MXN/mes (según paquete)</span>
+            <a href="register.html" class="bg-gray-800 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition-all">EMPIEZA HOY</a>
+          </div>
+          <p class="text-sm max-w-sm mt-4 text-gray-700">
+            Entrena conmigo, aprende nutrición práctica y desarrolla hábitos sostenibles.
+            Acceso a rutinas guiadas, plan semanal de comidas y acompañamiento de la comunidad AlephMotion.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
- Third Section: NOT YOUR AVERAGE FITNESS PROGRAM 
+
+<!-- No es un programa promedio -->
 <section class="section-3-bg text-black py-20 reveal">
-<div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-center">
- Image container with fade effect class 
-<div class="w-full md:w-1/2 flex justify-center md:justify-end">
-<img alt="Fitness Coach" class="w-2/3 h-auto rounded-lg shadow-xl fade-left" src="https://placehold.co/600x800/e6e6e6/a3a3a3?text=Entrenadora"/>
-</div>
- Text container 
-<div class="w-full md:w-1/2 mt-8 md:mt-0 p-6 md:p-12">
-<h2 class="text-2xl md:text-5xl font-black leading-tight tracking-wide text-gray-800">NO ES</h2>
-<h2 class="text-2xl md:text-5xl font-black leading-tight tracking-wide text-gray-800">UN PROGRAMA</h2>
-<h2 class="text-2xl md:text-5xl font-black leading-tight tracking-wide text-gray-800">DE FITNESS</h2>
-<h2 class="text-2xl md:text-5xl font-black leading-tight tracking-wide text-gray-800">PROMEDIO</h2>
-<p class="mt-8 text-sm max-w-sm text-gray-700">Efectivo, inclusivo y transformador. RESET 90 está construido sobre 3 pilares.</p>
-<ul class="mt-6 space-y-4 font-bold text-gray-800">
-<li>1 ENTRENAMIENTO PROGRESIVO</li>
-<li>2 NUTRICIÓN INTELIGENTE</li>
-<li>3 HÁBITOS Y SOPORTE</li>
-</ul>
-</div>
-</div>
+  <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-center">
+    <!-- Imagen -->
+    <div class="w-full md:w-1/2 flex justify-center md:justify-end">
+      <img src="https://placehold.co/600x800/e6e6e6/a3a3a3?text=Entrenadora" alt="Fitness Coach" class="w-2/3 h-auto rounded-lg shadow-xl fade-left"/>
+    </div>
+    <!-- Texto -->
+    <div class="w-full md:w-1/2 mt-8 md:mt-0 p-6 md:p-12">
+      <h2 class="text-2xl md:text-5xl font-black leading-tight tracking-wide text-gray-800">NO ES</h2>
+      <h2 class="text-2xl md:text-5xl font-black leading-tight tracking-wide text-gray-800">UN PROGRAMA</h2>
+      <h2 class="text-2xl md:text-5xl font-black leading-tight tracking-wide text-gray-800">DE FITNESS</h2>
+      <h2 class="text-2xl md:text-5xl font-black leading-tight tracking-wide text-gray-800">PROMEDIO</h2>
+      <p class="mt-8 text-sm max-w-sm text-gray-700">Efectivo, inclusivo y transformador. RESET 90 está construido sobre 3 pilares.</p>
+      <ul class="mt-6 space-y-4 font-bold text-gray-800">
+        <li>1 ENTRENAMIENTO PROGRESIVO</li>
+        <li>2 NUTRICIÓN INTELIGENTE</li>
+        <li>3 HÁBITOS Y SOPORTE</li>
+      </ul>
+    </div>
+  </div>
 </section>
- Fourth Section: EXERCISE pillar details 
+
+<!-- Pilar 1 -->
 <section class="section-3-bg text-black py-20 reveal">
-<div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-center">
- Image container with fade effect 
-<div class="w-full md:w-1/2 flex justify-center md:justify-end">
-<img alt="Fitness Coach" class="w-2/3 h-auto rounded-lg shadow-xl fade-left" src="https://placehold.co/600x800/e6e6e6/a3a3a3?text=Entrenadora+corriendo"/>
-</div>
- Text container 
-<div class="w-full md:w-1/2 mt-8 md:mt-0 p-6 md:p-12">
-<h3 class="text-lg md:text-2xl font-bold text-[#e55a5a]">1</h3>
-<h2 class="text-3xl md:text-5xl font-black leading-tight tracking-wide text-gray-800">ENTRENAMIENTO</h2>
-<ul class="mt-6 space-y-2 text-sm text-gray-700"><li>- Rutinas frescas 5 días a la semana (hogar o gimnasio)</li><li>- Progresión segura desde técnica básica</li><li>- Opciones de 30, 45 o 60 minutos</li><li>- Demostraciones en video por ejercicio</li><li>- Reto de viernes para impulsar resultados</li></ul>
-<a class="btn-primary mt-8 inline-block text-sm px-6 py-3" href="register.html">ÚNETE AL RESET 90</a>
-</div>
-</div>
+  <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-center">
+    <!-- Imagen -->
+    <div class="w-full md:w-1/2 flex justify-center md:justify-end">
+      <img src="https://placehold.co/600x800/e6e6e6/a3a3a3?text=Entrenadora+corriendo" alt="Fitness Coach" class="w-2/3 h-auto rounded-lg shadow-xl fade-left"/>
+    </div>
+    <!-- Texto -->
+    <div class="w-full md:w-1/2 mt-8 md:mt-0 p-6 md:p-12">
+      <h3 class="text-lg md:text-2xl font-bold text-[#e55a5a]">1</h3>
+      <h2 class="text-3xl md:text-5xl font-black leading-tight tracking-wide text-gray-800">ENTRENAMIENTO</h2>
+      <ul class="mt-6 space-y-2 text-sm text-gray-700">
+        <li>- Rutinas frescas 5 días a la semana (hogar o gimnasio)</li>
+        <li>- Progresión segura desde técnica básica</li>
+        <li>- Opciones de 30, 45 o 60 minutos</li>
+        <li>- Demostraciones en video por ejercicio</li>
+        <li>- Reto de viernes para impulsar resultados</li>
+      </ul>
+      <a href="register.html" class="btn-primary mt-8 inline-block text-sm px-6 py-3">ÚNETE AL RESET 90</a>
+    </div>
+  </div>
 </section>
- Fifth Section: NUTRITION pillar details 
+
+<!-- Pilar 2 -->
+<section class="section-3-bg text-black py-20 reveal" id="nutricion">
+  <div class="container mx-auto px-6 flex flex-col-reverse md:flex-row items-center justify-center">
+    <!-- Texto -->
+    <div class="w-full md:w-1/2 mt-8 md:mt-0 p-6 md:p-12">
+      <h3 class="text-lg md:text-2xl font-bold text-[#e55a5a]">2</h3>
+      <h2 class="text-3xl md:text-5xl font-black leading-tight tracking-wide text-gray-800">NUTRICIÓN</h2>
+      <ul class="mt-6 space-y-2 text-sm text-gray-700">
+        <li>- Menús semanales equilibrados (3 comidas + 2 snacks)</li>
+        <li>- Listas de súper semanales</li>
+        <li>- Aprende a usar proteína, carbohidratos y grasas sin obsesión</li>
+        <li>- Recetas prácticas “lo que yo como”</li>
+      </ul>
+      <a href="register.html" class="btn-primary mt-8 inline-block text-sm px-6 py-3">ÚNETE AL RESET 90</a>
+    </div>
+    <!-- Imagen -->
+    <div class="w-full md:w-1/2 flex justify-center md:justify-end">
+      <img src="https://placehold.co/600x600/e6e6e6/a3a3a3?text=Bowl+de+comida+saludable" alt="Bowl de comida saludable" class="w-2/3 h-auto rounded-lg shadow-xl fade-right"/>
+    </div>
+  </div>
+</section>
+
+<!-- Pilar 3 -->
 <section class="section-3-bg text-black py-20 reveal">
-<div class="container mx-auto px-6 flex flex-col-reverse md:flex-row items-center justify-center">
- Text container 
-<div class="w-full md:w-1/2 mt-8 md:mt-0 p-6 md:p-12">
-<h3 class="text-lg md:text-2xl font-bold text-[#e55a5a]">2</h3>
-<h2 class="text-3xl md:text-5xl font-black leading-tight tracking-wide text-gray-800">NUTRICIÓN</h2>
-<ul class="mt-6 space-y-2 text-sm text-gray-700"><li>- Menús semanales equilibrados (3 comidas + 2 snacks)</li><li>- Listas de súper semanales</li><li>- Aprende a usar proteína, carbohidratos y grasas sin obsesión</li><li>- Recetas prácticas “lo que yo como”</li></ul>
-<a class="btn-primary mt-8 inline-block text-sm px-6 py-3" href="register.html">ÚNETE AL RESET 90</a>
-</div>
- Image container with fade effect 
-<div class="w-full md:w-1/2 flex justify-center md:justify-end">
-<img alt="Bowl de comida saludable" class="w-2/3 h-auto rounded-lg shadow-xl fade-right" src="https://placehold.co/600x600/e6e6e6/a3a3a3?text=Bowl+de+comida+saludable"/>
-</div>
-</div>
+  <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-center">
+    <!-- Imagen -->
+    <div class="w-full md:w-1/2 flex justify-center md:justify-end">
+      <img src="https://placehold.co/600x800/e6e6e6/a3a3a3?text=Gente+haciendo+ejercicio" alt="Gente haciendo ejercicio" class="w-2/3 h-auto rounded-lg shadow-xl fade-left"/>
+    </div>
+    <!-- Texto -->
+    <div class="w-full md:w-1/2 mt-8 md:mt-0 p-6 md:p-12">
+      <h3 class="text-lg md:text-2xl font-bold text-[#e55a5a]">3</h3>
+      <h2 class="text-3xl md:text-5xl font-black leading-tight tracking-wide text-gray-800">HÁBITOS Y SOPORTE</h2>
+      <ul class="mt-6 space-y-2 text-sm text-gray-700">
+        <li>- Comunidad AlephMotion: motivación y rendición de cuentas</li>
+        <li>- Checklist semanal de hábitos (agua, sueño, pasos, azúcar)</li>
+        <li>- Acompañamiento por WhatsApp y check-ins</li>
+        <li>- Retos y encuentros de la comunidad</li>
+      </ul>
+      <a href="register.html" class="btn-primary mt-8 inline-block text-sm px-6 py-3">ÚNETE AL RESET 90</a>
+    </div>
+  </div>
 </section>
- Sixth Section: SUPPORT pillar details 
-<section class="section-3-bg text-black py-20 reveal">
-<div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-center">
- Image container with fade effect 
-<div class="w-full md:w-1/2 flex justify-center md:justify-end">
-<img alt="Gente haciendo ejercicio" class="w-2/3 h-auto rounded-lg shadow-xl fade-left" src="https://placehold.co/600x800/e6e6e6/a3a3a3?text=Gente+haciendo+ejercicio"/>
-</div>
- Text container 
-<div class="w-full md:w-1/2 mt-8 md:mt-0 p-6 md:p-12">
-<h3 class="text-lg md:text-2xl font-bold text-[#e55a5a]">3</h3>
-<h2 class="text-3xl md:text-5xl font-black leading-tight tracking-wide text-gray-800">HÁBITOS Y SOPORTE</h2>
-<ul class="mt-6 space-y-2 text-sm text-gray-700"><li>- Comunidad AlephMotion: motivación y rendición de cuentas</li><li>- Checklist semanal de hábitos (agua, sueño, pasos, azúcar)</li><li>- Acompañamiento por WhatsApp y check-ins</li><li>- Retos y encuentros de la comunidad</li></ul>
-<a class="btn-primary mt-8 inline-block text-sm px-6 py-3" href="register.html">ÚNETE AL RESET 90</a>
-</div>
-</div>
-</section>
- Seventh Section: INTRODUCING 3 PROGRAMS 
+
+<!-- Programa 3 Etapas -->
 <section class="section-2-bg text-black py-20 flex flex-col md:flex-row items-center justify-center relative overflow-hidden reveal">
-<div class="section-2-content relative p-6 md:p-12 z-10">
- Diagonal line effect 
-<div class="absolute top-0 left-0 w-full h-full transform -skew-y-3 bg-[#e55a5a] opacity-30 z-0"></div>
-<div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between">
- Image container with fade effect class 
-<div class="w-full md:w-1/2 flex justify-center md:justify-start">
-<img alt="Fitness Coach" class="w-2/3 md:w-full h-auto rounded-lg shadow-xl fade-right" src="https://placehold.co/500x700/FFB6C1/d1d1d1?text=Entrenadora"/>
-</div>
- Text and list container 
-<div class="w-full md:w-1/2 flex flex-col items-center md:items-end text-center md:text-right p-6 md:p-0">
-<h2 class="text-3xl md:text-6xl font-black leading-tight tracking-wide text-gray-800">PROGRAMA RESET 90</h2>
-<h2 class="text-3xl md:text-6xl font-black leading-tight tracking-wide text-gray-800">3 ETAPAS</h2>
-<ul class="mt-8 text-xl space-y-4 font-bold text-gray-800"><li>1 Mes 1: Reset y Fundamentos</li><li>2 Mes 2: Progreso y Constancia</li><li>3 Mes 3: Consolidación y Autonomía</li></ul>
-</div>
-</div>
-</div>
+  <div class="section-2-content relative p-6 md:p-12 z-10">
+    <!-- Diagonal line effect -->
+    <div class="absolute top-0 left-0 w-full h-full transform -skew-y-3 bg-[#e55a5a] opacity-30 z-0"></div>
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between">
+      <!-- Imagen -->
+      <div class="w-full md:w-1/2 flex justify-center md:justify-start">
+        <img src="https://placehold.co/500x700/FFB6C1/d1d1d1?text=Entrenadora" alt="Fitness Coach" class="w-2/3 md:w-full h-auto rounded-lg shadow-xl fade-right"/>
+      </div>
+      <!-- Lista -->
+      <div class="w-full md:w-1/2 flex flex-col items-center md:items-end text-center md:text-right p-6 md:p-0">
+        <h2 class="text-3xl md:text-6xl font-black leading-tight tracking-wide text-gray-800">PROGRAMA RESET 90</h2>
+        <h2 class="text-3xl md:text-6xl font-black leading-tight tracking-wide text-gray-800">3 ETAPAS</h2>
+        <ul class="mt-8 text-xl space-y-4 font-bold text-gray-800">
+          <li>1 Mes 1: Reset y Fundamentos</li>
+          <li>2 Mes 2: Progreso y Constancia</li>
+          <li>3 Mes 3: Consolidación y Autonomía</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </section>
- Eighth Section: FOUNDATION Program details 
+
+<!-- Mes 1 -->
 <section class="section-3-bg text-black py-20 reveal">
-<div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-center">
- Image container with fade effect 
-<div class="w-full md:w-1/2 flex justify-center md:justify-end">
-<img alt="Entrenadora con pesas" class="w-2/3 h-auto rounded-lg shadow-xl fade-left" src="https://placehold.co/600x800/e6e6e6/a3a3a3?text=Entrenadora+con+pesas"/>
-</div>
- Text container 
-<div class="w-full md:w-1/2 mt-8 md:mt-0 p-6 md:p-12">
-<h3 class="text-lg md:text-2xl font-bold text-[#e55a5a]">1</h3>
-<h2 class="text-3xl md:text-5xl font-black leading-tight tracking-wide text-gray-800">MES 1 · RESET Y FUNDAMENTOS</h2>
-<ul class="mt-6 space-y-2 text-sm text-gray-700"><li>- Objetivo: técnica, derribar mitos y limpiar hábitos</li><li>- Entrenamientos: movilidad, técnica y circuitos de cuerpo completo</li><li>- Teoría: dietas rápidas vs sostenibilidad, composición corporal</li><li>- Hábitos: 2L de agua, mejor sueño, menos azúcar y refrescos, caminar más</li></ul>
-<a class="btn-primary mt-8 inline-block text-sm px-6 py-3" href="register.html">QUIERO EMPEZAR</a>
-</div>
-</div>
+  <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-center">
+    <!-- Imagen -->
+    <div class="w-full md:w-1/2 flex justify-center md:justify-end">
+      <img src="https://placehold.co/600x800/e6e6e6/a3a3a3?text=Entrenadora+con+pesas" alt="Entrenadora con pesas" class="w-2/3 h-auto rounded-lg shadow-xl fade-left"/>
+    </div>
+    <!-- Texto -->
+    <div class="w-full md:w-1/2 mt-8 md:mt-0 p-6 md:p-12">
+      <h3 class="text-lg md:text-2xl font-bold text-[#e55a5a]">1</h3>
+      <h2 class="text-3xl md:text-5xl font-black leading-tight tracking-wide text-gray-800">MES 1 · RESET Y FUNDAMENTOS</h2>
+      <ul class="mt-6 space-y-2 text-sm text-gray-700">
+        <li>- Objetivo: técnica, derribar mitos y limpiar hábitos</li>
+        <li>- Entrenamientos: movilidad, técnica y circuitos de cuerpo completo</li>
+        <li>- Teoría: dietas rápidas vs sostenibilidad, composición corporal</li>
+        <li>- Hábitos: 2L de agua, mejor sueño, menos azúcar y refrescos, caminar más</li>
+      </ul>
+      <a href="register.html" class="btn-primary mt-8 inline-block text-sm px-6 py-3">QUIERO EMPEZAR</a>
+    </div>
+  </div>
 </section>
- Ninth Section: SIGNATURE Program details 
+
+<!-- Mes 2 -->
 <section class="section-3-bg text-black py-20 reveal">
-<div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-center">
- Image container with fade effect 
-<div class="w-full md:w-1/2 flex justify-center md:justify-end">
-<img alt="Entrenadora haciendo sentadillas" class="w-2/3 h-auto rounded-lg shadow-xl fade-left" src="https://placehold.co/600x800/e6e6e6/a3a3a3?text=Entrenadora+haciendo+sentadillas"/>
-</div>
- Text container 
-<div class="w-full md:w-1/2 mt-8 md:mt-0 p-6 md:p-12">
-<h3 class="text-lg md:text-2xl font-bold text-[#e55a5a]">2</h3>
-<h2 class="text-3xl md:text-5xl font-black leading-tight tracking-wide text-gray-800">MES 2 · PROGRESO Y CONSTANCIA</h2>
-<ul class="mt-6 space-y-2 text-sm text-gray-700"><li>- Objetivo: fuerza, energía y constancia en alimentación</li><li>- Entrenamientos: mancuernas, ligas, superseries y cardio moderado</li><li>- Teoría: macronutrientes, balance energético, hambre vs antojo</li><li>- Hábitos: desayuno proteico, menos ultraprocesados, fruta y verdura</li></ul>
-<a class="btn-primary mt-8 inline-block text-sm px-6 py-3" href="register.html">QUIERO EMPEZAR</a>
-</div>
-</div>
+  <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-center">
+    <!-- Imagen -->
+    <div class="w-full md:w-1/2 flex justify-center md:justify-end">
+      <img src="https://placehold.co/600x800/e6e6e6/a3a3a3?text=Entrenadora+haciendo+sentadillas" alt="Entrenadora haciendo sentadillas" class="w-2/3 h-auto rounded-lg shadow-xl fade-left"/>
+    </div>
+    <!-- Texto -->
+    <div class="w-full md:w-1/2 mt-8 md:mt-0 p-6 md:p-12">
+      <h3 class="text-lg md:text-2xl font-bold text-[#e55a5a]">2</h3>
+      <h2 class="text-3xl md:text-5xl font-black leading-tight tracking-wide text-gray-800">MES 2 · PROGRESO Y CONSTANCIA</h2>
+      <ul class="mt-6 space-y-2 text-sm text-gray-700">
+        <li>- Objetivo: fuerza, energía y constancia en alimentación</li>
+        <li>- Entrenamientos: mancuernas, ligas, superseries y cardio moderado</li>
+        <li>- Teoría: macronutrientes, balance energético, hambre vs antojo</li>
+        <li>- Hábitos: desayuno proteico, menos ultraprocesados, fruta y verdura</li>
+      </ul>
+      <a href="register.html" class="btn-primary mt-8 inline-block text-sm px-6 py-3">QUIERO EMPEZAR</a>
+    </div>
+  </div>
 </section>
- Tenth Section: SPLIT Program details 
+
+<!-- Mes 3 -->
 <section class="section-3-bg text-black py-20 reveal">
-<div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-center">
- Image container with fade effect 
-<div class="w-full md:w-1/2 flex justify-center md:justify-end">
-<img alt="Entrenadora con pesas 2" class="w-2/3 h-auto rounded-lg shadow-xl fade-left" src="https://placehold.co/600x800/e6e6e6/a3a3a3?text=Entrenadora+con+pesas+2"/>
-</div>
- Text container 
-<div class="w-full md:w-1/2 mt-8 md:mt-0 p-6 md:p-12">
-<h3 class="text-lg md:text-2xl font-bold text-[#e55a5a]">3</h3>
-<h2 class="text-3xl md:text-5xl font-black leading-tight tracking-wide text-gray-800">MES 3 · CONSOLIDACIÓN Y AUTONOMÍA</h2>
-<ul class="mt-6 space-y-2 text-sm text-gray-700"><li>- Objetivo: resultados visibles y entrenar con mayor intensidad</li><li>- Entrenamientos: HIIT adaptado y rutinas divididas (superior/inferior)</li><li>- Teoría: micronutrientes, suplementos, estrés y recuperación</li><li>- Hábitos: checklist semanal y plan personal a futuro</li></ul>
-<a class="btn-primary mt-8 inline-block text-sm px-6 py-3" href="register.html">QUIERO EMPEZAR</a>
-</div>
-</div>
+  <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-center">
+    <!-- Imagen -->
+    <div class="w-full md:w-1/2 flex justify-center md:justify-end">
+      <img src="https://placehold.co/600x800/e6e6e6/a3a3a3?text=Entrenadora+con+pesas+2" alt="Entrenadora con pesas 2" class="w-2/3 h-auto rounded-lg shadow-xl fade-left"/>
+    </div>
+    <!-- Texto -->
+    <div class="w-full md:w-1/2 mt-8 md:mt-0 p-6 md:p-12">
+      <h3 class="text-lg md:text-2xl font-bold text-[#e55a5a]">3</h3>
+      <h2 class="text-3xl md:text-5xl font-black leading-tight tracking-wide text-gray-800">MES 3 · CONSOLIDACIÓN Y AUTONOMÍA</h2>
+      <ul class="mt-6 space-y-2 text-sm text-gray-700">
+        <li>- Objetivo: resultados visibles y entrenar con mayor intensidad</li>
+        <li>- Entrenamientos: HIIT adaptado y rutinas divididas (superior/inferior)</li>
+        <li>- Teoría: micronutrientes, suplementos, estrés y recuperación</li>
+        <li>- Hábitos: checklist semanal y plan personal a futuro</li>
+      </ul>
+      <a href="register.html" class="btn-primary mt-8 inline-block text-sm px-6 py-3">QUIERO EMPEZAR</a>
+    </div>
+  </div>
 </section>
- Eleventh Section: About me 
+
+<!-- About -->
 <section class="section-3-bg text-black py-20 reveal">
-<div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-center">
- Image container with fade effect 
-<div class="w-full md:w-1/2 flex justify-center md:justify-end">
-<img alt="Entrenadora sentada" class="w-2/3 h-auto rounded-lg shadow-xl fade-left" src="https://placehold.co/600x800/e6e6e6/a3a3a3?text=Entrenadora+sentada"/>
-</div>
- Text container 
-<div class="w-full md:w-1/2 mt-8 md:mt-0 p-6 md:p-12">
-<h2 class="text-3xl md:text-5xl font-black leading-tight tracking-wide text-gray-800">¡HOLA! SOY</h2>
-<h2 class="text-3xl md:text-5xl font-black leading-tight tracking-wide text-[#e55a5a]">MARESI ALLEN</h2>
-<p class="mt-6 text-sm text-gray-700">Soy entrenadora personal certificada y especialista en nutrición deportiva. Con años de experiencia, diseñé RESET 90 para que obtengas resultados reales mientras disfrutas el proceso. Si disfrutas tus entrenamientos, los mantienes; por eso, cada semana escribo rutinas nuevas y retadoras, siempre con enfoque en técnica, seguridad y hábitos sostenibles.</p>
-<a class="btn-primary mt-8 inline-block text-sm px-6 py-3" href="register.html">
-                    ENTRENA CONMIGO
-                </a>
-</div>
-</div>
+  <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-center">
+    <!-- Imagen -->
+    <div class="w-full md:w-1/2 flex justify-center md:justify-end">
+      <img src="https://placehold.co/600x800/e6e6e6/a3a3a3?text=Entrenadora+sentada" alt="Entrenadora sentada" class="w-2/3 h-auto rounded-lg shadow-xl fade-left"/>
+    </div>
+    <!-- Texto -->
+    <div class="w-full md:w-1/2 mt-8 md:mt-0 p-6 md:p-12">
+      <h2 class="text-3xl md:text-5xl font-black leading-tight tracking-wide text-gray-800">¡HOLA! SOY</h2>
+      <h2 class="text-3xl md:text-5xl font-black leading-tight tracking-wide text-[#e55a5a]">MARESI ALLEN</h2>
+      <p class="mt-6 text-sm text-gray-700">
+        Soy entrenadora personal certificada y especialista en nutrición deportiva. Con años de experiencia,
+        diseñé RESET 90 para que obtengas resultados reales mientras disfrutas el proceso. Si disfrutas tus
+        entrenamientos, los mantienes; por eso, cada semana escribo rutinas nuevas y retadoras, siempre con
+        enfoque en técnica, seguridad y hábitos sostenibles.
+      </p>
+      <a href="register.html" class="btn-primary mt-8 inline-block text-sm px-6 py-3">ENTRENA CONMIGO</a>
+    </div>
+  </div>
 </section>
- Twelfth Section: Testimonials Carousel 
+
+<!-- Testimonios (Carrusel) -->
 <section class="bg-gray-800 text-white py-20 reveal">
-<div class="container mx-auto px-6">
-<h2 class="text-4xl md:text-5xl font-black leading-tight tracking-wide text-center text-white mb-12">RESULTADOS REALES · MUJERES REALES</h2>
-<div class="carousel-container relative">
-<div class="carousel-track flex">
- Slide 1 
-<div class="carousel-slide flex-none w-full p-4">
-<div class="flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-8 bg-gray-700 p-8 rounded-lg shadow-xl">
-<img alt="Testimonio de usuario 1" class="rounded-lg w-full md:w-1/2" src="https://placehold.co/400x500/525252/a3a3a3?text=Usuario+1"/>
-<div class="text-center md:text-left">
-<h4 class="font-bold text-lg text-gray-300">BRIGIDGETTE</h4>
-<p class="text-sm mt-2 mb-4 text-gray-400">GYM WORKOUTS</p>
-<p class="text-gray-200 text-xl font-light italic">"I have never felt better in my life. The best thing about your program is that each day is different. For me it's having new and exciting workouts to do each day. Thank you for changing my life."</p>
-</div>
-</div>
-</div>
- Slide 2 
-<div class="carousel-slide flex-none w-full p-4">
-<div class="flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-8 bg-gray-700 p-8 rounded-lg shadow-xl">
-<img alt="Testimonio de usuario 2" class="rounded-lg w-full md:w-1/2" src="https://placehold.co/400x500/525252/a3a3a3?text=Usuario+2"/>
-<div class="text-center md:text-left">
-<h4 class="font-bold text-lg text-gray-300">JESSICA</h4>
-<p class="text-sm mt-2 mb-4 text-gray-400">HOME WORKOUTS</p>
-<p class="text-gray-200 text-xl font-light italic">"The program is so easy to follow and the results are amazing. I love the variety of the workouts and the support from the community."</p>
-</div>
-</div>
-</div>
- Slide 3 
-<div class="carousel-slide flex-none w-full p-4">
-<div class="flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-8 bg-gray-700 p-8 rounded-lg shadow-xl">
-<img alt="Testimonio de usuario 3" class="rounded-lg w-full md:w-1/2" src="https://placehold.co/400x500/525252/a3a3a3?text=Usuario+3"/>
-<div class="text-center md:text-left">
-<h4 class="font-bold text-lg text-gray-300">SARAH</h4>
-<p class="text-sm mt-2 mb-4 text-gray-400">NUTRITION</p>
-<p class="text-gray-200 text-xl font-light italic">"I've learned so much about nutrition and how to fuel my body. I have more energy and I feel great."</p>
-</div>
-</div>
-</div>
-</div>
- Carousel Controls 
-<button class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-gray-900 bg-opacity-50 p-3 rounded-full hover:bg-opacity-75 transition" id="prev-btn">
-<svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-</svg>
-</button>
-<button class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-gray-900 bg-opacity-50 p-3 rounded-full hover:bg-opacity-75 transition" id="next-btn">
-<svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-</svg>
-</button>
-</div>
-</div>
+  <div class="container mx-auto px-6">
+    <h2 class="text-4xl md:text-5xl font-black leading-tight tracking-wide text-center text-white mb-12">
+      RESULTADOS REALES · MUJERES REALES
+    </h2>
+
+    <div class="carousel-container relative">
+      <div class="carousel-track flex">
+        <!-- Slide 1 -->
+        <div class="carousel-slide flex-none w-full p-4">
+          <div class="flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-8 bg-gray-700 p-8 rounded-lg shadow-xl">
+            <img src="https://placehold.co/400x500/525252/a3a3a3?text=Usuario+1" alt="Testimonio de usuario 1" class="rounded-lg w-full md:w-1/2"/>
+            <div class="text-center md:text-left">
+              <h4 class="font-bold text-lg text-gray-300">BRIGIDGETTE</h4>
+              <p class="text-sm mt-2 mb-4 text-gray-400">GYM WORKOUTS</p>
+              <p class="text-gray-200 text-xl font-light italic">
+                "I have never felt better in my life. The best thing about your program is that each day is different.
+                For me it's having new and exciting workouts to do each day. Thank you for changing my life."
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-slide flex-none w-full p-4">
+          <div class="flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-8 bg-gray-700 p-8 rounded-lg shadow-xl">
+            <img src="https://placehold.co/400x500/525252/a3a3a3?text=Usuario+2" alt="Testimonio de usuario 2" class="rounded-lg w-full md:w-1/2"/>
+            <div class="text-center md:text-left">
+              <h4 class="font-bold text-lg text-gray-300">JESSICA</h4>
+              <p class="text-sm mt-2 mb-4 text-gray-400">HOME WORKOUTS</p>
+              <p class="text-gray-200 text-xl font-light italic">
+                "The program is so easy to follow and the results are amazing. I love the variety of the workouts and the support from the community."
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="carousel-slide flex-none w-full p-4">
+          <div class="flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-8 bg-gray-700 p-8 rounded-lg shadow-xl">
+            <img src="https://placehold.co/400x500/525252/a3a3a3?text=Usuario+3" alt="Testimonio de usuario 3" class="rounded-lg w-full md:w-1/2"/>
+            <div class="text-center md:text-left">
+              <h4 class="font-bold text-lg text-gray-300">SARAH</h4>
+              <p class="text-sm mt-2 mb-4 text-gray-400">NUTRITION</p>
+              <p class="text-gray-200 text-xl font-light italic">
+                "I've learned so much about nutrition and how to fuel my body. I have more energy and I feel great."
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controles -->
+      <button id="prev-btn" class="absolute top-1/2 left-0 -translate-y-1/2 bg-gray-900/50 p-3 rounded-full hover:bg-gray-900/70 transition">
+        <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+      </button>
+      <button id="next-btn" class="absolute top-1/2 right-0 -translate-y-1/2 bg-gray-900/50 p-3 rounded-full hover:bg-gray-900/70 transition">
+        <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+      </button>
+    </div>
+  </div>
 </section>
- Section: WORKOUTS + NUTRITION ON THE GO 
+
+<!-- Workouts + Nutrition on the go -->
 <section class="section-3-bg text-black py-20 reveal">
-<div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-center space-y-8 md:space-y-0 md:space-x-12">
- Mockup container with video 
-<div class="relative mockup-container">
- Mockup background image 
-<img alt="Smartphone Mockup" class="absolute inset-0 w-full h-full object-contain" src="https://i.imgur.com/xT3k9bS.png"/>
- Video inside the mockup 
-<div class="mockup-video">
-<video autoplay="" class="w-full h-full object-cover" loop="" muted="">
-<source src="https://player.vimeo.com/external/494191630.sd.mp4?s=4c8c704e6c31a74d284e3668c2225a0a380e227a&amp;profile_id=165&amp;oauth2_token_id=57447761" type="video/mp4"/>
-                        Tu navegador no soporta el tag de video.
-                    </video>
-</div>
-</div>
- Text container 
-<div class="w-full md:w-1/2 text-center md:text-left">
-<h2 class="text-3xl md:text-5xl font-black leading-tight tracking-wide text-gray-800">ENTRENAMIENTOS + NUTRICIÓN</h2>
-<h2 class="text-3xl md:text-5xl font-black leading-tight tracking-wide text-[#e55a5a]">EN TU BOLSILLO</h2>
-<p class="mt-6 text-sm text-gray-700">Donde estés, RESET 90 te acompaña: rutinas diarias para casa o gym, plan de comidas y lista de compras semanal, todo desde tu celular.</p>
-<a class="btn-primary mt-8 inline-block text-sm px-6 py-3" href="register.html">
-                    ¡ÚNETE AHORA!
-                </a>
-</div>
-</div>
+  <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-center space-y-8 md:space-y-0 md:space-x-12">
+    <!-- Mockup con video -->
+    <div class="relative mockup-container">
+      <!-- Mockup bg -->
+      <img src="https://i.imgur.com/xT3k9bS.png" alt="Smartphone Mockup" class="absolute inset-0 w-full h-full object-contain"/>
+      <!-- Video -->
+      <div class="mockup-video">
+        <video class="w-full h-full object-cover" autoplay loop muted playsinline>
+          <source src="https://player.vimeo.com/external/494191630.sd.mp4?s=4c8c704e6c31a74d284e3668c2225a0a380e227a&profile_id=165&oauth2_token_id=57447761" type="video/mp4"/>
+          Tu navegador no soporta el tag de video.
+        </video>
+      </div>
+    </div>
+
+    <!-- Texto -->
+    <div class="w-full md:w-1/2 text-center md:text-left">
+      <h2 class="text-3xl md:text-5xl font-black leading-tight tracking-wide text-gray-800">ENTRENAMIENTOS + NUTRICIÓN</h2>
+      <h2 class="text-3xl md:text-5xl font-black leading-tight tracking-wide text-[#e55a5a]">EN TU BOLSILLO</h2>
+      <p class="mt-6 text-sm text-gray-700">
+        Donde estés, RESET 90 te acompaña: rutinas diarias para casa o gym, plan de comidas y lista de compras semanal, todo desde tu celular.
+      </p>
+      <a href="register.html" class="btn-primary mt-8 inline-block text-sm px-6 py-3">¡ÚNETE AHORA!</a>
+    </div>
+  </div>
 </section>
- Final Section: READY TO GET STARTED? 
+
+<!-- CTA final -->
 <section class="ready-to-start reveal">
-<div class="ready-to-start-overlay"></div>
-<div class="ready-to-start-content container mx-auto px-6 text-center">
-<h2 class="text-4xl md:text-6xl font-black leading-tight tracking-wide text-white">
-<span class="text-[#e55a5a]">¿LISTO</span> PARA EMPEZAR?
-            </h2>
-<ul class="mt-8 space-y-2 text-white text-lg md:text-xl font-light"><li>Rutinas frescas de lunes a viernes (hogar y gimnasio)</li><li>Comunidad que te impulsa y acompaña</li><li>Plan de nutrición delicioso y flexible</li><li>Nunca más te aburras con tu entrenamiento</li></ul>
-<div class="mt-12 flex justify-center items-center">
-<a class="inline-block bg-white text-gray-800 font-bold py-3 px-12 rounded-full shadow-lg hover:shadow-xl transition-all" href="register.html">EMPEZAR AHORA</a>
-</div>
-</div>
+  <div class="ready-to-start-overlay"></div>
+  <div class="ready-to-start-content container mx-auto px-6 text-center">
+    <h2 class="text-4xl md:text-6xl font-black leading-tight tracking-wide text-white">
+      <span class="text-[#e55a5a]">¿LISTO</span> PARA EMPEZAR?
+    </h2>
+    <ul class="mt-8 space-y-2 text-white text-lg md:text-xl font-light">
+      <li>Rutinas frescas de lunes a viernes (hogar y gimnasio)</li>
+      <li>Comunidad que te impulsa y acompaña</li>
+      <li>Plan de nutrición delicioso y flexible</li>
+      <li>Nunca más te aburras con tu entrenamiento</li>
+    </ul>
+    <div class="mt-12 flex justify-center items-center">
+      <a href="register.html" class="inline-block bg-white text-gray-800 font-bold py-3 px-12 rounded-full shadow-lg hover:shadow-xl transition-all">EMPEZAR AHORA</a>
+    </div>
+  </div>
 </section>
- Footer Section 
+
+<!-- Footer -->
 <footer class="final-section-bg text-white py-12">
-<div class="container mx-auto px-6">
- Newsletter section 
-<div class="py-8 text-center md:text-left border-b border-gray-700">
-<h3 class="text-xl md:text-2xl font-bold leading-tight tracking-wide text-white">NO TE LO PIERDAS</h3>
-<p class="mt-2 text-sm md:text-base text-gray-400">RECIBE TIPS DE ENTRENAMIENTO Y NUTRICIÓN EN TU CORREO</p>
-<div class="mt-6 max-w-xl mx-auto md:mx-0 flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4">
-<input class="w-full md:w-auto flex-grow p-3 rounded-md bg-gray-700 text-white placeholder-gray-400" placeholder="Your email" type="email"/>
-<button class="w-full md:w-auto p-3 rounded-md bg-white text-gray-800 font-bold">
-                        HIT ME
-                    </button>
-</div>
-</div>
- Footer links and social media 
-<div class="py-8 flex flex-col md:flex-row items-center justify-between space-y-8 md:space-y-0">
-<div class="text-center md:text-left">
-<span class="font-bold text-xl tracking-tight text-[#d1d1d1]">AlephMotion</span>
-<div class="mt-4 flex space-x-6 text-sm text-gray-400">
-<a class="hover:text-white transition" href="#">INICIO</a>
-<a class="hover:text-white transition" href="#">ENTRENAMIENTOS</a>
-<a class="hover:text-white transition" href="#">NUTRICIÓN</a>
-</div>
-</div>
-<div class="flex items-center space-x-6">
-<a aria-label="Facebook" href="https://facebook.com">
-<img alt="Facebook" class="h-6 w-6" src="https://img.icons8.com/ios-filled/50/ffffff/facebook-new.png"/>
-</a>
-<a aria-label="YouTube" href="https://youtube.com">
-<img alt="YouTube" class="h-6 w-6" src="https://img.icons8.com/ios-filled/50/ffffff/youtube--v1.png"/>
-</a>
-<a aria-label="Instagram" href="https://instagram.com">
-<img alt="Instagram" class="h-6 w-6" src="https://img.icons8.com/ios-filled/50/ffffff/instagram-new--v1.png"/>
-</a>
-<a aria-label="Email" href="mailto:info@alexia-clark.com">
-<img alt="Email" class="h-6 w-6" src="https://img.icons8.com/ios-filled/50/ffffff/mail.png"/>
-</a>
-</div>
-</div>
- Copyright and legal links 
-<div class="mt-8 text-center text-xs text-gray-500 border-t border-gray-700 pt-8">
-<div class="flex flex-col md:flex-row justify-center md:justify-between items-center space-y-2 md:space-y-0">
-<span>© Clark Media LLC 2025</span>
-<div class="flex space-x-4">
-<a class="hover:text-white transition" href="#">Política de privacidad</a>
-<a class="hover:text-white transition" href="#">Términos de uso</a>
-<a class="hover:text-white transition" href="#">Política de cookies</a>
-</div>
-</div>
-</div>
-</div>
-</footer><script>
+  <div class="container mx-auto px-6">
+    <!-- Newsletter -->
+    <div class="py-8 text-center md:text-left border-b border-gray-700">
+      <h3 class="text-xl md:text-2xl font-bold leading-tight tracking-wide text-white">NO TE LO PIERDAS</h3>
+      <p class="mt-2 text-sm md:text-base text-gray-400">RECIBE TIPS DE ENTRENAMIENTO Y NUTRICIÓN EN TU CORREO</p>
+      <div class="mt-6 max-w-xl mx-auto md:mx-0 flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4">
+        <input type="email" class="w-full md:w-auto flex-grow p-3 rounded-md bg-gray-700 text-white placeholder-gray-400" placeholder="Tu email"/>
+        <button class="w-full md:w-auto p-3 rounded-md bg-white text-gray-800 font-bold">HIT ME</button>
+      </div>
+    </div>
+
+    <!-- Links / social -->
+    <div class="py-8 flex flex-col md:flex-row items-center justify-between space-y-8 md:space-y-0">
+      <div class="text-center md:text-left">
+        <span class="font-bold text-xl tracking-tight text-[#d1d1d1]">AlephMotion</span>
+        <div class="mt-4 flex space-x-6 text-sm text-gray-400">
+          <a href="#" class="hover:text-white transition">INICIO</a>
+          <a href="#new-booty" class="hover:text-white transition">ENTRENAMIENTOS</a>
+          <a href="#nutricion" class="hover:text-white transition">NUTRICIÓN</a>
+        </div>
+      </div>
+      <div class="flex items-center space-x-6">
+        <a href="https://facebook.com" aria-label="Facebook"><img src="https://img.icons8.com/ios-filled/50/ffffff/facebook-new.png" class="h-6 w-6" alt="Facebook"/></a>
+        <a href="https://youtube.com" aria-label="YouTube"><img src="https://img.icons8.com/ios-filled/50/ffffff/youtube--v1.png" class="h-6 w-6" alt="YouTube"/></a>
+        <a href="https://instagram.com" aria-label="Instagram"><img src="https://img.icons8.com/ios-filled/50/ffffff/instagram-new--v1.png" class="h-6 w-6" alt="Instagram"/></a>
+        <a href="mailto:info@alephmotion.com" aria-label="Email"><img src="https://img.icons8.com/ios-filled/50/ffffff/mail.png" class="h-6 w-6" alt="Email"/></a>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="mt-8 text-center text-xs text-gray-500 border-t border-gray-700 pt-8">
+      <div class="flex flex-col md:flex-row justify-center md:justify-between items-center space-y-2 md:space-y-0">
+        <span>© AlephMotion 2025</span>
+        <div class="flex space-x-4">
+          <a href="#" class="hover:text-white transition">Política de privacidad</a>
+          <a href="#" class="hover:text-white transition">Términos de uso</a>
+          <a href="#" class="hover:text-white transition">Política de cookies</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Reveal on scroll -->
+<script>
 document.addEventListener('DOMContentLoaded', () => {
   const els = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) e.target.classList.add('visible');
-    });
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.15 });
   els.forEach(el => io.observe(el));
 });
 </script>
+
+<!-- Scripts: menú y carrusel -->
 <script>
-        // Mobile menu functionality
-        const menuBtn = document.getElementById('menu-btn');
-        const mainNav = document.getElementById('main-nav');
+  // Mobile menu
+  const menuBtn = document.getElementById('menu-btn');
+  const mainNav = document.getElementById('main-nav');
+  if (menuBtn && mainNav) {
+    menuBtn.addEventListener('click', () => mainNav.classList.toggle('show'));
+  }
 
-        menuBtn.addEventListener('click', () => {
-            mainNav.classList.toggle('show');
-        });
+  // Carousel
+  const track = document.querySelector('.carousel-track');
+  const slides = track ? Array.from(track.children) : [];
+  const nextButton = document.getElementById('next-btn');
+  const prevButton = document.getElementById('prev-btn');
+  let currentSlideIndex = 0;
 
-        // Carousel functionality
-        const track = document.querySelector('.carousel-track');
-        const slides = Array.from(track.children);
-        const nextButton = document.getElementById('next-btn');
-        const prevButton = document.getElementById('prev-btn');
-        let currentSlideIndex = 0;
+  const moveSlide = (index) => { if(track) track.style.transform = `translateX(-${index * 100}%)`; };
+  const updateButtons = () => {
+    if (!prevButton || !nextButton) return;
+    prevButton.style.display = currentSlideIndex === 0 ? 'none' : 'block';
+    nextButton.style.display = currentSlideIndex === slides.length - 1 ? 'none' : 'block';
+  };
 
-        const moveSlide = (index) => {
-            track.style.transform = `translateX(-${index * 100}%)`;
-        };
+  if (nextButton) nextButton.addEventListener('click', () => {
+    if (currentSlideIndex < slides.length - 1) { currentSlideIndex++; moveSlide(currentSlideIndex); updateButtons(); }
+  });
+  if (prevButton) prevButton.addEventListener('click', () => {
+    if (currentSlideIndex > 0) { currentSlideIndex--; moveSlide(currentSlideIndex); updateButtons(); }
+  });
 
-        const updateButtons = () => {
-            prevButton.style.display = currentSlideIndex === 0 ? 'none' : 'block';
-            nextButton.style.display = currentSlideIndex === slides.length - 1 ? 'none' : 'block';
-        };
-
-        nextButton.addEventListener('click', () => {
-            if (currentSlideIndex < slides.length - 1) {
-                currentSlideIndex++;
-                moveSlide(currentSlideIndex);
-                updateButtons();
-            }
-        });
-
-        prevButton.addEventListener('click', () => {
-            if (currentSlideIndex > 0) {
-                currentSlideIndex--;
-                moveSlide(currentSlideIndex);
-                updateButtons();
-            }
-        });
-
-        updateButtons();
-    </script>
+  updateButtons();
+</script>
 </body>
 </html>
