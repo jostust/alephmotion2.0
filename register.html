@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - ALEPH MOTION</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #333;
+        }
+
+        .main-container {
+            height: 100vh;
+        }
+        
+        .promo-section {
+            background-color: #FFB6C1;
+            color: #333;
+        }
+
+        .promo-content {
+            font-weight: bold;
+        }
+        
+        .register-section {
+            background-color: #f8f8f8;
+            color: #333;
+        }
+
+        .register-form input {
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            border: 1px solid #d1d1d1;
+            background-color: #e6e6e6;
+            transition: all 0.3s ease;
+        }
+
+        .register-form input:focus {
+            outline: none;
+            border-color: #e55a5a;
+            box-shadow: 0 0 0 3px rgba(229, 90, 90, 0.2);
+        }
+
+        .btn-continue {
+            background-color: #333;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn-continue:hover {
+            background-color: #000;
+        }
+
+        .link-text {
+            color: #e55a5a;
+        }
+
+        @media (min-width: 768px) {
+            .main-container {
+                display: flex;
+                flex-direction: row;
+            }
+
+            .promo-section {
+                flex: 1;
+            }
+            .register-section {
+                flex: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container flex flex-col md:flex-row">
+        <!-- Promo Section (left side) -->
+        <div class="promo-section flex items-center justify-center p-8 text-center md:text-left">
+            <div class="max-w-md">
+                <h1 class="text-2xl md:text-4xl font-bold leading-tight">
+                    ENTRENA CONMIGO. <span class="text-[#e55a5a] tracking-wider">ALEXIA CLARK</span>
+                </h1>
+                <p class="mt-4 text-sm md:text-base opacity-70">
+                    Menos de $1 al día.
+                </p>
+                <p class="mt-2 text-sm md:text-base opacity-70">
+                    Solo $29.99/mes. Facturado mensualmente, cancela en cualquier momento.
+                </p>
+                <ul class="mt-8 space-y-4 text-left promo-content text-sm md:text-base">
+                    <li>- Unique daily workouts and meal plans</li>
+                    <li>- One-on-one support (if you need it)</li>
+                    <li>- The most supportive community around</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Registration Form Section (right side) -->
+        <div class="register-section flex items-center justify-center p-8">
+            <div class="max-w-md w-full">
+                <h2 class="text-2xl md:text-3xl font-black mb-6">
+                    Crea una cuenta <span class="text-base text-gray-500 font-normal">1 of 2</span>
+                </h2>
+                <form class="register-form space-y-4">
+                    <input type="text" placeholder="First Name">
+                    <input type="text" placeholder="Last Name">
+                    <input type="email" placeholder="Your Email">
+                    <input type="email" placeholder="Confirm Email">
+                    <div class="relative">
+                        <input type="password" placeholder="Password" class="w-full">
+                        <span class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 cursor-pointer">
+                                                    </span>
+                    </div>
+                    <button type="submit" class="btn-continue w-full">
+                        CONTINUE
+                    </button>
+                </form>
+                <div class="mt-4 text-center text-xs text-gray-500">
+                    <p>Al continuar, indicas que aceptas nuestros <a href="#" class="link-text">Términos de servicio</a> y <a href="#" class="link-text">Política de privacidad</a>, y la política de cancelación/reembolso, y das tu consentimiento para recibir correos electrónicos de alexia-clark.com.</p>
+                </div>
+                <div class="mt-8 text-center">
+                    <a href="#" class="font-bold text-gray-600">¿YA ERES MIEMBRO? INICIA SESIÓN</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
