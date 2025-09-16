@@ -217,7 +217,15 @@
   <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-center">
     <!-- Imagen -->
     <div class="w-full md:w-1/2 flex justify-center md:justify-end">
-      <img src="https://placehold.co/600x800/e6e6e6/a3a3a3?text=Entrenadora+corriendo" alt="Fitness Coach" class="w-2/3 h-auto rounded-lg shadow-xl fade-left"/>
+      <picture>
+  <!-- Imagen para pantallas chicas -->
+  <source media="(max-width: 768px)" srcset="assets/img/fitness-promedio-mobile.jpg">
+  
+  <!-- Imagen por defecto (desktop) -->
+  <img src="assets/img/fitness-promedio-desktop.jpg" 
+       alt="No es un programa de fitness promedio" 
+       class="w-full md:w-1/2 h-auto rounded-lg shadow-xl fade-left"/>
+</picture>
     </div>
     <!-- Texto -->
     <div class="w-full md:w-1/2 mt-8 md:mt-0 p-6 md:p-12">
