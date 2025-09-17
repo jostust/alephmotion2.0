@@ -104,6 +104,15 @@
   /* Reveal on scroll */
   .reveal{ opacity:0; transform:translateY(24px); transition:opacity .8s ease, transform .8s ease; }
   .reveal.visible{ opacity:1; transform:translateY(0); }
+  .fade-in-right {
+     -webkit-mask-image: linear-gradient(to right, transparent 0%, black 70%);
+     mask-image: linear-gradient(to right, transparent 0%, black 70%);
+   }
+
+   .fade-in-left {
+     -webkit-mask-image: linear-gradient(to left, transparent 0%, black 70%);
+     mask-image: linear-gradient(to left, transparent 0%, black 70%);
+   }
 </style>
 </head>
 <body class="bg-[#1a1a1a]">
@@ -193,7 +202,7 @@
 <section class="section-3-bg text-black py-20 reveal">
   <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-center">
     <!-- Imagen -->
-    <div class="w-full md:w-1/2 flex justify-center md:justify-end">
+    <div class="w-full md:w-4/5 flex justify-center md:justify-end">
       <picture>
   <!-- Imagen para pantallas chicas -->
   <source media="(max-width: 768px)" srcset="assets/img/fitness-promedio-mobile.jpg">
@@ -201,7 +210,7 @@
   <!-- Imagen por defecto (desktop) -->
   <img src="assets/img/fitness-promedio-desktop.jpg" 
        alt="No es un programa de fitness promedio" 
-       class="w-full md:w-1/2 h-auto rounded-lg shadow-xl fade-rigth"/>
+       class="w-2/3 h-auto rounded-lg shadow-xl fade-in-right"/>
 </picture>
     </div>
     <!-- Texto -->
@@ -224,7 +233,7 @@
 <section class="section-3-bg text-black py-20 reveal">
   <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-center">
     <!-- Imagen -->
-    <div class="w-full md:w-1/2 flex justify-center md:justify-end">
+    <div class="w-full md:w-4/5 flex justify-center md:justify-end">
    <picture>
   <!-- Imagen para pantallas chicas -->
   <source media="(max-width: 768px)" srcset="assets/img/pilar-entrenamiento-mobile.jpg">
