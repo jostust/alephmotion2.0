@@ -113,6 +113,48 @@
      -webkit-mask-image: linear-gradient(to left, transparent 0%, black 70%);
      mask-image: linear-gradient(to left, transparent 0%, black 70%);
    }
+  /* Rosa claro global (opcional) */
+:root { --pink:#F7A9B8; }
+
+/* Sección full-bleed con imagen de fondo */
+.section-fullbg{
+  position:relative;
+  min-height:100vh;               /* ocupa toda la pantalla */
+  background-image:url('assets/img/section2-desktop.jpg');
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+}
+
+/* Overlay para dar contraste al texto de la derecha */
+.section-fullbg::before{
+  content:"";
+  position:absolute; inset:0;
+  /* más oscuro a la derecha, transparente a la izquierda */
+  background:linear-gradient(to right,
+    rgba(0,0,0,0) 40%,
+    rgba(0,0,0,.35) 65%,
+    rgba(0,0,0,.55) 100%);
+  pointer-events:none;
+}
+
+@media (max-width:768px){
+  .section-fullbg{
+    min-height:90vh;
+    background-image:url('assets/img/section2-mobile.jpg');
+    background-position:center;
+  }
+  /* en móvil el degradado puede empezar antes */
+  .section-fullbg::before{
+    background:linear-gradient(to right,
+      rgba(0,0,0,0) 20%,
+      rgba(0,0,0,.45) 60%,
+      rgba(0,0,0,.65) 100%);
+  }
+}
+
+/* texto con sombra para legibilidad */
+.text-shadow-hero{ text-shadow:0 2px 16px rgba(0,0,0,.55); }
 </style>
 </head>
 <body class="bg-[#1a1a1a]">
@@ -168,45 +210,35 @@
   </div>
 </section>
 
-  <!-- Intro / Rosa -->
-<section class="section-2-bg text-black py-20 flex flex-col md:flex-row items-center justify-center relative overflow-hidden reveal">
-  <div class="section-2-content relative p-6 md:p-12 z-10">
-    <!-- Diagonal line effect -->
-    <div class="absolute top-0 left-0 w-full h-full transform -skew-y-3 bg-[#e55a5a] opacity-30 z-0"></div>
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between">
-      <!-- Imagen -->
-      <div class="w-full md:w-1/2 flex justify-center md:justify-start">
-      <picture>
-  <!-- Imagen para pantallas chicas -->
-  <source media="(max-width: 768px)" srcset="assets/img/reset90-mobile.jpg">
-  
-  <!-- Imagen por defecto (desktop) -->
-  <img src="assets/img/reset90-desktop.jpg" 
-       alt="Nuevo Programa RESET 90" 
-       class="w-2/3 md:w-full h-auto rounded-lg shadow-xl fade-right"/>
-</picture>
-      </div>
-      <!-- Texto y CTA -->
-      <div class="w-full md:w-1/2 flex flex-col items-center md:items-end text-center md:text-right p-6 md:p-0">
-        <h2 class="text-3xl md:text-6xl font-black leading-tight tracking-wide text-gray-800">NUEVO PROGRAMA</h2>
-        <h2 class="text-3xl md:text-6xl font-black leading-tight tracking-wide text-gray-800">RESET 90</h2>
-        <h2 class="text-3xl md:text-6xl font-black leading-tight tracking-wide text-gray-800 opacity-50">ENTRENAMIENTOS</h2>
-        <h2 class="text-3xl md:text-6xl font-black leading-tight tracking-wide text-gray-800 opacity-50">DIARIOS</h2>
-        <div class="mt-8">
-          <div class="flex items-center space-x-4 mb-2">
-            <span class="text-gray-600 font-bold text-lg">Desde $3,000 MXN/mes (según paquete)</span>
-            <a href="register.html" class="bg-gray-800 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition-all">EMPIEZA HOY</a>
-          </div>
-          <p class="text-sm max-w-sm mt-4 text-gray-700">
-            Entrena conmigo, aprende nutrición práctica y desarrolla hábitos sostenibles.
-            Acceso a rutinas guiadas, plan semanal de comidas y acompañamiento de la comunidad AlephMotion.
-          </p>
-        </div>
+<!-- NUEVO & DIVERTIDO / o “Nuevo Programa RESET 90” -->
+<section class="section-fullbg reveal">
+  <div class="container mx-auto px-6 h-full">
+    <!-- contenedor a toda la altura, pegado a la derecha -->
+    <div class="min-h-screen flex items-center justify-end">
+      <div class="max-w-xl text-right text-white text-shadow-hero">
+        <h2 class="text-4xl md:text-6xl font-black tracking-wide">NUEVO PROGRAMA</h2>
+        <h2 class="text-4xl md:text-6xl font-black tracking-wide">RESET 90</h2>
+        <h2 class="text-4xl md:text-6xl font-black tracking-wide" style="color:var(--pink)">ENTRENAMIENTOS</h2>
+        <h2 class="text-4xl md:text-6xl font-black tracking-wide" style="color:var(--pink)">DIARIOS</h2>
+
+        <p class="mt-6 text-sm md:text-base text-gray-200">
+          Desde $3,000 MXN/mes (según paquete)
+        </p>
+        <p class="mt-4 text-sm md:text-base text-gray-200">
+          Entrena conmigo, aprende nutrición práctica y desarrolla hábitos sostenibles.
+          Acceso a rutinas guiadas, plan semanal de comidas y comunidad AlephMotion.
+        </p>
+
+        <a href="register.html"
+           class="inline-block mt-8 px-8 py-3 rounded-full font-bold shadow-lg
+                  bg-white text-gray-900 hover:shadow-xl transition">
+          EMPIEZA HOY
+        </a>
       </div>
     </div>
   </div>
 </section>
-
+  
 <!-- No es un programa promedio -->
 <section class="section-3-bg text-black py-20 reveal">
   <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-center">
