@@ -25,7 +25,7 @@
     font-weight: bold;
     transition: all 0.3s ease;
   }
-  .btn-primary:hover { background-color: #c04c4c; }
+  .btn-primary:hover { background-color: #F7A9B8; }
 
   .nav-link { color: #d1d1d1; transition: color 0.3s ease; }
   .nav-link:hover { color: #F7A9B8; }
@@ -44,11 +44,21 @@
     background-image:url('assets/img/hero-maresi-mobile.jpg');
   }
 }
- .hero-overlay {
+  .hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
   background: linear-gradient(to top, rgba(0,0,0,0.5) 20%, rgba(0,0,0,0) 80%);
 }
-  .hero-content { position: relative; z-index: 10; }
-  .hero-text { text-shadow: 2px 2px 4px rgba(0,0,0,.7); }
+
+.hero-content {
+  position: relative;
+  z-index: 10; /* el texto queda por encima del overlay */
+}
+
+.hero-text {
+  text-shadow: 2px 2px 4px rgba(0,0,0,.7);
+}
 
   .section-2-bg { background-color: #FFB6C1; position: relative; }
   .section-2-content { z-index: 10; }
@@ -113,89 +123,69 @@
      -webkit-mask-image: linear-gradient(to left, transparent 0%, black 70%);
      mask-image: linear-gradient(to left, transparent 0%, black 70%);
    }
-  /* Rosa claro global (opcional) */
-:root { --pink:#F7A9B8; }
-
-/* Sección full-bleed con imagen de fondo */
-.section-fullbg{
-  position:relative;
-  min-height:100vh;               /* ocupa toda la pantalla */
-  background-image:url('assets/img/reset90-desktop.jpg');
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
-}
-
-/* Overlay para dar contraste al texto de la derecha */
-.section-fullbg::before{
-  content:"";
-  position:absolute; inset:0;
-  /* más oscuro a la derecha, transparente a la izquierda */
-  background:linear-gradient(to right,
-    rgba(0,0,0,0) 40%,
-    rgba(0,0,0,.35) 65%,
-    rgba(0,0,0,.55) 100%);
-  pointer-events:none;
-}
-
-@media (max-width:768px){
-  .section-fullbg{
-    min-height:90vh;
-    background-image:url('assets/img/reset90-mobile.jpg');
-    background-position:center;
-  }
-  /* en móvil el degradado puede empezar antes */
-  .section-fullbg::before{
-    background:linear-gradient(to right,
-      rgba(0,0,0,0) 20%,
-      rgba(0,0,0,.45) 60%,
-      rgba(0,0,0,.65) 100%);
-  }
-}
 
 /* texto con sombra para legibilidad */
 .text-shadow-hero{ text-shadow:0 2px 16px rgba(0,0,0,.55); }
   /* ... todo lo que ya tienes arriba ... */
+/* ====== SECCIÓN MITAD IMG + MITAD TEXTO CON DEGRADADO ====== */
+:root{ --panel:#1a1a1a; --pink:#F7A9B8; }
 
-/* ====== NUEVA SECCIÓN SPLIT ====== */
-.section-split {
-  position: relative;
-  overflow: hidden;
-}
-.section-split img {
-  object-fit: cover;
-}
-  .section-split {
-  position: relative;
-  display: flex;
-  align-items: center;
-  min-height: 100vh;
+.section-split{
+  position:relative;
+  display:flex;
+  min-height:80vh;        /* mitad de pantalla aprox */
+  width:100%;
+  overflow:hidden;
+  background:var(--panel); /* mismo color que el lado del texto */
 }
 
-.section-split .image-side {
-  position: relative;
-  flex: 1;
-  background: url("assets/img/reset90-desktop.jpg") center/cover no-repeat;
+/* Lado de la imagen */
+.section-split .image-side{
+  position:relative;
+  flex:1 1 50%;
+  background:url("assets/img/reset90-desktop.jpg") center/cover no-repeat;
+}
+.section-split .image-side::after{
+  content:"";
+  position:absolute; inset:0;
+  /* conecta con el panel derecho */
+  background:linear-gradient(
+    to right,
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,.35) 55%,
+    var(--panel) 85%
+  );
 }
 
-.section-split .image-side::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 40%; /* controla qué tanto se mezcla */
-  height: 100%;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, #1a1a1a 100%);
+/* Lado del texto */
+.section-split .text-side{
+  flex:1 1 50%;
+  display:flex; align-items:center; justify-content:center;
+  background:var(--panel);
+  color:#eee;
+  padding:3rem 2rem;
 }
+.section-split .text-side .wrap{
+  width:100%;
+  max-width:640px;       /* ancho cómodo del texto */
+  text-align:center;     /* o right si lo prefieres */
+}
+.section-split h2{ color:#fff; }
+.section-split .hl{ color:var(--pink); }
 
-.section-split .text-side {
-  flex: 1;
-  background-color: #1a1a1a;
-  color: white;
-  padding: 4rem 3rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+/* Responsive */
+@media (max-width: 768px){
+  .section-split{ flex-direction:column; min-height:unset; }
+  .section-split .image-side{ height:50vh; background:url("assets/img/reset90-mobile.jpg") center/cover no-repeat; }
+  .section-split .image-side::after{
+    background:linear-gradient(
+      to bottom,
+      rgba(0,0,0,0) 0%,
+      rgba(0,0,0,.45) 70%,
+      var(--panel) 100%
+    );
+  }
+  .section-split .text-side{ padding:2rem 1.25rem; }
 }
 </style>
 </head>
@@ -252,36 +242,29 @@
   </div>
 </section>
 
-<!-- Intro / Rosa con degradado mitad -->
 <section class="section-split reveal">
-  <div class="flex flex-col md:flex-row h-[80vh]">
-    <!-- Imagen con degradado -->
-    <div class="relative w-full md:w-1/2 h-1/2 md:h-full">
-      <img src="assets/img/reset90-desktop.jpg" 
-           alt="Nuevo Programa Reset 90"
-           class="w-full h-full object-cover">
-      <div class="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent"></div>
-    </div>
+  <!-- Mitad izquierda: imagen con degradado -->
+  <div class="image-side"></div>
 
-    <!-- Texto -->
-    <div class="flex w-full md:w-1/2 items-center justify-center bg-[#f7a9b8]/10 p-8">
-      <div class="max-w-lg text-right">
-        <h2 class="text-3xl md:text-5xl font-extrabold text-gray-100">NUEVO PROGRAMA</h2>
-        <h2 class="text-3xl md:text-5xl font-extrabold text-gray-100">RESET 90</h2>
-        <h2 class="text-3xl md:text-5xl font-extrabold text-pink-300">ENTRENAMIENTOS</h2>
-        <h2 class="text-3xl md:text-5xl font-extrabold text-pink-300">DIARIOS</h2>
+  <!-- Mitad derecha: texto -->
+  <div class="text-side">
+    <div class="wrap">
+      <h2 class="text-3xl md:text-5xl font-extrabold tracking-wide">NUEVO PROGRAMA</h2>
+      <h2 class="text-3xl md:text-5xl font-extrabold tracking-wide">RESET 90</h2>
+      <h2 class="text-3xl md:text-5xl font-extrabold tracking-wide hl">ENTRENAMIENTOS</h2>
+      <h2 class="text-3xl md:text-5xl font-extrabold tracking-wide hl">DIARIOS</h2>
 
-        <p class="mt-6 text-gray-200">Desde $3,000 MXN/mes (según paquete)</p>
-        <p class="mt-4 text-gray-300 text-sm">
-          Entrena conmigo, aprende nutrición práctica y desarrolla hábitos sostenibles.  
-          Acceso a rutinas guiadas, plan semanal de comidas y acompañamiento de la comunidad AlephMotion.
-        </p>
+      <p class="mt-6 text-sm md:text-base text-gray-300">Desde $3,000 MXN/mes (según paquete)</p>
+      <p class="mt-4 text-sm md:text-base text-gray-300">
+        Entrena conmigo, aprende nutrición práctica y desarrolla hábitos sostenibles.
+        Acceso a rutinas guiadas, plan semanal de comidas y acompañamiento de la comunidad AlephMotion.
+      </p>
 
-        <a href="register.html"
-           class="inline-block mt-8 px-8 py-3 rounded-full font-bold shadow-lg bg-pink-400 text-gray-900 hover:bg-pink-300 transition">
-          EMPIEZA HOY
-        </a>
-      </div>
+      <a href="register.html"
+         class="inline-block mt-8 px-8 py-3 rounded-full font-bold shadow-lg
+                bg-white text-gray-900 hover:shadow-xl transition">
+        EMPIEZA HOY
+      </a>
     </div>
   </div>
 </section> 
