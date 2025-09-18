@@ -187,6 +187,42 @@
   }
   .section-split .text-side{ padding:2rem 1.25rem; }
 }
+  /* --- MOBILE FIX para section-split --- */
+.section-split .image-side{
+  /* desktop por defecto */
+  background-image:url('assets/img/reset90-desktop.jpg');
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+}
+
+@media (max-width:768px){
+  .section-split{ 
+    flex-direction:column;
+    min-height:auto;
+  }
+  .section-split .image-side{
+    /* usa la mobile y, si falla, cae a la desktop */
+    background-image:
+      url('assets/img/reset90-mobile.jpg'),
+      url('assets/img/reset90-desktop.jpg') !important;
+    height:56vh;           /* asegura que se vea la foto */
+    min-height:340px;
+  }
+  .section-split .image-side::after{
+    /* degradado vertical para conectar con el panel del texto */
+    background:linear-gradient(
+      to bottom,
+      rgba(0,0,0,0) 0%,
+      rgba(26,26,26,.85) 95%
+    );
+  }
+  /* por si la animación reveal la deja oculta en el primer render */
+  .section-split.reveal{
+    opacity:1 !important;
+    transform:none !important;
+  }
+}
 </style>
 </head>
 <body class="bg-[#1a1a1a]">
