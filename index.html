@@ -9,248 +9,674 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet"/>
 <style>
-/* ================== VARIABLES & BASE ================== */
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #1a1a1a;
+    color: #d1d1d1;
+  }
+
+  .header-bg { background-color: #1a1a1a; }
+
+  .btn-primary {
+    background-color: #F7A9B8;
+    color: white;
+    border-radius: 9999px;
+    padding: 0.75rem 2.5rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+  .btn-primary:hover { background-color: #F7A9B8; }
+
+  .nav-link { color: #d1d1d1; transition: color 0.3s ease; }
+  .nav-link:hover { color: #F7A9B8; }
+
+.hero-section{
+  background-color:#1c1c1c;
+  background-image:url('assets/img/hero-maresi-desktop.jpg');
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  position:relative;
+  height:100vh;
+}
+@media (max-width:768px){
+  .hero-section{
+    background-image:url('assets/img/hero-maresi-mobile.jpg');
+  }
+}
+  .hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to top, rgba(0,0,0,0.5) 20%, rgba(0,0,0,0) 80%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10; /* el texto queda por encima del overlay */
+}
+
+.hero-text {
+  text-shadow: 2px 2px 4px rgba(0,0,0,.7);
+}
+
+  .section-2-bg { background-color: #FFB6C1; position: relative; }
+  .section-2-content { z-index: 10; }
+
+  .fade-right {
+    -webkit-mask-image: linear-gradient(to right, black 50%, transparent 100%);
+            mask-image: linear-gradient(to right, black 50%, transparent 100%);
+  }
+  .fade-left {
+    -webkit-mask-image: linear-gradient(to left, black 50%, transparent 100%);
+            mask-image: linear-gradient(to left, black 50%, transparent 100%);
+  }
+
+  .section-3-bg { background-color: #f8f8f8; color: #333; }
+
+  /* Final section */
+  .final-section-bg { background-color: #2b2b2b; }
+
+  .mobile-menu-open { display: none; }
+
+  .carousel-container { position: relative; overflow: hidden; }
+  .carousel-track { display: flex; transition: transform 0.5s ease-in-out; }
+  .carousel-slide { flex-shrink: 0; width: 100%; }
+
+  /* Mockup & video */
+  .mockup-container { position: relative; max-width: 320px; width: 100%; height: 580px; }
+  .mockup-video {
+    position: absolute; top: 10%; left: 8.5%; width: 83%; height: 75%;
+    border-radius: 1.5rem; overflow: hidden;
+  }
+
+  /* Ready to start */
+  .ready-to-start {
+    position: relative;
+    /* TODO: reemplaza por tu imagen real */
+    background-image: url('https://placehold.co/1920x1080/2b2b2b/d1d1d1?text=Entrenadora');
+    background-size: cover; background-position: center; background-repeat: no-repeat;
+    color: white; padding: 80px 0;
+  }
+  .ready-to-start-overlay { background: rgba(0,0,0,.6); position: absolute; inset: 0; z-index: 1; }
+  .ready-to-start-content { position: relative; z-index: 2; }
+
+  @media (max-width: 768px) {
+    .mobile-menu-open { display: block; }
+    .main-nav { display: none; }
+    .main-nav.show {
+      display: flex; flex-direction: column; position: absolute; top: 5rem; left: 0; width: 100%;
+      background-color: #1a1a1a; box-shadow: 0 4px 6px rgba(0,0,0,.1); z-index: 50;
+    }
+    .main-nav a { padding: 1rem 2rem; border-bottom: 1px solid #333; }
+  }
+
+  /* Reveal on scroll */
+  .reveal{ opacity:0; transform:translateY(24px); transition:opacity .8s ease, transform .8s ease; }
+  .reveal.visible{ opacity:1; transform:translateY(0); }
+  .fade-in-right {
+     -webkit-mask-image: linear-gradient(to right, transparent 0%, black 70%);
+     mask-image: linear-gradient(to right, transparent 0%, black 70%);
+   }
+
+   .fade-in-left {
+     -webkit-mask-image: linear-gradient(to left, transparent 0%, black 70%);
+     mask-image: linear-gradient(to left, transparent 0%, black 70%);
+   }
+
+/* texto con sombra para legibilidad */
+.text-shadow-hero{ text-shadow:0 2px 16px rgba(0,0,0,.55); }
+  /* ... todo lo que ya tienes arriba ... */
+
+  /* ====== SECCIÓN MITAD IMG + MITAD TEXTO CON DEGRADADO ====== */
+:root{ --panel:#1a1a1a; --pink:#F7A9B8; }
+
+.section-split{
+  position:relative;
+  display:flex;
+  min-height:80vh;        /* mitad de pantalla aprox */
+  width:100%;
+  overflow:hidden;
+  background:var(--panel); /* mismo color que el lado del texto */
+}
+
+/* Lado de la imagen */
+.section-split .image-side{
+  position:relative;
+  flex:1 1 50%;
+  background:url("assets/img/reset90-desktop.jpg") center/cover no-repeat;
+}
+.section-split .image-side::after{
+  content:"";
+  position:absolute; inset:0;
+  /* conecta con el panel derecho */
+  background:linear-gradient(
+    to right,
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,.35) 55%,
+    var(--panel) 85%
+  );
+}
+
+/* Lado del texto */
+.section-split .text-side{
+  flex:1 1 50%;
+  display:flex; align-items:center; justify-content:center;
+  background:var(--panel);
+  color:#eee;
+  padding:3rem 2rem;
+}
+.section-split .text-side .wrap{
+  width:100%;
+  max-width:640px;       /* ancho cómodo del texto */
+  text-align:center;     /* o right si lo prefieres */
+}
+.section-split h2{ color:#fff; }
+.section-split .hl{ color:var(--pink); }
+
+  /* --- MOBILE FIX para section-split --- */
+.section-split .image-side{
+  /* desktop por defecto */
+  background-image:url('assets/img/reset90-desktop.jpg');
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+}
+
+@media (max-width:768px){
+  .section-split{
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .section-split .image-side{
+    /* usa primero la mobile y, si falla, cae a la desktop */
+    background-image:
+      url('assets/img/reset90-mobile.jpg'),
+      url('assets/img/reset90-desktop.jpg') !important;
+
+    height: 58vh;        /* un poco más alta para que el fade tenga espacio */
+    min-height: 380px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .section-split .image-side::after{
+    /* degradado vertical más largo y suave hacia el panel oscuro */
+    background: linear-gradient(
+      to bottom,
+      rgba(0,0,0,0) 0%,
+      rgba(0,0,0,.35) 55%,
+      rgba(26,26,26,.92) 96%,
+      var(--panel) 100%
+    );
+  }
+
+  .section-split .text-side{
+    padding: 2rem 1.25rem;
+  }
+
+  /* por si la animación reveal deja opaca la sección en el primer render */
+  .section-split.reveal{
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+  /* ===== Effects para reveal on scroll ===== */
+
+/* Entradas básicas */
+.fx-fade-up { opacity: 0; transform: translateY(24px) scale(.98); }
+.fx-slide-left { opacity: 0; transform: translateX(-40px); }
+.fx-slide-right { opacity: 0; transform: translateX(40px); }
+
+/* Cuando el observer agrega .visible al contenedor .reveal */
+.reveal.visible .fx-fade-up,
+.reveal.visible .fx-slide-left,
+.reveal.visible .fx-slide-right {
+  opacity: 1; transform: none;
+}
+
+/* Duraciones / timing */
+.fx-fade-up,
+.fx-slide-left,
+.fx-slide-right {
+  transition: opacity .9s ease, transform .9s ease;
+}
+
+/* Stagger (efecto escalonado para los hijos del contenedor .stagger) */
+.stagger > * { opacity: 0; transform: translateY(18px); }
+.reveal.visible .stagger > * { opacity: 1; transform: none; transition: opacity .7s ease, transform .7s ease; }
+.reveal.visible .stagger > *:nth-child(1) { transition-delay: .05s; }
+.reveal.visible .stagger > *:nth-child(2) { transition-delay: .15s; }
+.reveal.visible .stagger > *:nth-child(3) { transition-delay: .25s; }
+.reveal.visible .stagger > *:nth-child(4) { transition-delay: .35s; }
+.reveal.visible .stagger > *:nth-child(5) { transition-delay: .45s; }
+.reveal.visible .stagger > *:nth-child(6) { transition-delay: .55s; }
+/* ==================== BLOQUE ROSA: "NO ES UN INTENTO MÁS" ==================== */
+/* Variables (defínelas una sola vez en el archivo) */
 :root{
   --panel:#1a1a1a;
   --pink:#F7A9B8;
 }
 
-*{box-sizing:border-box}
-html,body{margin:0;padding:0}
-
-body{
-  font-family:'Montserrat',sans-serif;
-  background:#1a1a1a;
-  color:#d1d1d1;
-}
-
-.header-bg{background:#1a1a1a}
-
-/* Botones y links */
-.btn-primary{
-  background:var(--pink); color:#fff; border-radius:9999px;
-  padding:.75rem 2.5rem; font-weight:700; transition:all .3s ease;
-}
-.btn-primary:hover{filter:brightness(.95)}
-.nav-link{color:#d1d1d1; transition:color .3s}
-.nav-link:hover{color:var(--pink)}
-
-/* ================== HERO ================== */
-.hero-section{
-  position:relative; height:100vh; background:#1c1c1c
-  url('assets/img/hero-maresi-desktop.jpg') center/cover no-repeat;
-}
-@media (max-width:768px){
-  .hero-section{background-image:url('assets/img/hero-maresi-mobile.jpg')}
-}
-.hero-overlay{
-  position:absolute; inset:0; z-index:1;
-  background:linear-gradient(to top, rgba(0,0,0,.5) 20%, rgba(0,0,0,0) 80%);
-}
-.hero-content{position:relative; z-index:10}
-.hero-text{text-shadow:2px 2px 4px rgba(0,0,0,.7)}
-.text-shadow-hero{ text-shadow:0 2px 16px rgba(0,0,0,.55) }
-
-/* ================== UTILIDADES VISUALES ================== */
-.fade-right{-webkit-mask-image:linear-gradient(to right, black 50%, transparent 100%); mask-image:linear-gradient(to right, black 50%, transparent 100%)}
-.fade-left{-webkit-mask-image:linear-gradient(to left, black 50%, transparent 100%); mask-image:linear-gradient(to left, black 50%, transparent 100%)}
-
-/* Menú móvil */
-.mobile-menu-open{display:none}
-@media (max-width:768px){
-  .mobile-menu-open{display:block}
-  .main-nav{display:none}
-  .main-nav.show{
-    display:flex; flex-direction:column; position:absolute; top:5rem; left:0; width:100%;
-    background:#1a1a1a; box-shadow:0 4px 6px rgba(0,0,0,.1); z-index:50;
-  }
-  .main-nav a{padding:1rem 2rem; border-bottom:1px solid #333}
-}
-
-/* ================== REVEAL ON SCROLL (única versión) ================== */
-.reveal{opacity:0; transform:translateY(24px); transition:opacity .8s ease, transform .8s ease}
-.reveal.visible{opacity:1; transform:none}
-
-.fx-fade-up{opacity:0; transform:translateY(24px) scale(.98); transition:opacity .9s ease, transform .9s ease}
-.fx-slide-left{opacity:0; transform:translateX(-40px); transition:opacity .9s ease, transform .9s ease}
-.fx-slide-right{opacity:0; transform:translateX(40px); transition:opacity .9s ease, transform .9s ease}
-.reveal.visible .fx-fade-up,
-.reveal.visible .fx-slide-left,
-.reveal.visible .fx-slide-right{opacity:1; transform:none}
-
-/* POP */
-.fx-pop{opacity:0; transform:scale(.96); transition:opacity .7s ease, transform .7s ease}
-.reveal.visible .fx-pop{opacity:1; transform:none}
-
-/* Stagger (escalonado) */
-.stagger>*{opacity:0; transform:translateY(12px); transition:opacity .6s ease, transform .6s ease}
-.reveal.visible .stagger>*{opacity:1; transform:none}
-.reveal.visible .stagger>*:nth-child(2){transition-delay:.08s}
-.reveal.visible .stagger>*:nth-child(3){transition-delay:.16s}
-.reveal.visible .stagger>*:nth-child(4){transition-delay:.24s}
-.reveal.visible .stagger>*:nth-child(5){transition-delay:.32s}
-
-/* ================== HEADLINES (unificados) ================== */
-/* base */
-.headline{
-  display:inline-block; position:relative;
-  font-weight:800; letter-spacing:.02em; line-height:1.1; color:#fff;
-}
-/* tamaños */
-.headline--lg{font-size:clamp(1.75rem,4vw,2.5rem)}
-.headline--xl{font-size:clamp(2rem,5vw,3.25rem)}
-.headline--xxl{font-size:clamp(2.25rem,4.5vw,4.5rem)} /* súper grande */
-
-/* subrayado para fondos claros/rosas */
-.headline::after{
-  content:""; display:block; width:80px; height:4px; margin:8px auto 0;
-  background:linear-gradient(90deg, var(--pink) 0%, #FFC6D3 100%); border-radius:4px;
-}
-/* subrayado para fondos oscuros */
-.headline-light::after{
-  content:""; display:block; width:80px; height:4px; margin:8px auto 0;
-  background:linear-gradient(90deg, #fff 0%, #ccc 100%); border-radius:4px;
-}
-
-/* ================== LISTA CON PUNTO ROSA ================== */
-.list{list-style:none; padding:0; margin:0}
-.list li{position:relative; padding-left:1.5rem; margin:.8rem 0}
-.list li::before{
-  content:"•"; position:absolute; left:0; top:0; color:var(--pink);
-  font-weight:700; font-size:1.2rem; line-height:1;
-}
-
-/* ===========================================================
-   BLOQUE ROSA: "NO ES UN INTENTO MÁS" (texto izq / imagen der)
-   =========================================================== */
+/* Contenedor split (texto izq / imagen der) */
 .section-split--pink{
-  position:relative; display:flex; min-height:80vh; width:100%;
-  overflow:hidden; background:var(--pink);
+  position: relative;
+  display: flex;
+  min-height: 80vh;               /* mitad de pantalla aprox */
+  width: 100%;
+  overflow: hidden;
+  background: var(--pink);        /* fondo rosa del bloque */
 }
 
-/* Texto (izquierda) */
+/* ----- Lado TEXTO (izquierda) ----- */
 .section-split--pink .text-side{
-  flex:1 1 50%; display:flex; align-items:center; justify-content:center;
-  background:var(--pink); color:#1a1a1a; padding:3rem 2rem;
+  flex: 1 1 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--pink);
+  color: #1a1a1a;                 /* alto contraste sobre rosa */
+  padding: 3rem 2rem;
 }
-.section-split--pink .text-side .wrap{width:100%; max-width:640px; text-align:left}
+.section-split--pink .text-side .wrap{
+  width: 100%;
+  max-width: 640px;
+  text-align: left;               /* en mobile lo centramos */
+}
 
-/* Pilares */
-.section-split--pink .pillars{list-style:none; margin:1rem 0 0; padding:0; display:grid; gap:.75rem}
-.section-split--pink .pillars li{display:flex; align-items:center; gap:.6rem; font-weight:800; letter-spacing:.3px}
+/* Acento del título + jerarquías */
+.section-split--pink .headline{
+  position: relative;
+  display: inline-block;
+  line-height: 1.1;
+}
+.section-split--pink .headline::after{
+  content:"";
+  position:absolute;
+  left:0; right:0; bottom:-10px;
+  height:6px; border-radius:999px;
+  background:linear-gradient(90deg, var(--pink) 0%, #FFC6D3 100%);
+  opacity:.95;
+}
+.section-split--pink .lead{       /* subtítulo más chico y sin bold */
+  font-weight:400;
+  color:#2e2e2e;
+  max-width:40ch;
+}
+
+/* Pilares con “badge” */
+.section-split--pink .pillars{
+  list-style:none; margin:1rem 0 0; padding:0;
+  display:grid; gap:.75rem;
+}
+.section-split--pink .pillars li{
+  display:flex; align-items:center; gap:.6rem;
+  font-weight:800; letter-spacing:.3px;
+}
 .section-split--pink .pillars .num{
   width:2rem; height:2rem; display:grid; place-items:center;
-  border-radius:999px; background:var(--panel); color:#fff; font-weight:900;
+  border-radius:999px; background:var(--panel); color:#fff; /* badge oscuro */
+  font-weight:900;
 }
 
-/* Imagen (derecha) */
+/* ----- Lado IMAGEN (derecha) ----- */
 .section-split--pink .image-side{
-  position:relative; flex:1 1 50%;
-  background:url("assets/img/fitness-promedio-desktop.jpg") center/cover no-repeat;
+  position: relative;
+  flex: 1 1 50%;
+  background: url("assets/img/fitness-promedio-desktop.jpg") center/cover no-repeat;
 }
+/* Fade hacia la IZQUIERDA para conectar con el rosa del texto */
 .section-split--pink .image-side::after{
-  content:""; position:absolute; inset:0;
-  background:linear-gradient(to left, rgba(0,0,0,0) 0%, rgba(0,0,0,.28) 55%, var(--pink) 85%);
+  content:"";
+  position:absolute; inset:0;
+  background: linear-gradient(
+    to left,
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,.28) 55%,
+    var(--pink) 85%
+  );
   pointer-events:none;
 }
 
-/* Mobile */
+/* ==================== Mobile ==================== */
 @media (max-width:768px){
-  .section-split--pink{flex-direction:column; min-height:auto}
-  .section-split--pink .text-side{align-items:center; text-align:center; padding:2rem 1.25rem}
-  .section-split--pink .text-side .wrap{max-width:720px}
+  .section-split--pink{ flex-direction: column; min-height: auto; }
+
+  .section-split--pink .text-side{
+    text-align:center;            /* centrado en móvil */
+    align-items:center;
+    padding:2rem 1.25rem;
+  }
+  .section-split--pink .text-side .wrap{ max-width:720px; }
+  .section-split--pink h2.headline{ font-size: clamp(28px, 8.5vw, 40px); }
+  .section-split--pink .lead{
+    font-size: clamp(16px, 4.6vw, 18px);
+    margin:1rem auto 0;
+  }
+  .section-split--pink .pillars li{
+    justify-content:center;
+    font-size: clamp(18px, 5.2vw, 22px);
+  }
+
   .section-split--pink .image-side{
-    background-image:url("assets/img/fitness-promedio-mobile.jpg"), url("assets/img/fitness-promedio-desktop.jpg");
-    height:56vh; min-height:340px; background-size:cover; background-position:center;
+    /* usa la mobile y, si no carga, cae a desktop */
+    background-image:
+      url("assets/img/fitness-promedio-mobile.jpg"),
+      url("assets/img/fitness-promedio-desktop.jpg");
+    height:56vh; min-height:340px;
+    background-size:cover; background-position:center;
   }
+  /* En móvil el fade va HACIA ARRIBA (para conectar con el panel rosa superior) */
   .section-split--pink .image-side::after{
-    background:linear-gradient(to top, rgba(0,0,0,0) 35%, rgba(0,0,0,.45) 78%, var(--pink) 100%);
+    background: linear-gradient(
+      to top,
+      rgba(0,0,0,0) 35%,
+      rgba(0,0,0,.45) 78%,
+      var(--pink) 100%
+    );
   }
 }
-
-/* ===== Variante NUTRICIÓN (cambia imagen) ===== */
+  @media (max-width: 768px) {
+  .section-split--pink .text-side,
+  .section-split--pink .text-side .wrap {
+    text-align: center !important;
+    align-items: center;
+    justify-content: center;
+  }
+}
+/* ===== NUTRICIÓN: hereda base de .section-split--pink y sólo variamos la imagen/fade ===== */
 .section-split--pink.section-split--pink-nutri .image-side{
-  background:url("assets/img/pilar-nutricion-desktop.jpg") center/cover no-repeat;
-}
-.section-split--pink.section-split--pink-nutri .image-side::after{
-  background:linear-gradient(to left, rgba(0,0,0,0) 0%, rgba(0,0,0,.28) 55%, var(--pink) 85%);
-}
-@media (max-width:768px){
-  .section-split--pink.section-split--pink-nutri .image-side{
-    background-image:url("assets/img/pilar-nutricion-mobile.jpg"); height:56vh; min-height:340px;
-  }
-  .section-split--pink.section-split--pink-nutri .image-side::after{
-    background:linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,.28) 55%, var(--pink) 85%);
-  }
+  /* imagen desktop */
+  background: url("assets/img/pilar-nutricion-desktop.jpg") center/cover no-repeat;
 }
 
-/* ===========================================================
-   ENTRENAMIENTO (imagen izq / texto der, fondo oscuro)
-   =========================================================== */
-.section-split--train{
-  position:relative; display:flex; align-items:stretch; min-height:80vh; width:100%;
-  overflow:hidden; background:#1a1a1a;
+/* Fade a la IZQUIERDA en desktop para conectar con el rosa */
+.section-split--pink.section-split--pink-nutri .image-side::after{
+  content:"";
+  position:absolute; inset:0;
+  background: linear-gradient(
+    to left,
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,.28) 55%,
+    var(--pink) 85%
+  );
 }
+
+/* Mobile: texto arriba, imagen abajo y fade HACIA ARRIBA */
+@media (max-width:768px){
+  .section-split--pink.section-split--pink-nutri{
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .section-split--pink.section-split--pink-nutri .image-side{
+    /* imagen móvil (ajusta el nombre si usas otro) */
+    background-image: url("assets/img/pilar-nutricion-mobile.jpg");
+    height: 56vh;
+    min-height: 340px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .section-split--pink.section-split--pink-nutri .image-side::after{
+    background: linear-gradient(
+      to top,
+      rgba(0,0,0,0) 0%,
+      rgba(0,0,0,.28) 55%,
+      var(--pink) 85%
+    );
+  }
+
+  /* centramos un poco más el bloque de texto en mobile */
+  .section-split--pink.section-split--pink-nutri .text-side .wrap{
+    text-align: center;
+  }
+}
+/* ==================== Animación de entrada (POP) ==================== */
+.fx-pop      { opacity:0; transform:scale(.96); transition: opacity .7s ease, transform .7s ease; }
+.reveal.visible .fx-pop { opacity:1; transform:none; }
+
+/* (opcional) escalonado interno */
+.stagger>*{ opacity:0; transform:translateY(12px); transition:opacity .6s ease, transform .6s ease; }
+.reveal.visible .stagger>*:nth-child(1){ transition-delay:.08s; opacity:1; transform:none; }
+.reveal.visible .stagger>*:nth-child(2){ transition-delay:.16s; opacity:1; transform:none; }
+.reveal.visible .stagger>*:nth-child(3){ transition-delay:.24s; opacity:1; transform:none; }
+.reveal.visible .stagger>*:nth-child(4){ transition-delay:.32s; opacity:1; transform:none; }
+.reveal.visible .stagger>*:nth-child(5){ transition-delay:.40s; opacity:1; transform:none; }
+/* ==================== /FIN BLOQUE ==================== */
+
+/* ====== EFECTO DE ENTRADA "POP" ====== */
+.fx-pop { opacity: 0; transform: scale(.96); transition: opacity .7s ease, transform .7s ease; }
+.reveal.visible .fx-pop { opacity: 1; transform: none; }
+
+/* (Opcional) escalonado interno */
+.stagger > * { opacity: 0; transform: translateY(12px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.visible .stagger > * { opacity:1; transform:none; }
+.reveal.visible .stagger > *:nth-child(2){ transition-delay:.08s; }
+.reveal.visible .stagger > *:nth-child(3){ transition-delay:.16s; }
+.reveal.visible .stagger > *:nth-child(4){ transition-delay:.24s; }
+.reveal.visible .stagger > *:nth-child(5){ transition-delay:.32s; }
+  /* ====== ENTRENAMIENTO: split imagen izq + texto der ====== */
+.section-split--train{
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  min-height: 80vh;   /* media pantalla */
+  width: 100%;
+  overflow: hidden;
+  background: #1a1a1a; /* color base del lado derecho (texto) */
+}
+
+/* IMAGEN IZQUIERDA */
 .section-split--train .image-side{
-  position:relative; flex:1 1 50%;
-  background:url('assets/img/pilar-entrenamiento-desktop.jpg') center/cover no-repeat;
+  position: relative;
+  flex: 1 1 50%;
+  background: url('assets/img/pilar-entrenamiento-desktop.jpg') center/cover no-repeat;
 }
 .section-split--train .image-side::after{
-  content:""; position:absolute; inset:0;
-  background:linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,.35) 55%, #1a1a1a 85%);
+  /* fade hacia la DERECHA conectando con el panel del texto */
+  content:"";
+  position:absolute; inset:0;
+  background: linear-gradient(
+    to right,
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,.35) 55%,
+    #1a1a1a 85%
+  );
+  pointer-events:none;
 }
+
+/* TEXTO DERECHA */
 .section-split--train .text-side{
-  flex:1 1 50%; display:flex; align-items:center; justify-content:center;
-  background:#1a1a1a; color:#eee; padding:3rem 2rem;
+  flex: 1 1 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1a1a1a;
+  color: #eee;
+  padding: 3rem 2rem;
 }
-.section-split--train .text-side .wrap{width:100%; max-width:640px}
-.section-split--train .headline{color:#fff}
-@media (max-width:768px){
-  .section-split--train{flex-direction:column; min-height:auto}
+.section-split--train .text-side .wrap{
+  width: 100%;
+  max-width: 640px;
+}
+.section-split--train .headline{
+  color:#fff;
+  font-weight: 800;
+  letter-spacing:.02em;
+  font-size: clamp(2rem, 5vw, 3.25rem); /* grande en desktop, cómodo en móvil */
+  line-height: 1.1;
+  margin-bottom: 1.25rem;
+}
+.section-split--train .list{
+  margin: 1rem 0 0;
+  padding-left: 1.25rem;
+}
+.section-split--train .list li{
+  margin: .5rem 0;
+  font-size: clamp(1rem, 2.2vw, 1.125rem);
+  color: #e7e7e7;
+}
+
+/* ====== Responsive (móvil) ====== */
+@media (max-width: 768px){
+  .section-split--train{
+    flex-direction: column;
+    min-height: auto;
+  }
   .section-split--train .image-side{
-    height:50vh; background:url('assets/img/pilar-entrenamiento-mobile.jpg') center/cover no-repeat;
+    height: 50vh;
+    background: url('assets/img/pilar-entrenamiento-mobile.jpg') center/cover no-repeat;
   }
   .section-split--train .image-side::after{
-    background:linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,.45) 70%, #1a1a1a 100%);
+    /* en móvil el fade va HACIA ABAJO para unir con el panel del texto */
+    background: linear-gradient(
+      to bottom,
+      rgba(0,0,0,0) 0%,
+      rgba(0,0,0,.45) 70%,
+      #1a1a1a 100%
+    );
   }
-  .section-split--train .text-side{padding:2rem 1.25rem; text-align:center}
-  .section-split--train .text-side .wrap{align-items:center; justify-content:center}
+  .section-split--train .text-side{
+    padding: 2rem 1.25rem;
+  }
+  /* centramos texto en móvil */
+  .section-split--train .text-side,
+  .section-split--train .text-side .wrap{
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+}
+  .list {
+  list-style: none;       /* quitamos viñetas normales */
+  padding: 0;
+  margin: 0;
 }
 
-/* ===========================================================
-   HÁBITOS Y SOPORTE (fondo negro, imagen izquierda)
-   =========================================================== */
-.section-split-habits{
-  position:relative; display:flex; align-items:center; min-height:80vh; width:100%;
-  background:#0f0f10; overflow:hidden;
+.list li {
+  position: relative;
+  padding-left: 1.5rem;   /* deja espacio para el punto */
+  margin-bottom: 0.8rem;  /* espacio entre líneas */
 }
+
+.list li::before {
+  content: "•";           /* aquí generamos el puntito */
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #F7A9B8;         /* rosa de tu marca */
+  font-weight: bold;
+  font-size: 1.2rem;      /* tamaño del punto */
+  line-height: 1; 
+}
+  /* Línea rosa para fondos claros */
+.headline::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  margin: 8px auto 0 auto;
+  background: linear-gradient(90deg, #ff4d88 0%, #ff99cc 100%);
+  border-radius: 4px;
+}
+
+/* Línea blanca para fondos oscuros (ej. bloque negro) */
+.headline-light::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  margin: 8px auto 0 auto;
+  background: linear-gradient(90deg, #ffffff 0%, #cccccc 100%);
+  border-radius: 4px;
+}
+/* ===== HÁBITOS Y SOPORTE (fondo negro, imagen izquierda) ===== */
+.section-split-habits{
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 80vh;
+  width: 100%;
+  background: #0f0f10;            /* fondo negro */
+  overflow: hidden;
+}
+
+/* Imagen izquierda con fade hacia el texto (desktop) */
 .section-split-habits .image-side{
-  position:relative; flex:1 1 50%; min-height:80vh;
-  background:url("assets/img/habitos-desktop.jpg") center/cover no-repeat !important;
+  position: relative;
+  flex: 1 1 50%;
+  min-height: 80vh;               /* asegura altura visible */
+  background: url("assets/img/habitos-desktop.jpg") center/cover no-repeat !important;
 }
 .section-split-habits .image-side::after{
-  content:""; position:absolute; inset:0;
-  background:linear-gradient(to right, rgba(15,15,16,0) 0%, rgba(15,15,16,.35) 55%, #0f0f10 85%);
-}
-.section-split-habits .text-side{
-  flex:1 1 50%; display:flex; align-items:center; justify-content:center;
-  color:#e9e9e9; padding:3rem 2rem;
-}
-.section-split-habits .wrap{width:100%; max-width:680px}
-.section-split-habits .headline{ text-transform:uppercase }
-.section-split-habits .headline.headline--xxl{ /* por si ya lo usas así */ }
-@media (max-width:768px){
-  .section-split-habits{flex-direction:column; min-height:auto}
-  .section-split-habits .image-side{
-    width:100%; height:56vh; min-height:340px;
-    background:url("assets/img/habitos-mobile.jpg") center/cover no-repeat !important;
-  }
-  .section-split-habits .image-side::after{
-    background:linear-gradient(to bottom, rgba(15,15,16,0) 0%, rgba(15,15,16,.45) 72%, #0f0f10 100%);
-  }
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(15,15,16,0) 0%,
+    rgba(15,15,16,.35) 55%,
+    #0f0f10 85%
+  );
 }
 
-/* ================== FIN ================== */
+/* Texto derecha */
+.section-split-habits .text-side{
+  flex: 1 1 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #e9e9e9;
+  padding: 3rem 2rem;
+}
+.section-split-habits .wrap{ width:100%; max-width: 680px; }
+
+/* Título grande + negritas + subrayado rosado */
+.section-split-habits .headline{
+  position: relative;
+  display: inline-block;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: .02em;
+  /* escalado responsivo */
+  font-size: clamp(32px, 4.5vw, 72px);
+  line-height: 1.1;
+}
+.section-split-habits .headline::after{
+  content: "";
+  position: absolute; left: 0; right: 0; bottom: -10px;
+  height: 6px; border-radius: 999px;
+  background: linear-gradient(90deg, var(--pink) 0%, #FFC6D3 100%);
+  opacity: .95;
+}
+
+.section-split-habits .lead{
+  color: #cfcfcf;
+  font-weight: 400;
+  margin-top: 2rem;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px){
+  .section-split-habits{ flex-direction: column; min-height: auto; }
+
+  .section-split-habits .image-side{
+    width: 100%;
+    height: 56vh;
+    min-height: 340px;
+    background: url("assets/img/habitos-mobile.jpg") center/cover no-repeat !important;
+  }
+  /* En móvil, fade hacia ABAJO */
+  .section-split-habits .image-side::after{
+    background: linear-gradient(
+      to bottom,
+      rgba(15,15,16,0) 0%,
+      rgba(15,15,16,.45) 72%,
+      #0f0f10 100%
+    );
+  }
+}
 </style>
 </head>
 <body class="bg-[#1a1a1a]">
