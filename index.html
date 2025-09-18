@@ -503,6 +503,28 @@
     justify-content: center;
   }
 }
+  .list {
+  list-style: none;       /* quitamos viñetas normales */
+  padding: 0;
+  margin: 0;
+}
+
+.list li {
+  position: relative;
+  padding-left: 1.5rem;   /* deja espacio para el punto */
+  margin-bottom: 0.8rem;  /* espacio entre líneas */
+}
+
+.list li::before {
+  content: "•";           /* aquí generamos el puntito */
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #ff5a91;         /* rosa de tu marca */
+  font-weight: bold;
+  font-size: 1.2rem;      /* tamaño del punto */
+  line-height: 1; 
+}
 </style>
 </head>
 <body class="bg-[#1a1a1a]">
@@ -629,14 +651,13 @@
     <div class="wrap">
       <h2 class="headline">ENTRENAMIENTO</h2>
 
-      <ul class="list">
-        <li>Sesiones híbridas de 45–60 minutos.</li>
-        <li>Rutinas frescas y acompañamiento presencial.</li>
-        <li>Teoría aplicada: breve explicación de conceptos clave.</li>
-        <li>Educación práctica: cómo diseñar una rutina técnica y aplicarla.</li>
-        <li>Autonomía: no solo qué hacer, sino por qué, para que sigas entrenando por tu cuenta.</li>
-      </ul>
-
+     <ul class="list">
+  <li>Sesiones híbridas de 45–60 minutos.</li>
+  <li>Rutinas frescas y acompañamiento presencial.</li>
+  <li>Teoría aplicada: breve explicación de conceptos clave.</li>
+  <li>Educación práctica: cómo diseñar una rutina técnica y aplicarla.</li>
+  <li>Autonomía: no solo qué hacer, sino por qué, para que sigas entrenando por tu cuenta.</li>
+</ul>
       <a href="register.html" class="btn-primary mt-6 inline-block">ÚNETE AL RESET 90</a>
     </div>
   </div>
