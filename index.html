@@ -386,7 +386,54 @@
     justify-content: center;
   }
 }
+/* ===== NUTRICIÓN: hereda base de .section-split--pink y sólo variamos la imagen/fade ===== */
+.section-split--pink.section-split--pink-nutri .image-side{
+  /* imagen desktop */
+  background: url("assets/img/pilar-nutricion-desktop.jpg") center/cover no-repeat;
+}
 
+/* Fade a la IZQUIERDA en desktop para conectar con el rosa */
+.section-split--pink.section-split--pink-nutri .image-side::after{
+  content:"";
+  position:absolute; inset:0;
+  background: linear-gradient(
+    to left,
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,.28) 55%,
+    var(--pink) 85%
+  );
+}
+
+/* Mobile: texto arriba, imagen abajo y fade HACIA ARRIBA */
+@media (max-width:768px){
+  .section-split--pink.section-split--pink-nutri{
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .section-split--pink.section-split--pink-nutri .image-side{
+    /* imagen móvil (ajusta el nombre si usas otro) */
+    background-image: url("assets/img/pilar-nutricion-mobile.jpg");
+    height: 56vh;
+    min-height: 340px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .section-split--pink.section-split--pink-nutri .image-side::after{
+    background: linear-gradient(
+      to top,
+      rgba(0,0,0,0) 0%,
+      rgba(0,0,0,.28) 55%,
+      var(--pink) 85%
+    );
+  }
+
+  /* centramos un poco más el bloque de texto en mobile */
+  .section-split--pink.section-split--pink-nutri .text-side .wrap{
+    text-align: center;
+  }
+}
 /* ==================== Animación de entrada (POP) ==================== */
 .fx-pop      { opacity:0; transform:scale(.96); transition: opacity .7s ease, transform .7s ease; }
 .reveal.visible .fx-pop { opacity:1; transform:none; }
@@ -667,30 +714,23 @@
   </div>
 </section>
 
-<!-- Fifth Section: NUTRITION pillar details -->
-<section class="section-3-bg text-black py-20 reveal">
-  <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-center md:space-x-12">
-    
-    <!-- Text container -->
-    <div class="w-full md:w-1/2 p-6 md:p-0">
-      <h3 class="text-lg md:text-2xl font-bold text-[#e55a5a]">2</h3>
-      <h2 class="text-3xl md:text-5xl font-black leading-tight tracking-wide text-gray-800">NUTRICIÓN</h2>
-      <ul class="mt-6 space-y-2 text-sm text-gray-700">
-        <li>- Menús semanales equilibrados (3 comidas + 2 snacks)</li>
-        <li>- Listas de súper semanales</li>
-        <li>- Aprende a usar proteína, carbohidratos y grasas sin obsesión</li>
-        <li>- Recetas prácticas “lo que yo como”</li>
-      </ul>
-      <a href="register.html" class="btn-primary mt-8 inline-block text-sm px-6 py-3">ÚNETE AL RESET 90</a>
-    </div>
+<!-- ===== NUTRICIÓN (bloque rosa, imagen derecha) ===== -->
+<section id="nutricion" class="section-split--pink section-split--pink-nutri reveal fx-pop">
 
-    <!-- Image container -->
-    <div class="w-full md:w-1/2 flex justify-center md:justify-start">
-      <img src="https://placehold.co/600x600/e6e6e6/a3a3a3?text=Bowl+de+comida+saludable" 
-           alt="Bowl de comida saludable"
-           class="w-2/3 h-auto rounded-lg shadow-xl fade-right"/>
+  <!-- Lado texto (izquierda) -->
+  <div class="text-side">
+    <div class="wrap">
+      <h2 class="headline text-3xl md:text-5xl font-extrabold tracking-wide">NUTRICIÓN</h2>
+      <p class="lead mt-4 md:mt-6">
+        Incluye guía nutricional con balance en macros y micros, aprende a usar proteínas,
+        carbohidratos y grasas a tu favor sin obsesionarte. Guía de suplementación y cambios
+        de hábitos para aplicar en tu día a día.
+      </p>
     </div>
   </div>
+
+  <!-- Lado imagen (derecha) -->
+  <div class="image-side" aria-label="Bowl de comida saludable"></div>
 </section>
   
 <!-- Pilar 3 -->
