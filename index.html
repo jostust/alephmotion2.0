@@ -253,6 +253,87 @@
 .reveal.visible .stagger > *:nth-child(4) { transition-delay: .35s; }
 .reveal.visible .stagger > *:nth-child(5) { transition-delay: .45s; }
 .reveal.visible .stagger > *:nth-child(6) { transition-delay: .55s; }
+  /* ====== BLOQUE "NO ES PROMEDIO" (rosa, imagen derecha) ====== */
+.section-split--pink{
+  position: relative;
+  display: flex;
+  min-height: 80vh;     /* mitad de pantalla aprox */
+  width: 100%;
+  overflow: hidden;
+  background: var(--pink);
+}
+
+/* Lado de TEXTO (izquierda) */
+.section-split--pink .text-side{
+  flex: 1 1 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--pink);
+  color: #1a1a1a;       /* alto contraste sobre rosa */
+  padding: 3rem 2rem;
+}
+.section-split--pink .text-side .wrap{
+  width:100%; max-width: 640px; text-align: left;
+}
+
+/* Lado de IMAGEN (derecha) */
+.section-split--pink .image-side{
+  position: relative;
+  flex: 1 1 50%;
+  background: url("assets/img/no-promedio-desktop.jpg") center/cover no-repeat;
+}
+.section-split--pink .image-side::after{
+  content:"";
+  position:absolute; inset:0;
+  /* fade hacia la IZQ conectando con el rosa */
+  background: linear-gradient(
+    to left,
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,.28) 55%,
+    var(--pink) 85%
+  );
+}
+
+/* Pilares más grandes */
+.section-split--pink .pillars li{
+  font-weight: 800;
+  letter-spacing: .02em;
+}
+
+/* Responsive (móvil: texto arriba, imagen abajo) */
+@media (max-width:768px){
+  .section-split--pink{ flex-direction: column; min-height: auto; }
+
+  .section-split--pink .text-side{ padding: 2rem 1.25rem; }
+
+  .section-split--pink .image-side{
+    background-image:
+      url("assets/img/no-promedio-mobile.jpg"),
+      url("assets/img/no-promedio-desktop.jpg"); /* fallback */
+    height: 56vh; min-height: 340px;
+    background-size: cover; background-position: center;
+  }
+  .section-split--pink .image-side::after{
+    /* en móvil, fade hacia ABAJO al rosa del panel */
+    background: linear-gradient(
+      to bottom,
+      rgba(0,0,0,0) 35%,
+      rgba(0,0,0,.45) 78%,
+      var(--pink) 100%
+    );
+  }
+}
+
+/* ====== EFECTO DE ENTRADA "POP" ====== */
+.fx-pop { opacity: 0; transform: scale(.96); transition: opacity .7s ease, transform .7s ease; }
+.reveal.visible .fx-pop { opacity: 1; transform: none; }
+
+/* (Opcional) escalonado interno */
+.stagger > * { opacity: 0; transform: translateY(12px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.visible .stagger > * { opacity:1; transform:none; }
+.reveal.visible .stagger > *:nth-child(2){ transition-delay:.08s; }
+.reveal.visible .stagger > *:nth-child(3){ transition-delay:.16s; }
+.reveal.visible .stagger > *:nth-child(4){ transition-delay:.24s; }
+.reveal.visible .stagger > *:nth-child(5){ transition-delay:.32s; }
 </style>
 </head>
 <body class="bg-[#1a1a1a]">
@@ -345,37 +426,32 @@
   </div>
 </section> 
   
-<!-- No es un programa promedio -->
-<section class="section-3-bg text-black py-20 reveal">
-  <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-center">
-    <!-- Imagen -->
-    <div class="w-full md:w-2/3 flex justify-center">
-      <picture>
-  <!-- Imagen para pantallas chicas -->
-  <source media="(max-width: 768px)" srcset="assets/img/fitness-promedio-mobile.jpg">
-  
-  <!-- Imagen por defecto (desktop) -->
-  <img src="assets/img/fitness-promedio-desktop.jpg" 
-       alt="No es un programa de fitness promedio" 
-       class="w-2/3 h-auto rounded-lg shadow-xl fade-right"/>
-</picture>
-    </div>
-    <!-- Texto -->
-    <div class="w-full md:w-1/2 mt-8 md:mt-0 p-6 md:p-12">
-      <h2 class="text-2xl md:text-5xl font-black leading-tight tracking-wide text-gray-800">NO ES</h2>
-      <h2 class="text-2xl md:text-5xl font-black leading-tight tracking-wide text-gray-800">UN PROGRAMA</h2>
-      <h2 class="text-2xl md:text-5xl font-black leading-tight tracking-wide text-gray-800">DE FITNESS</h2>
-      <h2 class="text-2xl md:text-5xl font-black leading-tight tracking-wide text-gray-800">PROMEDIO</h2>
-      <p class="mt-8 text-sm max-w-sm text-gray-700">Efectivo, inclusivo y transformador. RESET 90 está construido sobre 3 pilares.</p>
-      <ul class="mt-6 space-y-4 font-bold text-gray-800">
-        <li>1 ENTRENAMIENTO PROGRESIVO</li>
-        <li>2 NUTRICIÓN INTELIGENTE</li>
-        <li>3 HÁBITOS Y SOPORTE</li>
+<section class="section-split--pink reveal" id="no-promedio">
+  <!-- TEXTO IZQUIERDA -->
+  <div class="text-side">
+    <div class="wrap stagger">
+      <!-- Título (mismo tamaño que el bloque anterior) -->
+      <h2 class="text-3xl md:text-5xl font-extrabold tracking-wide fx-pop">
+        ESTE PROGRAMA NO ES UN INTENTO MÁS
+      </h2>
+
+      <!-- Subtítulo (mismo tamaño que tu subtítulo anterior) -->
+      <p class="mt-4 text-2xl md:text-3xl font-bold fx-pop">
+        Diseñado para que no tengas que empezar de cero otra vez. RESET 90 se basa en 3 pilares:
+      </p>
+
+      <!-- Pilares (más grandes) -->
+      <ul class="mt-6 space-y-3 text-xl md:text-2xl pillars fx-pop">
+        <li>1. ROMPE MITOS</li>
+        <li>2. CAMBIA HÁBITOS</li>
+        <li>3. APRENDE Y CONTINÚA</li>
       </ul>
     </div>
   </div>
-</section>
 
+  <!-- IMAGEN DERECHA -->
+  <div class="image-side fx-pop"></div>
+</section>
 <!-- Pilar 1 -->
 <section class="section-3-bg text-black py-20 reveal">
   <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-center">
