@@ -572,6 +572,27 @@
   font-size: 1.2rem;      /* tamaño del punto */
   line-height: 1; 
 }
+  /* Línea rosa para fondos claros */
+.headline::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  margin: 8px auto 0 auto;
+  background: linear-gradient(90deg, #ff4d88 0%, #ff99cc 100%);
+  border-radius: 4px;
+}
+
+/* Línea blanca para fondos oscuros (ej. bloque negro) */
+.headline-light::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  margin: 8px auto 0 auto;
+  background: linear-gradient(90deg, #ffffff 0%, #cccccc 100%);
+  border-radius: 4px;
+}
 </style>
 </head>
 <body class="bg-[#1a1a1a]">
@@ -673,7 +694,7 @@
   <!-- Mitad izquierda: TEXTO -->
   <div class="text-side">
     <div class="wrap stagger">
-     <h2 class="text-3xl md:text-5xl font-extrabold tracking-wide fx-pop">
+     <h2 class="headline text-3xl md:text-5xl font-extrabold tracking-wide fx-pop">
         ESTE PROGRAMA NO ES UN INTENTO MÁS
       </h2>
 <p class="mt-4 text-lg md:text-xl text-gray-900 fx-pop">
@@ -700,7 +721,7 @@
   <!-- Texto derecha -->
   <div class="text-side">
     <div class="wrap">
-      <h2 class="headline">ENTRENAMIENTO</h2>
+      <h2 class="headline-light">ENTRENAMIENTO</h2>
 
      <ul class="list">
   <li>Sesiones híbridas de 45–60 minutos.</li>
