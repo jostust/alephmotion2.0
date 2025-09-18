@@ -677,6 +677,26 @@
     );
   }
 }
+  /* ===== UTILIDADES DE TITULARES (no rompen nada existente) ===== */
+
+/* Tamaños consistentes para H2 */
+.headline-xl{
+  font-size: clamp(32px, 4.8vw, 72px);
+  line-height: 1.1;
+  font-weight: 900;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+}
+.headline-xxl{
+  font-size: clamp(36px, 6vw, 82px);
+  line-height: 1.06;
+  font-weight: 900;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+}
+
+/* Forzar ocultar la línea si algún bloque ya dibuja su propia ::after  */
+.headline-no-line::after { display: none !important; }
 </style>
 </head>
 <body class="bg-[#1a1a1a]">
@@ -778,7 +798,7 @@
   <!-- Mitad izquierda: TEXTO -->
   <div class="text-side">
     <div class="wrap stagger">
-   <h2 class="headline fx-fade-up">ESTE PROGRAMA NO ES UN INTENTO MÁS</h2>
+   <h2 class="headline headline-xl fx-fade-up">ESTE PROGRAMA NO ES UN INTENTO MÁS</h2>
 <p class="mt-4 text-lg md:text-xl text-gray-900 fx-pop">
         Diseñado para que no tengas que empezar de cero otra vez. RESET 90 se basa en 3 pilares:
       </p>
@@ -803,7 +823,7 @@
   <!-- Texto derecha -->
   <div class="text-side">
     <div class="wrap">
-<h2 class="headline fx-fade-right">ENTRENAMIENTO</h2>
+<h2 class="headline headline-xl headline-light fx-fade-right">ENTRENAMIENTO</h2>
 
      <ul class="list">
   <li>Sesiones híbridas de 45–60 minutos.</li>
@@ -823,7 +843,7 @@
   <!-- Lado texto (izquierda) -->
   <div class="text-side">
     <div class="wrap">
-     <h2 class="headline fx-zoom-in">NUTRICIÓN</h2>
+     <h2 class="headline headline-xl fx-zoom-in">NUTRICIÓN</h2>
       <p class="lead mt-4 md:mt-6">
         Incluye guía nutricional con balance en macros y micros, aprende a usar proteínas,
         carbohidratos y grasas a tu favor sin obsesionarte. Guía de suplementación y cambios
@@ -844,7 +864,7 @@
   <!-- Texto derecha -->
   <div class="text-side">
     <div class="wrap">
-    <h2 class="headline fx-fade-left">HÁBITOS Y SOPORTE</h2>
+    <h2 class="headline headline-xl fx-fade-left">HÁBITOS Y SOPORTE</h2>
 
       <p class="lead">
         En <strong>Reset 90</strong> aprenderás a tomar más agua, mejorar tu descanso, <strong>reducir</strong> inflamación
