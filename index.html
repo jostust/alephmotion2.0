@@ -223,6 +223,36 @@
     transform: none !important;
   }
 }
+  /* ===== Effects para reveal on scroll ===== */
+
+/* Entradas básicas */
+.fx-fade-up { opacity: 0; transform: translateY(24px) scale(.98); }
+.fx-slide-left { opacity: 0; transform: translateX(-40px); }
+.fx-slide-right { opacity: 0; transform: translateX(40px); }
+
+/* Cuando el observer agrega .visible al contenedor .reveal */
+.reveal.visible .fx-fade-up,
+.reveal.visible .fx-slide-left,
+.reveal.visible .fx-slide-right {
+  opacity: 1; transform: none;
+}
+
+/* Duraciones / timing */
+.fx-fade-up,
+.fx-slide-left,
+.fx-slide-right {
+  transition: opacity .9s ease, transform .9s ease;
+}
+
+/* Stagger (efecto escalonado para los hijos del contenedor .stagger) */
+.stagger > * { opacity: 0; transform: translateY(18px); }
+.reveal.visible .stagger > * { opacity: 1; transform: none; transition: opacity .7s ease, transform .7s ease; }
+.reveal.visible .stagger > *:nth-child(1) { transition-delay: .05s; }
+.reveal.visible .stagger > *:nth-child(2) { transition-delay: .15s; }
+.reveal.visible .stagger > *:nth-child(3) { transition-delay: .25s; }
+.reveal.visible .stagger > *:nth-child(4) { transition-delay: .35s; }
+.reveal.visible .stagger > *:nth-child(5) { transition-delay: .45s; }
+.reveal.visible .stagger > *:nth-child(6) { transition-delay: .55s; }
 </style>
 </head>
 <body class="bg-[#1a1a1a]">
@@ -285,22 +315,38 @@
   <!-- Mitad derecha: texto -->
   <div class="text-side">
     <div class="wrap">
-      <h2 class="text-3xl md:text-5xl font-extrabold tracking-wide">NUEVO PROGRAMA</h2>
-      <h2 class="text-3xl md:text-5xl font-extrabold tracking-wide hl">RESET 90</h2>
-      <h2 class="text-3xl md:text-5xl font-extrabold tracking-wide ">ENTRENAMIENTOS</h2>
-      <h2 class="text-3xl md:text-5xl font-extrabold tracking-wide hl">DIARIOS</h2>
 
-      <p class="mt-6 text-sm md:text-base text-gray-300">Desde $3,000 MXN/mes (según paquete)</p>
-      <p class="mt-4 text-sm md:text-base text-gray-300">
-        Entrena conmigo, aprende nutrición práctica y desarrolla hábitos sostenibles.
+      <h2 class="text-3xl md:text-5xl font-extrabold tracking-wide reveal fx-fade-up" style="animation-delay:0s;">
+        NUEVO PROGRAMA
+      </h2>
+
+      <h2 class="text-3xl md:text-5xl font-extrabold tracking-wide reveal fx-fade-up hl" style="animation-delay:0.2s;">
+        RESET 90
+      </h2>
+
+      <h2 class="text-3xl md:text-5xl font-extrabold tracking-wide reveal fx-fade-up" style="animation-delay:0.4s;">
+        ENTRENAMIENTOS
+      </h2>
+
+      <h2 class="text-3xl md:text-5xl font-extrabold tracking-wide reveal fx-fade-up" style="animation-delay:0.6s;">
+        DIARIOS
+      </h2>
+
+      <p class="mt-6 text-sm md:text-base text-gray-300 reveal fx-fade-up" style="animation-delay:0.8s;">
+        Desde $3,000 MXN/mes (según paquete)
+      </p>
+
+      <p class="mt-4 text-sm md:text-base text-gray-300 reveal fx-fade-up" style="animation-delay:1s;">
+        Entrena conmigo, aprende nutrición práctica y desarrolla hábitos sostenibles.  
         Acceso a rutinas guiadas, plan semanal de comidas y acompañamiento de la comunidad AlephMotion.
       </p>
 
       <a href="register.html"
-         class="inline-block mt-8 px-8 py-3 rounded-full font-bold shadow-lg
-                bg-white text-gray-900 hover:shadow-xl transition">
+        class="inline-block mt-8 px-8 py-3 rounded-full font-bold shadow-lg bg-white text-gray-900 hover:shadow-xl transition reveal fx-fade-up"
+        style="animation-delay:1.2s;">
         EMPIEZA HOY
       </a>
+
     </div>
   </div>
 </section> 
