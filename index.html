@@ -1122,6 +1122,27 @@
     );
   }
 }
+  /* --- HOLA SOY MARESI (reverse) - ajustar altura y encuadre --- */
+.section-soy2.section-soy2--reverse {
+  min-height: 86vh;              /* fuerza altura general en desktop */
+}
+
+.section-soy2.section-soy2--reverse .section-soy2__image{
+  min-height: 86vh;              /* iguala altura del lado de la imagen */
+  background-position: center 12%;/* sube el punto de enfoque (10–20% suele ir bien) */
+  background-repeat: no-repeat;
+  background-size: cover;        /* mantiene el look sin bandas */
+}
+
+/* Móvil: texto arriba y foto abajo más bajita */
+@media (max-width: 768px){
+  .section-soy2.section-soy2--reverse { min-height: auto; }
+  .section-soy2.section-soy2--reverse .section-soy2__image{
+    height: 56vh;
+    min-height: 340px;
+    background-position: center top; /* en móvil queremos ver más de arriba */
+  }
+}
 </style>
 </head>
 <body class="bg-[#1a1a1a]">
@@ -1303,7 +1324,7 @@
 </section> 
   
   <!-- ====== ACERCA DE MARESI ====== -->
-<section class="section-soy2 section-soy2-reverse reveal">
+<section class="section-soy2 section-soy2--reverse reveal">
   <!-- Texto izquierda -->
   <div class="section-soy2__body">
     <article class="section-soy2__card fx-pop">
