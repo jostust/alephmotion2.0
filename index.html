@@ -1021,6 +1021,36 @@
     max-height: 220px;
   }
 }
+  .bio-collapse {
+  margin-top: 1rem;
+}
+
+.bio-toggle {
+  display: none;
+}
+
+.bio-label {
+  display: inline-block;
+  margin-top: 1rem;
+  font-weight: 600;
+  color: var(--pink);
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.bio-label:hover {
+  color: #fff;
+}
+
+.bio-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+
+.bio-toggle:checked ~ .bio-content {
+  max-height: 2000px; /* suficiente para todo el texto */
+  margin-top: 1rem;
+}
 </style>
 </head>
 <body class="bg-[#1a1a1a]">
@@ -1201,36 +1231,67 @@
   </div>
 </section> 
   
-<!-- ====== ACERCA DE MARESI ====== -->
-<section class="section-soy2 section-soy2--reverse reveal">
-  <!-- texto izquierda -->
+<!-- ===== ACERCA DE MARESI ===== -->
+<section class="section-soy2 section-soy2-reverse reveal">
+  <!-- Texto izquierda -->
   <div class="section-soy2__body">
     <article class="section-soy2__card fx-pop">
       <h2 class="section-soy2__title">
-        ¡Hola! Soy <span class="section-soy2__accent">Maresi Allen</span>
+        <span class="section-soy2__accent">¡Hola! Soy</span> Maresi Allen
         <span class="section-soy2__underline"></span>
       </h2>
 
-      <p><strong>Quién soy</strong></p>
+      <div class="bio-intro">
+        <p><strong>Quién soy</strong></p>
+        <p>
+          Tras muchos años de <strong>vida sedentaria</strong>, sin saber cómo ni cuándo comenzar, un día decidí
+          aventurarme en el <strong>mundo del fitness</strong>. Lo que empezó como el deseo de cambiar mi estilo
+          de vida se convirtió en una <strong>pasión</strong> que me impulsó a <strong>superar mis límites</strong>
+          y a crear una versión más <strong>fuerte, sana y resiliente</strong> de mí misma.
+        </p>
+      </div>
 
-      <p>Tras muchos años de <strong>vida sedentaria</strong>, sin saber cómo ni cuándo comenzar, un día decidí aventurarme en el <strong>mundo del fitness</strong>. Lo que empezó como el deseo de cambiar mi estilo de vida se convirtió en una pasión que me impulsó a <strong>superar mis límites</strong> y a crear una versión más <strong>fuerte, sana y resiliente</strong> de mí misma.</p>
+      <!-- Bloque colapsable -->
+      <div class="bio-collapse">
+        <input type="checkbox" id="toggle-bio" class="bio-toggle">
+        <label for="toggle-bio" class="bio-label">Leer más</label>
+        
+        <div class="bio-content">
+          <p>
+            <strong>Aleph Reset</strong> nace de esa experiencia personal: el <strong>ejercicio me cambió la vida</strong>
+            y quiero compartir con más mujeres los beneficios de <strong>entrenar con propósito</strong>. 
+            Más allá de la <strong>estética</strong>, tener un <strong>cuerpo fuerte</strong> y cuidar nuestra
+            <strong>salud interior</strong> impacta directamente en la <strong>vitalidad</strong> y en la 
+            <strong>calidad de vida a largo plazo</strong>.
+          </p>
 
-      <p><strong>Aleph Reset</strong> nace de esa experiencia personal: el ejercicio me cambió la vida y quiero compartir con más mujeres los beneficios de <strong>entrenar con propósito</strong>. Más allá de la estética, tener un <strong>cuerpo fuerte</strong> y cuidar nuestra <strong>salud interior</strong> impacta directamente en la <strong>vitalidad</strong> y en la <strong>calidad de vida a largo plazo</strong>.</p>
+          <p>
+            Mi misión es <strong>acompañar a mujeres</strong> en este proceso, ayudándolas a
+            <strong>romper mitos del fitness</strong> y a construir <strong>hábitos</strong> que realmente transforman.
+          </p>
 
-      <p>Mi misión es acompañar a mujeres en este proceso, ayudándolas a <strong>romper mitos del fitness</strong> y a construir hábitos que realmente transforman.</p>
+          <p>
+            Cuento con más de <strong>5 años de experiencia</strong> en el ámbito deportivo y 
+            <strong>certificación internacional</strong> por la Asociación Internacional de Entrenadores Personales, 
+            además de especializaciones en:
+          </p>
 
-      <p>Cuento con más de <strong>5 años de experiencia</strong> en el ámbito deportivo y <strong>certificación internacional</strong> por la <strong>Asociación Internacional de Entrenadores Personales</strong>, además de especializaciones en:</p>
+          <h3 class="section-soy2__sub">Especializaciones</h3>
+          <ul class="list-pink">
+            <li><strong>Programación de entrenamiento para mujeres</strong></li>
+            <li><strong>Manejo hormonal</strong> aplicado al ejercicio</li>
+            <li><strong>Nutrición deportiva</strong> y antienvejecimiento</li>
+            <li><strong>Entrenamiento en embarazo y posparto</strong></li>
+            <li><strong>Manejo de personas con factores de riesgo</strong></li>
+          </ul>
 
-      <h3 class="section-soy2__sub">Especializaciones</h3>
-      <ul class="list-pink">
-        <li><strong>Programación de entrenamiento para mujeres</strong></li>
-        <li><strong>Manejo hormonal</strong> aplicado al ejercicio</li>
-        <li><strong>Nutrición deportiva</strong> y antienvejecimiento</li>
-        <li><strong>Entrenamiento en embarazo y posparto</strong></li>
-        <li>Manejo de personas con <strong>factores de riesgo</strong></li>
-      </ul>
-
-      <p>Con estas bases, diseño <strong>rutinas y planes</strong> que no solo <strong>cambian cuerpos</strong>, sino que también <strong>fortalecen la salud y la confianza</strong> de cada mujer.</p>
+          <p>
+            Con estas bases, diseño <strong>rutinas y planes</strong> que no solo 
+            <strong>cambian cuerpos</strong>, sino que también 
+            <strong>fortalecen la salud y la confianza</strong> de cada mujer.
+          </p>
+        </div>
+      </div>
 
       <div class="section-soy2__cta">
         <a href="register.html" class="btn-primary inline-block">Entrena conmigo</a>
@@ -1353,6 +1414,19 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   updateButtons();
+</script>
+  <script>
+  (function(){
+    const box = document.getElementById('bioCollapse');
+    const btn = document.getElementById('bioToggle');
+    if(!box || !btn) return;
+
+    btn.addEventListener('click', function(){
+      const open = box.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.textContent = open ? 'Ver menos' : 'Ver más';
+    });
+  })();
 </script>
 </body>
 </html>
