@@ -849,6 +849,77 @@
     );
   }
 }
+  /* CTA FINAL */
+.ready-to-start {
+  position: relative;
+  background: url('assets/img/cta-banner.jpg') center/cover no-repeat;
+  padding: 6rem 2rem;
+  color: #fff;
+}
+
+.ready-to-start-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+}
+
+.ready-to-start-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+}
+
+.cta-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+.cta-title .highlight {
+  color: #e55a5a;
+}
+
+.cta-list {
+  list-style: none;
+  padding: 0;
+  margin: 2rem auto;
+  text-align: left;
+  max-width: 650px;
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+
+.cta-list li {
+  margin: 0.8rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.cta-list .icon {
+  color: #e55a5a;
+  font-size: 1.3rem;
+}
+
+.cta-button {
+  margin-top: 3rem;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: #e55a5a;
+  color: #fff;
+  font-weight: 700;
+  padding: 1rem 3rem;
+  border-radius: 999px;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: #fff;
+  color: #e55a5a;
+}
 </style>
 </head>
 <body class="bg-[#1a1a1a]">
@@ -1074,17 +1145,17 @@
 <section class="ready-to-start reveal">
   <div class="ready-to-start-overlay"></div>
   <div class="ready-to-start-content container mx-auto px-6 text-center">
-    <h2 class="text-4xl md:text-6xl font-black leading-tight tracking-wide text-white">
-      <span class="text-[#e55a5a]">¿LISTO</span> PARA EMPEZAR?
+    <h2 class="cta-title">
+      <span class="highlight">¿LISTO</span> PARA EMPEZAR?
     </h2>
-    <ul class="mt-8 space-y-2 text-white text-lg md:text-xl font-light">
-      <li>Rutinas frescas de lunes a viernes (hogar y gimnasio)</li>
-      <li>Comunidad que te impulsa y acompaña</li>
-      <li>Plan de nutrición delicioso y flexible</li>
-      <li>Nunca más te aburras con tu entrenamiento</li>
+    <ul class="cta-list">
+      <li><span class="icon">✅</span> Rutinas frescas de lunes a viernes (hogar y gimnasio)</li>
+      <li><span class="icon">⚡</span> Comunidad que te impulsa y acompaña</li>
+      <li><span class="icon">🍎</span> Plan de nutrición delicioso y flexible</li>
+      <li><span class="icon">💪</span> Nunca más te aburras con tu entrenamiento</li>
     </ul>
-    <div class="mt-12 flex justify-center items-center">
-      <a href="register.html" class="inline-block bg-white text-gray-800 font-bold py-3 px-12 rounded-full shadow-lg hover:shadow-xl transition-all">EMPEZAR AHORA</a>
+    <div class="cta-button">
+      <a href="register.html" class="btn-primary">EMPEZAR AHORA</a>
     </div>
   </div>
 </section>
