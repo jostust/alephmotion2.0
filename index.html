@@ -1314,40 +1314,26 @@
 <body class="bg-[#1a1a1a]">
 
 <!-- Header & Navigation -->
-<header class="header-bg shadow-md fixed w-full top-0 z-50">
-  <nav class="container mx-auto px-6 py-4 flex items-center justify-between flex-wrap">
-    <div class="flex items-center flex-shrink-0 text-white mr-6">
-      <span class="font-bold text-2xl tracking-tight text-[d1d1d1]">AlephMotion</span>
-    </div>
+<!-- Header & Navigation -->
+<header class="header-bg sticky top-0 z-40 backdrop-blur bg-black/60 border-b border-white/10">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 
-    <div class="mobile-menu-open md:hidden">
-      <button class="flex items-center px-3 py-2 border rounded text-[#d1d1d1] border-[#d1d1d1]" id="menu-btn" aria-label="Menú">
-        <svg class="fill-current h-5 w-5" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0zM0 9h20v2H0zM0 15h20v2H0z"/></svg>
-      </button>
-    </div>
+    <!-- LOGO: siempre lleva al inicio -->
+    <a href="/" class="text-white font-extrabold text-xl tracking-wide hover:text-pink-400 transition brand">
+      AlephMotion
+    </a>
 
-    <div class="main-nav w-full md:flex md:items-center md:w-auto" id="main-nav">
-      <div class="text-sm md:flex-grow flex flex-col md:flex-row md:items-center">
-        <a class="nav-link block mt-4 md:inline-block md:mt-0 mr-4" href="#new-booty">PROGRAMAS</a>
-        <a class="nav-link block mt-4 md:inline-block md:mt-0 mr-4" href="#nutricion">NUTRICIÓN</a>
-        <a class="nav-link block mt-4 md:inline-block md:mt-0 mr-4"
-   href="tienda.html"
-   onclick="window.location.href='tienda.html'; return true;">
-  TIENDA
-</a>
-        <a class="nav-link block mt-4 md:inline-block md:mt-0 mr-4" href="#faqs">FAQ'S</a>
-        <a class="nav-link block mt-4 md:inline-block md:mt-0 mr-4" href="#blog">BLOG</a>
-        <a class="nav-link block mt-4 md:inline-block md:mt-0 mr-4" href="#login">INICIAR SESIÓN</a>
-        <a class="nav-link block mt-4 md:inline-block md:mt-0 mr-4" href="#">INICIO</a>
-      </div>
-      <div>
-        <a class="btn-primary inline-block text-sm px-4 py-2 leading-none border rounded mt-4 md:mt-0" href="register.html">ÚNETE AHORA</a>
-      </div>
-    </div>
-  </nav>
+    <!-- Navegación -->
+    <nav class="main-nav flex items-center gap-6 text-sm">
+      <a href="#planes" class="nav-link hover:text-pink-400 transition">Planes</a>
+      <a href="#hola-soy-maresi" class="nav-link hover:text-pink-400 transition">Blog</a>
+      <a href="tienda.html" class="nav-link hover:text-pink-400 transition">Tienda</a>
+    </nav>
+
+  </div>
 </header>
-
-<!-- Hero Section -->
+  
+  <!-- Hero Section -->
 <section id="hero" class="hero-section text-white flex items-center justify-center text-center reveal">
   <div class="hero-overlay"></div>
   <div class="hero-content relative">
@@ -1490,7 +1476,7 @@
 </section> 
   
   <!-- ====== ACERCA DE MARESI ====== -->
-<section class="section-soy2 section-soy2--reverse reveal">
+<section id="hola-soy-maresi" class="section-soy2 section-soy2-reverse reveal">
   <!-- Texto izquierda -->
   <div class="section-soy2__body">
     <article class="section-soy2__card fx-pop">
