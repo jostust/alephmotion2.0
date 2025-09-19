@@ -802,6 +802,53 @@
   }
   .section-soy2 .section-soy2__card{ padding:1.5rem; }
 }
+  /* ====== Soy Maresi — variante reverse (texto izq / imagen der) ====== */
+.section-soy2.section-soy2--reverse {
+  /* nada especial aquí; hereda del base */
+}
+
+/* Imagen a la DERECHA */
+.section-soy2.section-soy2--reverse .section-soy2__image {
+  order: 2; /* se coloca a la derecha en desktop */
+  background: url("assets/img/soymar-reverse-desktop.jpg") center/cover no-repeat;
+}
+
+/* Fade de la imagen hacia la IZQUIERDA */
+.section-soy2.section-soy2--reverse .section-soy2__image::after {
+  content:""; position:absolute; inset:0;
+  background: linear-gradient(
+    to left,
+    rgba(15,15,16,0) 0%,
+    rgba(15,15,16,.45) 60%,
+    var(--soy2-bg) 92%
+  );
+}
+
+/* Panel de texto a la IZQUIERDA */
+.section-soy2.section-soy2--reverse .section-soy2__body {
+  order: 1;
+}
+
+/* ===== Responsive (móvil): texto ARRIBA, imagen ABAJO con fade hacia ARRIBA ===== */
+@media (max-width:768px){
+  .section-soy2.section-soy2--reverse {
+    flex-direction: column; /* fuerza el stacking vertical */
+  }
+  .section-soy2.section-soy2--reverse .section-soy2__body { order: 1; }
+  .section-soy2.section-soy2--reverse .section-soy2__image {
+    order: 2;
+    height: 56vh; min-height: 340px;
+    background: url("assets/img/soymar-reverse-mobile.jpg") center/cover no-repeat;
+  }
+  .section-soy2.section-soy2--reverse .section-soy2__image::after {
+    background: linear-gradient(
+      to top,
+      rgba(15,15,16,0) 0%,
+      rgba(15,15,16,.5) 70%,
+      var(--soy2-bg) 100%
+    );
+  }
+}
 </style>
 </head>
 <body class="bg-[#1a1a1a]">
@@ -983,11 +1030,8 @@
 </section> 
   
 <!-- ====== ACERCA DE MARESI ====== -->
-<section class="section-soy2 reveal">
-  <!-- imagen izquierda -->
-  <div class="section-soy2__image fx-slide-left" aria-hidden="true"></div>
-
-  <!-- texto derecha -->
+<section class="section-soy2 section-soy2--reverse reveal">
+  <!-- texto izquierda -->
   <div class="section-soy2__body">
     <article class="section-soy2__card fx-pop">
       <h2 class="section-soy2__title">
@@ -1021,8 +1065,12 @@
       </div>
     </article>
   </div>
-</section> 
-<!-- CTA final -->
+
+  <!-- imagen derecha -->
+  <div class="section-soy2__image fx-slide-right" aria-hidden="true"></div>
+</section>
+  
+  <!-- CTA final -->
 <section class="ready-to-start reveal">
   <div class="ready-to-start-overlay"></div>
   <div class="ready-to-start-content container mx-auto px-6 text-center">
@@ -1075,7 +1123,7 @@
     <!-- Copyright -->
     <div class="mt-8 text-center text-xs text-gray-500 border-t border-gray-700 pt-8">
       <div class="flex flex-col md:flex-row justify-center md:justify-between items-center space-y-2 md:space-y-0">
-        <span>© AlephMotion 2025</span>
+        <span>© AlephMotion 2025 By Fokuz Design</span>
         <div class="flex space-x-4">
           <a href="#" class="hover:text-white transition">Política de privacidad</a>
           <a href="#" class="hover:text-white transition">Términos de uso</a>
