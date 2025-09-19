@@ -877,7 +877,7 @@
 }
 
 .cta-title .highlight {
-  color: #f472b6;
+  color: #F7A9B8;
 }
 
 .cta-list {
@@ -898,7 +898,7 @@
 }
 
 .cta-list .icon {
-  color: #f472b6;
+  color: #F7A9B8;
   font-size: 1.3rem;
 }
 
@@ -908,7 +908,7 @@
 
 .btn-primary {
   display: inline-block;
-  background: #f472b6;
+  background: #F7A9B8;
   color: #fff;
   font-weight: 700;
   padding: 1rem 3rem;
@@ -918,7 +918,19 @@
 
 .btn-primary:hover {
   background: #fff;
-  color: #f472b6;
+  color: #F7A9B8;
+}
+  .ready-to-start img {
+  width: 100%;
+  height: auto;
+  max-height: 500px; /* en desktop no se va a desbordar */
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .ready-to-start img {
+    max-height: 220px; /* en móvil la hace chiquita */
+  }
 }
 </style>
 </head>
@@ -928,7 +940,7 @@
 <header class="header-bg shadow-md fixed w-full top-0 z-50">
   <nav class="container mx-auto px-6 py-4 flex items-center justify-between flex-wrap">
     <div class="flex items-center flex-shrink-0 text-white mr-6">
-      <span class="font-bold text-2xl tracking-tight text-[#d1d1d1]">AlephMotion</span>
+      <span class="font-bold text-2xl tracking-tight text-[d1d1d1]">AlephMotion</span>
     </div>
 
     <div class="mobile-menu-open md:hidden">
@@ -1144,6 +1156,7 @@
 <!-- CTA final -->
 <section class="ready-to-start reveal bg-black text-white py-20">
   <div class="container mx-auto px-6 text-center">
+    <!-- Texto CTA -->
     <h2 class="text-4xl md:text-6xl font-black leading-tight tracking-wide">
       <span class="text-[#f472b6]">¿LISTO</span> PARA EMPEZAR?
     </h2>
@@ -1155,6 +1168,11 @@
     </ul>
     <div class="mt-12">
       <a href="register.html" class="btn-rosa">EMPEZAR AHORA</a>
+    </div>
+
+    <!-- Imagen CTA -->
+    <div class="mt-12">
+      <img src="img/cta-final.jpg" alt="Maresi entrenando" class="mx-auto w-full max-w-5xl rounded-lg shadow-lg">
     </div>
   </div>
 </section>
