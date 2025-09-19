@@ -1308,31 +1308,68 @@
 .plan-price-v2 .price-suffix{ opacity:.75; font-size:.95rem; }
 .plan-price-v2 .price-month{ color:#eaeaea; opacity:.92; margin-bottom:.1rem; }
 .plan-price-v2 .price-note{ color:#cfcfcf; font-size:.9rem; }
-  
+/* Evitar que una sección pise a la otra */
+.section-split--pink,
+.section-split-habits{
+  position: relative;
+  overflow: clip;            /* asegura que el ::after no se salga */
+  isolation: isolate;        /* z-index limpio dentro */
+  margin-bottom: 2rem;       /* respirito entre bloques */
+}
+
+/* El overlay no recibe eventos y se queda dentro */
+.section-split--pink .image-side::after,
+.section-split-habits .image-side::after{ pointer-events:none; }
+
+/* Asegurar jerarquía correcta */
+.section-split--pink .image-side,
+.section-split-habits .image-side{ z-index:0; }
+.section-split--pink .text-side,
+.section-split-habits .text-side{ position:relative; z-index:1; }
+
+/* Móvil: altura cómoda y separación extra */
+@media (max-width:768px){
+  .section-split--pink{ padding-bottom: 1rem; }
+  .section-split-habits{ margin-top: 1rem; }
+
+  .section-split--pink .image-side,
+  .section-split-habits .image-side{
+    height: 56vh; min-height: 320px; background-size: cover; background-position: center;
+  }
+}  
 </style>
 </head>
 <body class="bg-[#1a1a1a]">
 
 <!-- Header & Navigation -->
 <!-- Header & Navigation -->
-<header class="header-bg sticky top-0 z-40 backdrop-blur bg-black/60 border-b border-white/10">
-  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="brand">AlephMotion</a>
 
-    <!-- LOGO: siempre lleva al inicio -->
-    <a href="/" class="text-white font-extrabold text-xl tracking-wide hover:text-pink-400 transition brand">
-      AlephMotion
-    </a>
-
-    <!-- Navegación -->
-    <nav class="main-nav flex items-center gap-6 text-sm">
-      <a href="#planes" class="nav-link hover:text-pink-400 transition">Planes</a>
-      <a href="#hola-soy-maresi" class="nav-link hover:text-pink-400 transition">Blog</a>
-      <a href="tienda.html" class="nav-link hover:text-pink-400 transition">Tienda</a>
+    <!-- NAV DESKTOP -->
+    <nav class="nav-desktop">
+      <a href="#planes" class="nav-link">Planes</a>
+      <a href="#hola-soy-maresi" class="nav-link">Blog</a>
+      <a href="tienda.html" class="nav-link">Tienda</a>
+      <a href="register.html" class="btn-cta">Comenzar ahora</a>
     </nav>
 
+    <!-- BOTÓN HAMBURGUESA (solo móvil) -->
+    <button class="hamburger" id="hamburger" aria-controls="mobileMenu" aria-expanded="false">
+      <span></span><span></span><span></span>
+      <span class="sr-only">Abrir menú</span>
+    </button>
   </div>
-</header>
-  
+
+  <!-- NAV MÓVIL -->
+  <nav id="mobileMenu" class="nav-mobile" hidden>
+    <a href="#planes" class="nav-link">Planes</a>
+    <a href="#hola-soy-maresi" class="nav-link">Blog</a>
+    <a href="tienda.html" class="nav-link">Tienda</a>
+    <a href="register.html" class="btn-cta w-full text-center">Comenzar ahora</a>
+  </nav>
+</header>  
   <!-- Hero Section -->
 <section id="hero" class="hero-section text-white flex items-center justify-center text-center reveal">
   <div class="hero-overlay"></div>
