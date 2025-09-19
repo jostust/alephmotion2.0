@@ -697,6 +697,111 @@
 
 /* Forzar ocultar la línea si algún bloque ya dibuja su propia ::after  */
 .headline-no-line::after { display: none !important; }
+  /* ===== HOLA SOY MARESI — versión pro (scoped) ===== */
+:root { --soy2-bg:#0f0f10; --soy2-ink:#e9e9e9; --soy2-pink:#F7A9B8; }
+
+.section-soy2 {
+  position: relative;
+  display: flex;
+  min-height: 80vh;
+  width: 100%;
+  background:
+    linear-gradient(135deg, rgba(247,169,184,.18) 0%, rgba(247,169,184,0) 35%),
+    var(--soy2-bg);
+  overflow: hidden;
+}
+
+/* imagen izquierda con fade a la derecha */
+.section-soy2 .section-soy2__image {
+  position: relative;
+  flex: 1 1 50%;
+  background: url("assets/img/soymar-desktop.jpg") center/cover no-repeat;
+}
+.section-soy2 .section-soy2__image::after{
+  content:""; position: absolute; inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(15,15,16,0) 0%,
+    rgba(15,15,16,.45) 60%,
+    var(--soy2-bg) 92%
+  );
+}
+
+/* panel de texto (glass suave) */
+.section-soy2 .section-soy2__body {
+  flex: 1 1 50%;
+  display:flex; align-items:center; justify-content:center;
+  padding: 3rem 2rem;
+}
+.section-soy2 .section-soy2__card {
+  width:100%; max-width:760px;
+  color: var(--soy2-ink);
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0,0,0,.35);
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  padding: 2rem 2.25rem;
+}
+
+/* tipografía y jerarquía */
+.section-soy2 .section-soy2__title {
+  margin: 0 0 .5rem 0;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .02em;
+  line-height: 1.05;
+  font-size: clamp(32px, 5vw, 64px); /* GRANDE en desktop */
+  color: #fff;
+}
+.section-soy2 .section-soy2__accent { color: var(--soy2-pink); }
+.section-soy2 .section-soy2__underline {
+  display:block; width:110px; height:6px; border-radius:999px; margin-top:12px;
+  background: linear-gradient(90deg, var(--soy2-pink) 0%, #ffc6d3 100%);
+}
+
+.section-soy2 p { margin: .9rem 0; line-height: 1.7; }
+.section-soy2 p strong { font-weight: 700; }
+
+/* subtítulo “Especializaciones” */
+.section-soy2 .section-soy2__sub {
+  margin-top: 1.25rem;
+  font-weight: 800;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  color:#fff;
+}
+
+/* lista con bullets discretos */
+.section-soy2 .list-pink { list-style:none; padding:0; margin:.5rem 0 0 0; }
+.section-soy2 .list-pink li {
+  position:relative; padding-left:1rem; margin:.4rem 0;
+}
+.section-soy2 .list-pink li::before{
+  content:""; position:absolute; left:0; top:.62em;
+  width:.45rem; height:.45rem; border-radius:999px; background: var(--soy2-pink);
+}
+
+/* CTA */
+.section-soy2 .section-soy2__cta { margin-top: 1.25rem; }
+
+/* responsive */
+@media (max-width: 768px){
+  .section-soy2{ flex-direction: column; min-height:auto; }
+  .section-soy2 .section-soy2__image{
+    height: 56vh; min-height: 340px;
+    background: url("assets/img/soymar-mobile.jpg") center/cover no-repeat;
+  }
+  .section-soy2 .section-soy2__image::after{
+    background: linear-gradient(
+      to bottom,
+      rgba(15,15,16,0) 0%,
+      rgba(15,15,16,.5) 70%,
+      var(--soy2-bg) 100%
+    );
+  }
+  .section-soy2 .section-soy2__card{ padding:1.5rem; }
+}
 </style>
 </head>
 <body class="bg-[#1a1a1a]">
@@ -877,44 +982,46 @@
   </div>
 </section> 
   
+<!-- ====== ACERCA DE MARESI ====== -->
+<section class="section-soy2 reveal">
+  <!-- imagen izquierda -->
+  <div class="section-soy2__image fx-slide-left" aria-hidden="true"></div>
 
-<section class="section-soy reveal">
-  <!-- Imagen izquierda -->
-  <div class="image-side fx-slide-left"></div>
-
-  <!-- Texto derecha -->
-  <div class="text-side">
-    <div class="card fx-pop">
-      <h2 class="title">
-        <span>¡Hola! Soy</span> <span class="title-accent">Maresi Allen</span>
-        <span class="title-underline"></span>
+  <!-- texto derecha -->
+  <div class="section-soy2__body">
+    <article class="section-soy2__card fx-pop">
+      <h2 class="section-soy2__title">
+        ¡Hola! Soy <span class="section-soy2__accent">Maresi Allen</span>
+        <span class="section-soy2__underline"></span>
       </h2>
 
-      <p><strong>🔹 Quién soy</strong></p>
-      <p>Tras muchos años de <strong>vida sedentaria</strong>, sin saber cómo ni cuándo comenzar, un día decidí aventurarme en el <strong>mundo del fitness</strong>. Lo que empezó como el deseo de cambiar mi estilo de vida se convirtió en una <strong>pasión</strong> que me impulsó a <strong>superar mis límites</strong> y a crear una versión más <strong>fuerte, sana y resiliente</strong> de mí misma.</p>
+      <p><strong>Quién soy</strong></p>
 
-      <p><strong>Aleph Reset</strong> nace de esa experiencia personal: el <strong>ejercicio me cambió la vida</strong> y quiero compartir con más mujeres los beneficios de <strong>entrenar con propósito</strong>. Porque más allá de la <strong>estética</strong>, tener un <strong>cuerpo fuerte</strong> y cuidar nuestra <strong>salud interior</strong> impacta directamente en nuestra <strong>vitalidad</strong> y en la <strong>calidad de vida a largo plazo</strong>.</p>
+      <p>Tras muchos años de <strong>vida sedentaria</strong>, sin saber cómo ni cuándo comenzar, un día decidí aventurarme en el <strong>mundo del fitness</strong>. Lo que empezó como el deseo de cambiar mi estilo de vida se convirtió en una pasión que me impulsó a <strong>superar mis límites</strong> y a crear una versión más <strong>fuerte, sana y resiliente</strong> de mí misma.</p>
 
-      <p>Mi misión es <strong>acompañar a mujeres</strong> en este proceso, ayudándolas a <strong>romper mitos del fitness</strong> y a construir <strong>hábitos que realmente transforman</strong>.</p>
+      <p><strong>Aleph Reset</strong> nace de esa experiencia personal: el ejercicio me cambió la vida y quiero compartir con más mujeres los beneficios de <strong>entrenar con propósito</strong>. Más allá de la estética, tener un <strong>cuerpo fuerte</strong> y cuidar nuestra <strong>salud interior</strong> impacta directamente en la <strong>vitalidad</strong> y en la <strong>calidad de vida a largo plazo</strong>.</p>
+
+      <p>Mi misión es acompañar a mujeres en este proceso, ayudándolas a <strong>romper mitos del fitness</strong> y a construir hábitos que realmente transforman.</p>
 
       <p>Cuento con más de <strong>5 años de experiencia</strong> en el ámbito deportivo y <strong>certificación internacional</strong> por la <strong>Asociación Internacional de Entrenadores Personales</strong>, además de especializaciones en:</p>
-      <ul>
-        <li>💪 <strong>Programación de entrenamiento para mujeres</strong>.</li>
-        <li>🧬 <strong>Manejo hormonal aplicado al ejercicio</strong>.</li>
-        <li>🥗 <strong>Nutrición deportiva y antienvejecimiento</strong>.</li>
-        <li>🤰 <strong>Entrenamiento en embarazo y posparto</strong>.</li>
-        <li>🩺 <strong>Manejo de personas con factores de riesgo</strong>.</li>
+
+      <h3 class="section-soy2__sub">Especializaciones</h3>
+      <ul class="list-pink">
+        <li><strong>Programación de entrenamiento para mujeres</strong></li>
+        <li><strong>Manejo hormonal</strong> aplicado al ejercicio</li>
+        <li><strong>Nutrición deportiva</strong> y antienvejecimiento</li>
+        <li><strong>Entrenamiento en embarazo y posparto</strong></li>
+        <li>Manejo de personas con <strong>factores de riesgo</strong></li>
       </ul>
 
       <p>Con estas bases, diseño <strong>rutinas y planes</strong> que no solo <strong>cambian cuerpos</strong>, sino que también <strong>fortalecen la salud y la confianza</strong> de cada mujer.</p>
 
-      <div class="cta">
+      <div class="section-soy2__cta">
         <a href="register.html" class="btn-primary inline-block">Entrena conmigo</a>
       </div>
-    </div>
+    </article>
   </div>
-</section>
- 
+</section> 
 <!-- CTA final -->
 <section class="ready-to-start reveal">
   <div class="ready-to-start-overlay"></div>
