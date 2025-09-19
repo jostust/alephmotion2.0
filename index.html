@@ -1143,6 +1143,45 @@
     background-position: center top; /* en móvil queremos ver más de arriba */
   }
 }
+  /* CTA FINAL FULLSCREEN */
+.ready-to-start {
+  position: relative;
+  background: url('assets/img/cta-banner.jpg') center/cover no-repeat;
+  height: 100vh;          /* ocupa toda la altura de la pantalla */
+  width: 100%;
+  display: flex;
+  align-items: center;    /* centra verticalmente el contenido */
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+}
+
+.ready-to-start-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55); /* oscurece un poco para leer el texto */
+}
+
+.ready-to-start-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  padding: 2rem;
+}
+
+/* Responsive ajustes */
+@media (max-width: 768px) {
+  .ready-to-start {
+    height: 100vh;       /* también en móvil */
+    padding: 2rem 1rem;
+  }
+  .cta-title {
+    font-size: clamp(1.8rem, 6vw, 2.5rem);
+  }
+  .cta-list {
+    font-size: 1rem;
+  }
+}
 </style>
 </head>
 <body class="bg-[#1a1a1a]">
