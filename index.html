@@ -1182,6 +1182,106 @@
     font-size: 1rem;
   }
 }
+  /* ===== PLANES ===== */
+.section-plans{
+  padding: 72px 20px;
+  background: #111;        /* se integra con tu paleta oscura */
+}
+.section-plans .container{ max-width: 1200px; margin: 0 auto; }
+
+.plans-head{ text-align:center; margin-bottom: 36px; }
+.plans-title{
+  color:#fff;
+  font-weight: 900;
+  font-size: clamp(28px, 4.5vw, 44px);
+  letter-spacing:.4px;
+}
+.plans-title .accent{ color:#F7A9B8; }
+.plans-sub{ color:#cfcfcf; margin-top:.5rem; }
+
+.plans-grid{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 20px;
+}
+
+/* Tarjeta */
+.plan-card{
+  position:relative;
+  background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+  border:1px solid rgba(255,255,255,.08);
+  border-radius: 24px;
+  padding: 24px 22px;
+  box-shadow: 0 10px 28px rgba(0,0,0,.26);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  will-change: transform;
+}
+.plan-card:hover,
+.plan-card:focus-within{
+  transform: translateY(-6px);
+  box-shadow: 0 16px 42px rgba(247,169,184,.20);
+  border-color: rgba(247,169,184,.45);
+}
+.plan-card::after{ /* glow suave al pasar */
+  content:"";
+  position:absolute; inset:-1px;
+  border-radius: 24px;
+  background: radial-gradient(120% 120% at 10% -10%, rgba(247,169,184,.15), transparent 40%);
+  opacity:0; pointer-events:none; transition:opacity .25s ease;
+}
+.plan-card:hover::after{ opacity:1; }
+
+.plan-badge{
+  position:absolute; top:14px; right:14px;
+  font-size:.78rem; font-weight:800; letter-spacing:.3px;
+  color:#111; background:#fff; border-radius:999px; padding:.35rem .7rem;
+}
+.plan-badge.hot{ background:#F7A9B8; color:#111; }
+.plan-name{ color:#fff; font-weight:800; font-size:1.4rem; margin: .25rem 0 1rem; }
+
+.plan-list{ color:#ddd; font-size:.98rem; line-height:1.5; padding-left:1rem; margin:0 0 1.1rem; }
+.plan-list li{ margin:.45rem 0; position:relative; }
+.plan-list li::before{
+  content:"";
+  width:8px; height:8px; border-radius:999px;
+  background:#F7A9B8; position:absolute; left:-16px; top:.55rem;
+}
+
+.plan-price{
+  display:flex; gap:16px; align-items:flex-end;
+  margin: .35rem 0 1.1rem;
+}
+.plan-price div{ color:#fff; }
+.plan-price strong{ font-size:1.25rem; }
+.plan-price span{ font-size:.9rem; color:#cfcfcf; margin-left:.2rem; }
+
+.plan-btn{
+  display:block; text-align:center;
+  width:100%;
+  border-radius: 999px;
+}
+
+/* Resaltado tarjeta central */
+.plan-card.featured{
+  border-color: rgba(247,169,184,.55);
+  box-shadow: 0 18px 56px rgba(247,169,184,.26);
+}
+
+/* Responsive */
+@media (max-width: 992px){
+  .plans-grid{ grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px){
+  .plans-grid{ grid-template-columns: 1fr; }
+}
+
+/* Animación pop escalonada (usa tus clases .reveal/.fx-pop existentes) */
+.fx-pop{ opacity:0; transform: translateY(12px) scale(.98); transition: opacity .6s ease, transform .6s ease; }
+.reveal.visible .fx-pop{ opacity:1; transform:none; }
+.reveal.visible .stagger > .fx-pop:nth-child(1){ transition-delay:.05s; }
+.reveal.visible .stagger > .fx-pop:nth-child(2){ transition-delay:.15s; }
+.reveal.visible .stagger > .fx-pop:nth-child(3){ transition-delay:.25s; }
+/* ===== /PLANES ===== */
 </style>
 </head>
 <body class="bg-[#1a1a1a]">
@@ -1429,7 +1529,82 @@
   <!-- Imagen derecha -->
   <div class="section-soy2__image"></div>
 </section>
-  
+
+  <!-- ======== PLANES (después de ¡Hola! Soy Maresi) ======== -->
+<section id="planes" class="section-plans reveal">
+  <div class="container">
+
+    <!-- Título -->
+    <div class="plans-head">
+      <h2 class="plans-title">
+        Elige tu <span class="accent">plan</span>
+      </h2>
+      <p class="plans-sub">Resultados reales en 90 días: entrenamiento, hábitos y nutrición.</p>
+    </div>
+
+    <!-- Tarjetas -->
+    <div class="plans-grid stagger">
+      <!-- BASICO -->
+      <article class="plan-card fx-pop">
+        <div class="plan-badge">Básico</div>
+        <h3 class="plan-name">Plan Básico</h3>
+        <ul class="plan-list">
+          <li>24 sesiones presenciales (60 min)</li>
+          <li>Rutinas personalizadas independientes</li>
+          <li>Checklist de hábitos básicos</li>
+          <li>Recomendaciones generales de nutrición</li>
+          <li>2 estudios InBody (inicial y final)</li>
+          <li>Recordatorios semanales</li>
+        </ul>
+        <div class="plan-price">
+          <div><strong>$9,000</strong> <span>1:1</span></div>
+          <div><strong>$6,200</strong> <span>1:2</span></div>
+        </div>
+        <a class="btn-primary plan-btn" href="plan-basico.html" target="_blank" rel="noopener">Conoce más</a>
+      </article>
+
+      <!-- ESTANDAR -->
+      <article class="plan-card fx-pop featured">
+        <div class="plan-badge hot">Más elegido</div>
+        <h3 class="plan-name">Plan Estándar</h3>
+        <ul class="plan-list">
+          <li>36 sesiones presenciales (60 min)</li>
+          <li>24 rutinas personalizadas independientes</li>
+          <li>Checklist ampliado (comidas/antojos)</li>
+          <li>Plan nutricional recomendado</li>
+          <li>Plan de suplementación recomendado</li>
+          <li>2 estudios InBody + seguimiento virtual</li>
+        </ul>
+        <div class="plan-price">
+          <div><strong>$13,500</strong> <span>1:1</span></div>
+          <div><strong>$9,000</strong> <span>1:2</span></div>
+        </div>
+        <a class="btn-primary plan-btn" href="plan-estandar.html" target="_blank" rel="noopener">Conoce más</a>
+      </article>
+
+      <!-- PREMIUM -->
+      <article class="plan-card fx-pop">
+        <div class="plan-badge">Premium</div>
+        <h3 class="plan-name">Plan Premium</h3>
+        <ul class="plan-list">
+          <li>36 sesiones presenciales avanzadas</li>
+          <li>24 rutinas independientes avanzadas</li>
+          <li>Checklist de hábitos premium</li>
+          <li>Programa nutricional completo</li>
+          <li>Guía de suplementación avanzada</li>
+          <li>3 estudios InBody + soporte continuo</li>
+        </ul>
+        <div class="plan-price">
+          <div><strong>$16,500</strong> <span>1:1</span></div>
+          <div><strong>$11,300</strong> <span>1:2</span></div>
+        </div>
+        <a class="btn-primary plan-btn" href="plan-premium.html" target="_blank" rel="noopener">Conoce más</a>
+      </article>
+    </div>
+  </div>
+</section>
+<!-- ======== /PLANES ======== -->
+
 <!-- CTA final -->
 <section class="ready-to-start reveal bg-black text-white py-20">
   <div class="container mx-auto px-6 text-center">
