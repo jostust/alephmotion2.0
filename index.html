@@ -932,6 +932,95 @@
     max-height: 220px; /* en móvil la hace chiquita */
   }
 }
+  /* === CTA LIMPIO: texto arriba + imagen abajo (sin overlay) === */
+.ready-to-start {
+  background: none !important;   /* quita el fondo de cta-banner */
+  padding: 4rem 1.5rem;          /* un poco menos de padding */
+}
+
+.ready-to-start-overlay {
+  display: none !important;      /* desactiva la capa oscura absoluta */
+}
+
+.ready-to-start-content {
+  position: relative;
+  z-index: 1;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* Imagen del CTA separada del texto */
+.ready-to-start .cta-image {
+  margin-top: 2rem;
+}
+
+.ready-to-start .cta-image img,
+.ready-to-start img {
+  width: 100%;
+  height: auto;
+  max-height: 500px;             /* desktop */
+  object-fit: cover;
+  border-radius: 12px;           /* opcional, se ve más pro */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Tipografía del título/lista (sin emojis/íconos) */
+.ready-to-start .cta-title,
+.ready-to-start h2 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+.ready-to-start .cta-title .highlight,
+.ready-to-start h2 .highlight {
+  color: #F7A9B8; /* tu rosa */
+}
+
+.ready-to-start .cta-list,
+.ready-to-start ul {
+  list-style: none;
+  padding: 0;
+  margin: 2rem auto 0 auto;
+  text-align: left;
+  max-width: 650px;
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+
+.ready-to-start .cta-list li,
+.ready-to-start ul li {
+  margin: 0.85rem 0;
+}
+
+/* Botón rosa consistente */
+.btn-rosa,
+.ready-to-start .btn-primary {
+  display: inline-block;
+  background: #F7A9B8 !important;
+  color: #fff !important;
+  font-weight: 700;
+  padding: 1rem 3rem;
+  border-radius: 999px;
+  transition: all 0.3s ease;
+}
+
+.btn-rosa:hover,
+.ready-to-start .btn-primary:hover {
+  background: #fff !important;
+  color: #F7A9B8 !important;
+}
+
+/* Mobile: imagen más chica */
+@media (max-width: 768px) {
+  .ready-to-start .cta-image img,
+  .ready-to-start img {
+    max-height: 220px;
+  }
+}
 </style>
 </head>
 <body class="bg-[#1a1a1a]">
