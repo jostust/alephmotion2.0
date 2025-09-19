@@ -715,7 +715,7 @@
 .section-soy2 .section-soy2__image {
   position: relative;
   flex: 1 1 50%;
-  background: url("assets/img/soymar-desktop.jpg") center/cover no-repeat;
+  background: url("assets/img/soymar-reverse-desktop.jpg") center/cover no-repeat;
 }
 .section-soy2 .section-soy2__image::after{
   content:""; position: absolute; inset: 0;
@@ -790,7 +790,7 @@
   .section-soy2{ flex-direction: column; min-height:auto; }
   .section-soy2 .section-soy2__image{
     height: 56vh; min-height: 340px;
-    background: url("assets/img/soymar-mobile.jpg") center/cover no-repeat;
+    background: url("assets/img/soymar-reverse-mobile.jpg") center/cover no-repeat;
   }
   .section-soy2 .section-soy2__image::after{
     background: linear-gradient(
@@ -810,7 +810,7 @@
 /* Imagen a la DERECHA */
 .section-soy2.section-soy2--reverse .section-soy2__image {
   order: 2; /* se coloca a la derecha en desktop */
-  background: url("assets/img/soymar-desktop.jpg") center/cover no-repeat;
+  background: url("assets/img/soymar-reverse-desktop.jpg") center/cover no-repeat;
 }
 
 /* Fade de la imagen hacia la IZQUIERDA */
@@ -1051,6 +1051,76 @@
   max-height: 2000px; /* suficiente para todo el texto */
   margin-top: 1rem;
 }
+  /* Bloque Maresi */
+.section-soy2 {
+  display: flex;
+  align-items: stretch;
+  min-height: 500px;
+  position: relative;
+  overflow: hidden;
+}
+
+.section-soy2__body {
+  flex: 1 1 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+}
+
+.section-soy2__card {
+  width: 100%;
+  max-width: 760px;
+  color: #fff;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+  backdrop-filter: blur(6px);
+  padding: 2rem 2.25rem;
+}
+
+/* Imagen derecha */
+.section-soy2__image {
+  flex: 1 1 50%;
+  background: url("assets/img/soymar-reverse-desktop.jpg") center/cover no-repeat;
+  position: relative;
+}
+
+/* Fade hacia la izquierda */
+.section-soy2__image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to left,
+    rgba(15,15,16,0.8) 0%,
+    rgba(15,15,16,0.5) 60%,
+    transparent 100%
+  );
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .section-soy2 {
+    flex-direction: column;
+  }
+
+  .section-soy2__image {
+    order: 2; /* imagen debajo del texto */
+    height: 220px;
+    background: url("assets/img/soymar-reverse-mobile.jpg") center/cover no-repeat;
+  }
+
+  .section-soy2__image::after {
+    background: linear-gradient(
+      to top,
+      rgba(15,15,16,0.8) 0%,
+      rgba(15,15,16,0.5) 60%,
+      transparent 100%
+    );
+  }
+}
 </style>
 </head>
 <body class="bg-[#1a1a1a]">
@@ -1231,7 +1301,7 @@
   </div>
 </section> 
   
-<!-- ===== ACERCA DE MARESI ===== -->
+  <!-- ====== ACERCA DE MARESI ====== -->
 <section class="section-soy2 section-soy2-reverse reveal">
   <!-- Texto izquierda -->
   <div class="section-soy2__body">
@@ -1244,10 +1314,11 @@
       <div class="bio-intro">
         <p><strong>Quién soy</strong></p>
         <p>
-          Tras muchos años de <strong>vida sedentaria</strong>, sin saber cómo ni cuándo comenzar, un día decidí
-          aventurarme en el <strong>mundo del fitness</strong>. Lo que empezó como el deseo de cambiar mi estilo
-          de vida se convirtió en una <strong>pasión</strong> que me impulsó a <strong>superar mis límites</strong>
-          y a crear una versión más <strong>fuerte, sana y resiliente</strong> de mí misma.
+          Tras muchos años de <strong>vida sedentaria</strong>, sin saber cómo ni cuándo comenzar, 
+          un día decidí aventurarme en el <strong>mundo del fitness</strong>. Lo que empezó como 
+          el deseo de cambiar mi estilo de vida se convirtió en una <strong>pasión</strong> 
+          que me impulsó a <strong>superar mis límites</strong> y a crear una versión más 
+          <strong>fuerte, sana y resiliente</strong> de mí misma.
         </p>
       </div>
 
@@ -1255,28 +1326,24 @@
       <div class="bio-collapse">
         <input type="checkbox" id="toggle-bio" class="bio-toggle">
         <label for="toggle-bio" class="bio-label">Leer más</label>
-        
         <div class="bio-content">
           <p>
-            <strong>Aleph Reset</strong> nace de esa experiencia personal: el <strong>ejercicio me cambió la vida</strong>
-            y quiero compartir con más mujeres los beneficios de <strong>entrenar con propósito</strong>. 
-            Más allá de la <strong>estética</strong>, tener un <strong>cuerpo fuerte</strong> y cuidar nuestra
-            <strong>salud interior</strong> impacta directamente en la <strong>vitalidad</strong> y en la 
-            <strong>calidad de vida a largo plazo</strong>.
+            <strong>Aleph Reset</strong> nace de esa experiencia personal: el 
+            <strong>ejercicio me cambió la vida</strong> y quiero compartir con más mujeres 
+            los beneficios de <strong>entrenar con propósito</strong>. Más allá de la 
+            <strong>estética</strong>, tener un <strong>cuerpo fuerte</strong> y cuidar nuestra 
+            <strong>salud interior</strong> impacta directamente en la <strong>vitalidad</strong> 
+            y en la <strong>calidad de vida a largo plazo</strong>.
           </p>
-
           <p>
-            Mi misión es <strong>acompañar a mujeres</strong> en este proceso, ayudándolas a
-            <strong>romper mitos del fitness</strong> y a construir <strong>hábitos</strong> que realmente transforman.
+            Mi misión es acompañar a mujeres en este proceso, ayudándolas a 
+            <strong>romper mitos del fitness</strong> y a construir hábitos que realmente transforman.
           </p>
-
           <p>
             Cuento con más de <strong>5 años de experiencia</strong> en el ámbito deportivo y 
-            <strong>certificación internacional</strong> por la Asociación Internacional de Entrenadores Personales, 
-            además de especializaciones en:
+            <strong>certificación internacional</strong> por la 
+            <strong>Asociación Internacional de Entrenadores Personales</strong>, además de especializaciones en:
           </p>
-
-          <h3 class="section-soy2__sub">Especializaciones</h3>
           <ul class="list-pink">
             <li><strong>Programación de entrenamiento para mujeres</strong></li>
             <li><strong>Manejo hormonal</strong> aplicado al ejercicio</li>
@@ -1284,7 +1351,6 @@
             <li><strong>Entrenamiento en embarazo y posparto</strong></li>
             <li><strong>Manejo de personas con factores de riesgo</strong></li>
           </ul>
-
           <p>
             Con estas bases, diseño <strong>rutinas y planes</strong> que no solo 
             <strong>cambian cuerpos</strong>, sino que también 
@@ -1299,8 +1365,8 @@
     </article>
   </div>
 
-  <!-- imagen derecha -->
-  <div class="section-soy2__image fx-slide-right" aria-hidden="true"></div>
+  <!-- Imagen derecha -->
+  <div class="section-soy2__image"></div>
 </section>
   
 <!-- CTA final -->
