@@ -1282,6 +1282,33 @@
 .reveal.visible .stagger > .fx-pop:nth-child(2){ transition-delay:.15s; }
 .reveal.visible .stagger > .fx-pop:nth-child(3){ transition-delay:.25s; }
 /* ===== /PLANES ===== */
+
+  /* ===== Pricing v2 ===== */
+.plan-toggle{
+  display:flex; gap:8px; margin:.5rem 0  .9rem;
+  background: rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius: 999px; padding: 4px;
+  width: max-content;
+}
+.toggle-btn{
+  border:0; background:transparent; color:#e8e8e8;
+  font-weight:700; padding:.45rem .9rem; border-radius:999px;
+  cursor:pointer; transition: background .2s ease, color .2s ease, transform .2s ease;
+}
+.toggle-btn.active{
+  background:#fff; color:#111; transform: translateY(-1px);
+}
+.plan-price-v2 .price-line{
+  display:flex; align-items:baseline; gap:.45rem; flex-wrap:wrap;
+  color:#fff; margin-bottom:.35rem;
+}
+.plan-price-v2 .price-prefix{ opacity:.85; }
+.plan-price-v2 .price-num{ font-size:1.55rem; font-weight:900; }
+.plan-price-v2 .price-suffix{ opacity:.75; font-size:.95rem; }
+.plan-price-v2 .price-month{ color:#eaeaea; opacity:.92; margin-bottom:.1rem; }
+.plan-price-v2 .price-note{ color:#cfcfcf; font-size:.9rem; }
+  
 </style>
 </head>
 <body class="bg-[#1a1a1a]">
@@ -1531,80 +1558,110 @@
 </section>
 
   <!-- ======== PLANES (después de ¡Hola! Soy Maresi) ======== -->
-<section id="planes" class="section-plans reveal">
-  <div class="container">
+<section id="planes" class="plans-section container mx-auto px-6 py-16 reveal">
+  <h2 class="headline text-center mb-12">Nuestros Planes</h2>
 
-    <!-- Título -->
-    <div class="plans-head">
-      <h2 class="plans-title">
-        Elige tu <span class="accent">plan</span>
-      </h2>
-      <p class="plans-sub">Resultados reales en 90 días: entrenamiento, hábitos y nutrición.</p>
-    </div>
+  <div class="plans-grid grid grid-cols-1 md:grid-cols-3 gap-8">
+    <!-- BASICO -->
+    <article class="plan-card fx-pop p-6 rounded-2xl bg-[#141414] border border-gray-800 hover:shadow-2xl transition"
+      data-months="3"
+      data-price-solo="9000"
+      data-price-duo="6200">
+      <div class="plan-badge inline-block px-3 py-1 text-xs font-bold rounded-full bg-white text-black mb-3">Básico</div>
+      <h3 class="plan-name text-2xl font-extrabold mb-3">Plan Básico</h3>
 
-    <!-- Tarjetas -->
-    <div class="plans-grid stagger">
-      <!-- BASICO -->
-      <article class="plan-card fx-pop">
-        <div class="plan-badge">Básico</div>
-        <h3 class="plan-name">Plan Básico</h3>
-        <ul class="plan-list">
-          <li>24 sesiones presenciales (60 min)</li>
-          <li>Rutinas personalizadas independientes</li>
-          <li>Checklist de hábitos básicos</li>
-          <li>Recomendaciones generales de nutrición</li>
-          <li>2 estudios InBody (inicial y final)</li>
-          <li>Recordatorios semanales</li>
-        </ul>
-        <div class="plan-price">
-          <div><strong>$9,000</strong> <span>1:1</span></div>
-          <div><strong>$6,200</strong> <span>1:2</span></div>
+      <ul class="list text-sm leading-relaxed mb-6">
+        <li>Rutinas guiadas 3x semana</li>
+        <li>Corrección técnica esencial</li>
+        <li>Plan de hábitos base</li>
+      </ul>
+
+      <!-- Toggle de modalidad -->
+      <div class="plan-toggle" role="tablist" aria-label="Elegir modalidad de precio">
+        <button class="toggle-btn active" data-mode="duo" aria-selected="true">En pareja</button>
+        <button class="toggle-btn" data-mode="solo" aria-selected="false">Individual</button>
+      </div>
+
+      <!-- Precio dinámico -->
+      <div class="plan-price-v2 mt-3">
+        <div class="price-line">
+          <span class="price-prefix">Desde</span>
+          <span class="price-num">$6,200</span>
+          <span class="price-suffix">total / 90&nbsp;días</span>
         </div>
-        <a class="btn-primary plan-btn" href="plan-basico.html" target="_blank" rel="noopener">Conoce más</a>
-      </article>
+        <div class="price-month">o <strong>$2,067</strong> al mes</div>
+        <div class="price-note">Precio por persona en pareja (1:2).</div>
+      </div>
 
-      <!-- ESTANDAR -->
-      <article class="plan-card fx-pop featured">
-        <div class="plan-badge hot">Más elegido</div>
-        <h3 class="plan-name">Plan Estándar</h3>
-        <ul class="plan-list">
-          <li>36 sesiones presenciales (60 min)</li>
-          <li>24 rutinas personalizadas independientes</li>
-          <li>Checklist ampliado (comidas/antojos)</li>
-          <li>Plan nutricional recomendado</li>
-          <li>Plan de suplementación recomendado</li>
-          <li>2 estudios InBody + seguimiento virtual</li>
-        </ul>
-        <div class="plan-price">
-          <div><strong>$13,500</strong> <span>1:1</span></div>
-          <div><strong>$9,000</strong> <span>1:2</span></div>
-        </div>
-        <a class="btn-primary plan-btn" href="plan-estandar.html" target="_blank" rel="noopener">Conoce más</a>
-      </article>
+      <a class="btn-primary plan-btn mt-6 inline-block" href="plan-basico.html" target="_blank" rel="noopener">Conoce más</a>
+    </article>
 
-      <!-- PREMIUM -->
-      <article class="plan-card fx-pop">
-        <div class="plan-badge">Premium</div>
-        <h3 class="plan-name">Plan Premium</h3>
-        <ul class="plan-list">
-          <li>36 sesiones presenciales avanzadas</li>
-          <li>24 rutinas independientes avanzadas</li>
-          <li>Checklist de hábitos premium</li>
-          <li>Programa nutricional completo</li>
-          <li>Guía de suplementación avanzada</li>
-          <li>3 estudios InBody + soporte continuo</li>
-        </ul>
-        <div class="plan-price">
-          <div><strong>$16,500</strong> <span>1:1</span></div>
-          <div><strong>$11,300</strong> <span>1:2</span></div>
+    <!-- ESTANDAR (destacado) -->
+    <article class="plan-card fx-pop p-6 rounded-2xl bg-[#141414] border-2 border-[#F7A9B8] hover:shadow-2xl transition"
+      data-months="3"
+      data-price-solo="13500"
+      data-price-duo="9000">
+      <div class="plan-badge hot inline-block px-3 py-1 text-xs font-bold rounded-full bg-[#F7A9B8] text-black mb-3">Más elegido</div>
+      <h3 class="plan-name text-2xl font-extrabold mb-3">Plan Estándar</h3>
+
+      <ul class="list text-sm leading-relaxed mb-6">
+        <li>Entrenamiento 4x semana</li>
+        <li>Ajustes de nutrición</li>
+        <li>Soporte y seguimiento</li>
+      </ul>
+
+      <div class="plan-toggle" role="tablist" aria-label="Elegir modalidad de precio">
+        <button class="toggle-btn active" data-mode="duo" aria-selected="true">En pareja</button>
+        <button class="toggle-btn" data-mode="solo" aria-selected="false">Individual</button>
+      </div>
+
+      <div class="plan-price-v2 mt-3">
+        <div class="price-line">
+          <span class="price-prefix">Desde</span>
+          <span class="price-num">$9,000</span>
+          <span class="price-suffix">total / 90&nbsp;días</span>
         </div>
-        <a class="btn-primary plan-btn" href="plan-premium.html" target="_blank" rel="noopener">Conoce más</a>
-      </article>
-    </div>
+        <div class="price-month">o <strong>$3,000</strong> al mes</div>
+        <div class="price-note">Precio por persona en pareja (1:2).</div>
+      </div>
+
+      <a class="btn-primary plan-btn mt-6 inline-block" href="plan-estandar.html" target="_blank" rel="noopener">Conoce más</a>
+    </article>
+
+    <!-- PREMIUM -->
+    <article class="plan-card fx-pop p-6 rounded-2xl bg-[#141414] border border-gray-800 hover:shadow-2xl transition"
+      data-months="3"
+      data-price-solo="16500"
+      data-price-duo="11300">
+      <div class="plan-badge inline-block px-3 py-1 text-xs font-bold rounded-full bg-white text-black mb-3">Premium</div>
+      <h3 class="plan-name text-2xl font-extrabold mb-3">Plan Premium</h3>
+
+      <ul class="list text-sm leading-relaxed mb-6">
+        <li>Entrenamiento 5x semana</li>
+        <li>Plan nutricional avanzado</li>
+        <li>Sesiones 1:1 y seguimiento</li>
+      </ul>
+
+      <div class="plan-toggle" role="tablist" aria-label="Elegir modalidad de precio">
+        <button class="toggle-btn active" data-mode="duo" aria-selected="true">En pareja</button>
+        <button class="toggle-btn" data-mode="solo" aria-selected="false">Individual</button>
+      </div>
+
+      <div class="plan-price-v2 mt-3">
+        <div class="price-line">
+          <span class="price-prefix">Desde</span>
+          <span class="price-num">$11,300</span>
+          <span class="price-suffix">total / 90&nbsp;días</span>
+        </div>
+        <div class="price-month">o <strong>$3,767</strong> al mes</div>
+        <div class="price-note">Precio por persona en pareja (1:2).</div>
+      </div>
+
+      <a class="btn-primary plan-btn mt-6 inline-block" href="plan-premium.html" target="_blank" rel="noopener">Conoce más</a>
+    </article>
   </div>
 </section>
-<!-- ======== /PLANES ======== -->
-
+  
 <!-- CTA final -->
 <section class="ready-to-start reveal bg-black text-white py-20">
   <div class="container mx-auto px-6 text-center">
@@ -1727,6 +1784,37 @@ document.addEventListener('DOMContentLoaded', () => {
       const open = box.classList.toggle('is-open');
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
       btn.textContent = open ? 'Ver menos' : 'Ver más';
+    });
+  })();
+</script>
+  <script>
+  (function(){
+    const fmt = n => n.toLocaleString('es-MX', {maximumFractionDigits:0});
+    document.querySelectorAll('.plan-card').forEach(card=>{
+      const months = parseInt(card.dataset.months || '3', 10);
+      const solo = parseInt(card.dataset.priceSolo || '0', 10);
+      const duo  = parseInt(card.dataset.priceDuo  || '0', 10);
+      const defaultMode = (card.dataset.default || 'duo'); // 'duo' o 'solo'
+      const priceNum   = card.querySelector('.price-num');
+      const priceMonth = card.querySelector('.price-month');
+      const priceNote  = card.querySelector('.price-note');
+      const btns = card.querySelectorAll('.toggle-btn');
+
+      function setMode(mode){
+        btns.forEach(b=>b.classList.toggle('active', b.dataset.mode===mode));
+        btns.forEach(b=>b.setAttribute('aria-selected', b.dataset.mode===mode ? 'true' : 'false'));
+
+        const total = (mode==='solo') ? solo : duo;
+        priceNum.textContent = '$' + fmt(total);
+        priceMonth.innerHTML = 'o <strong>$' + fmt(Math.round(total / months)) + '</strong> al mes';
+        priceNote.textContent = (mode==='solo')
+          ? 'Precio individual (1:1).'
+          : 'Precio por persona en pareja (1:2).';
+      }
+
+      // init con modo por defecto
+      setMode(defaultMode);
+      btns.forEach(b=>b.addEventListener('click', ()=>setMode(b.dataset.mode)));
     });
   })();
 </script>
