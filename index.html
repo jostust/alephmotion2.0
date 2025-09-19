@@ -1337,39 +1337,95 @@
     height: 56vh; min-height: 320px; background-size: cover; background-position: center;
   }
 }  
+  /* ===== AlephMotion Header (aislado con prefijo am-) ===== */
+.am-header{
+  position: sticky; top:0; z-index:100;
+  backdrop-filter: blur(6px);
+  background: rgba(0,0,0,.6);
+  border-bottom: 1px solid rgba(255,255,255,.1);
+}
+.am-header__inner{
+  max-width: 1200px; margin:0 auto;
+  padding: .9rem 1rem;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.am-brand{
+  color:#fff; font-weight:900; letter-spacing:.4px; font-size:1.35rem;
+  text-decoration:none; transition:color .2s ease;
+}
+.am-brand:hover{ color:#F7A9B8; }
+
+.am-nav{ display:flex; align-items:center; gap:1.1rem; }
+.am-nav--desktop{ display:flex; }
+.am-link{
+  color:#eaeaea; text-decoration:none; font-weight:600; font-size:1rem;
+  padding:.5rem .7rem; border-radius:.5rem; transition:all .2s ease;
+}
+.am-link:hover{ color:#F7A9B8; background:rgba(247,169,184,.12); }
+
+.am-btn{
+  display:inline-block; background:#F7A9B8; color:#111; font-weight:800;
+  padding:.6rem 1.1rem; border-radius:999px; text-decoration:none;
+  transition:transform .12s ease, box-shadow .2s ease, background .2s ease;
+  box-shadow:0 6px 14px rgba(247,169,184,.25);
+}
+.am-btn:hover{ background:#ffb5c3; transform:translateY(-1px); }
+.am-btn--full{ display:block; text-align:center; margin-top:.25rem; }
+
+/* Hamburguesa */
+.am-hamburger{ display:none; flex-direction:column; gap:5px; background:none; border:0; }
+.am-hamburger span{ width:26px; height:2px; background:#fff; display:block; }
+
+/* Drawer móvil */
+.am-drawer{
+  display:flex; flex-direction:column; gap:.5rem; padding:.75rem 1rem 1rem;
+  background:#111; border-top:1px solid rgba(255,255,255,.08);
+}
+.am-drawer .am-link{ padding:.6rem .4rem; border-radius:.5rem; }
+.am-drawer .am-link:hover{ background:rgba(247,169,184,.12); color:#F7A9B8; }
+
+/* Accesibilidad (oculto visual) */
+.sr-only{ position:absolute; width:1px; height:1px; margin:-1px; padding:0; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
+
+/* Breakpoint */
+@media (max-width: 900px){
+  .am-nav--desktop{ display:none; }
+  .am-hamburger{ display:flex; }
+}
 </style>
 </head>
 <body class="bg-[#1a1a1a]">
 
 <!-- Header & Navigation -->
-<!-- Header & Navigation -->
-<header class="site-header">
-  <div class="header-inner">
-    <a href="index.html" class="brand">AlephMotion</a>
+<header class="am-header">
+  <div class="am-header__inner">
+    <!-- LOGO siempre a inicio -->
+    <a href="index.html" class="am-brand">AlephMotion</a>
 
     <!-- NAV DESKTOP -->
-    <nav class="nav-desktop">
-      <a href="#planes" class="nav-link">Planes</a>
-      <a href="#hola-soy-maresi" class="nav-link">Blog</a>
-      <a href="tienda.html" class="nav-link">Tienda</a>
-      <a href="register.html" class="btn-cta">Comenzar ahora</a>
+    <nav class="am-nav am-nav--desktop">
+      <a href="#planes" class="am-link">Planes</a>
+      <a href="#hola-soy-maresi" class="am-link">Blog</a>
+      <a href="tienda.html" class="am-link">Tienda</a>
+      <a href="register.html" class="am-btn">Comenzar ahora</a>
     </nav>
 
     <!-- BOTÓN HAMBURGUESA (solo móvil) -->
-    <button class="hamburger" id="hamburger" aria-controls="mobileMenu" aria-expanded="false">
+    <button class="am-hamburger" id="amHamburger" aria-controls="amDrawer" aria-expanded="false">
       <span></span><span></span><span></span>
       <span class="sr-only">Abrir menú</span>
     </button>
   </div>
 
-  <!-- NAV MÓVIL -->
-  <nav id="mobileMenu" class="nav-mobile" hidden>
-    <a href="#planes" class="nav-link">Planes</a>
-    <a href="#hola-soy-maresi" class="nav-link">Blog</a>
-    <a href="tienda.html" class="nav-link">Tienda</a>
-    <a href="register.html" class="btn-cta w-full text-center">Comenzar ahora</a>
+  <!-- NAV MÓVIL (cajón) -->
+  <nav id="amDrawer" class="am-drawer" hidden>
+    <a href="#planes" class="am-link">Planes</a>
+    <a href="#hola-soy-maresi" class="am-link">Blog</a>
+    <a href="tienda.html" class="am-link">Tienda</a>
+    <a href="register.html" class="am-btn am-btn--full">Comenzar ahora</a>
   </nav>
-</header>  
+</header>
+  
   <!-- Hero Section -->
 <section id="hero" class="hero-section text-white flex items-center justify-center text-center reveal">
   <div class="hero-overlay"></div>
@@ -1838,6 +1894,28 @@ document.addEventListener('DOMContentLoaded', () => {
       // init con modo por defecto
       setMode(defaultMode);
       btns.forEach(b=>b.addEventListener('click', ()=>setMode(b.dataset.mode)));
+    });
+  })();
+</script>
+  <script>
+  (function(){
+    const btn = document.getElementById('amHamburger');
+    const drawer = document.getElementById('amDrawer');
+    if(!btn || !drawer) return;
+
+    btn.addEventListener('click', () => {
+      const open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      if (drawer.hasAttribute('hidden')) {
+        drawer.removeAttribute('hidden');
+      } else {
+        drawer.setAttribute('hidden','');
+      }
+    });
+
+    // Cierra el drawer al navegar
+    drawer.querySelectorAll('a').forEach(a=>{
+      a.addEventListener('click', ()=> drawer.setAttribute('hidden',''));
     });
   })();
 </script>
